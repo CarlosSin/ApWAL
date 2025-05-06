@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
-  imports: [SideMenuComponent],
+  imports: [RouterLink],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent { }

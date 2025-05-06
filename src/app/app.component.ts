@@ -3,11 +3,10 @@ import { RouterOutlet } from '@angular/router';
 import KTComponents from '../metronic/core/index';
 import KTLayout from '../metronic/app/layouts/demo1';
 import { FooterComponent } from "./shared/components/footer/footer.component";
-import { NavbarComponent } from "./shared/components/navbar/navbar.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FooterComponent, NavbarComponent],
+  imports: [RouterOutlet, FooterComponent, ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

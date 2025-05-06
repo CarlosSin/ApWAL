@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'inv-side-menu',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [],
   templateUrl: './side-menu.component.html',
 })
 export class SideMenuComponent { }

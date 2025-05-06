@@ -4,12 +4,17 @@ import { UnapprovedProtocolsComponent } from "./pages/unapproved-protocols/unapp
 import { ProtocolRegisterComponent } from "./pages/protocol-register/protocol-register.component";
 import { PilotRegisterComponent } from "./pages/pilot-register/pilot-register.component";
 import { InvLayoutComponent } from "./layouts/inv-layout/inv-layout.component";
+import { HomePageComponent } from "./pages/home-page/home-page.component";
 
 export const invRoutes: Routes = [
   {
     path: '',
     component: InvLayoutComponent,
     children:[
+      {
+        path: 'home',
+        component: HomePageComponent,
+      },
       {
         path: 'approved',
         component: ApprovedProtocolsComponent
@@ -26,9 +31,10 @@ export const invRoutes: Routes = [
         path: 'pilot-register',
         component:PilotRegisterComponent
       },
+
       {
         path: '**',
-        redirectTo: 'approved',
+        redirectTo: 'home',
       }
     ]
   },

@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomePageComponent } from './shared/pages/home-page/home-page.component';
+import { LoginPageComponent } from './shared/pages/login-page/login-page.component';
 
 export const routes: Routes = [
 
   {
     path:'',
-    component: HomePageComponent,
+    component: LoginPageComponent,
   },
   {
     path: 'inv',
