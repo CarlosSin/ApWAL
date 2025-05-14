@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'menu-register',
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './menu-register.component.html',
 })
 export class MenuRegisterComponent { }

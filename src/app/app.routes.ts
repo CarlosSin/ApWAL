@@ -12,6 +12,11 @@ export const routes: Routes = [
     loadChildren: () => import('./inv-pages/inv.routes'),
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin-managent/admin.routes'),
+  },
+
+  {
     path:'**',
     redirectTo: '',
   }

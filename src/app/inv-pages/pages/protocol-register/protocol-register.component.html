@@ -1,10 +1,19 @@
-<div class="card">
+<div class="card h-full">
   <div class="card-header justify-center">
-   <h3 class="card-title">
-    Crear Protocolo
-   </h3>
+    <h3 class="card-title">Crear Protocolo</h3>
   </div>
+
   <div class="card-body">
-   <menu-register></menu-register>
+    <div class="flex flex-col md:flex-row h-full">
+      <!-- Menú lateral fijo -->
+      <div class="w-64">
+        <menu-register></menu-register>
+      </div>
+
+      <!-- Contenido dinámico -->
+      <div class="flex-1 p-4 overflow-auto">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
- </div>
+</div>
