@@ -1,0 +1,47 @@
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10 px-4">
+  <!-- Tarjeta principal -->
+  <div class="col-span-3 ">
+    <div class="bg-white shadow-xl rounded-2xl p-6 h-full">
+
+      <!-- Header de la tarjeta -->
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold text-gray-700">
+          <i class="ki-duotone ki-setting-2"></i>
+          Menú de gestion del catalogo de animales
+        </h3>
+      </div>
+
+      <!-- Body de la tarjeta -->
+      <div class="overflow-y-auto h-64 flex flex-col items-center justify-start space-y-6">
+        <!-- Botones -->
+        <div class="flex flex-col md:flex-row gap-4 mt-4">
+          <button [routerLink]="'/admin/agregar-atributo'" class="btn btn-outline btn-success">
+            Agregar nuevos atributos
+            <i class="ki-solid ki-add-files"></i>
+          </button>
+        </div>
+        <div class="flex flex-col md:flex-row gap-4 mt-4">
+          <button [routerLink]="'/admin'" class="btn btn-outline btn-success">
+            Modificar atributos ya existentes
+            <i class="ki-solid ki-notepad-edit"></i>
+          </button>
+        </div>
+        <div class="flex flex-col md:flex-row gap-4 mt-4">
+          <button [routerLink]="'/admin/agregar-animal'" class="btn btn-outline btn-success">
+            Agregar animales al catalogo de naimales
+            <i class="ki-solid ki-archive"></i>
+          </button>
+        </div>
+                <div class="flex flex-col md:flex-row gap-4 mt-4">
+          <button [routerLink]="'/admin'" class="btn btn-outline btn-success">
+            Modificar animales ya existentes en el catalogo
+            <i class="ki-solid ki-wrench"></i>
+          </button>
+        </div>
+
+
+    </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="menu menu-default flex flex-wrap justify-center gap-2.5 border rounded-lg py-2">
+    <div class="menu-item">
+        
+        <a [routerLink]="'nuevo-investigador'" class="menu-link">
+            <span class="menu-icon">
+                <i class="ki-solid ki-react"></i>
+            </span>
+            <span class="menu-title">
+                Investigado
+            </span>
+        </a>
+    </div>
+    <div class="menu-separator">
+    </div>
+    <div class="menu-item">
+        <a [routerLink]="'nuevo-suplente'" routerLinkActive="btn-success" class="menu-link">
+            <span class="menu-icon">
+                <i class="ki-solid ki-users"></i>
+            </span>
+            <span class="menu-title">
+                Suplente
+            </span>
+        </a>
+    </div>
+    <div class="menu-item">
+        <a [routerLink]="'nuevo-evaluador'" routerLinkActive="btn-success" class="menu-link">
+            <span class="menu-icon">
+                <i class="ki-solid ki-pencil"></i>
+            </span>
+            <span class="menu-title">
+                Evaluador
+            </span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="flex flex-col md:flex-row gap-10 flex justify-center items-center min-h-screen">
+  <!-- Columna izquierda -->
+    <div class="flex-1 space-y-6">
+    <h1 class="card-header justify-center text-lg mt-8">Ingrese la nueva sexo:</h1>
+    <form action="" method="post" class="p-20 bg-gray-100">
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Seleccione especie:</label>
+        <select id="tipo-usuario" class="select w-full">
+        <option value="opcion1" class="text-base">Especie 1</option>
+        <option value="opcion2" class="text-base">Especie 2</option>
+        <option value="opcion3" class="text-base">Especie 3</option>
+        <option value="opcion4" class="text-base">...</option>
+        </select>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Seleccione cepa:</label>
+        <select id="tipo-usuario" class="select w-full">
+        <option value="opcion1" class="text-base">Cepa 1</option>
+        <option value="opcion2" class="text-base">Cepa 2</option>
+        <option value="opcion3" class="text-base">Cepa 3</option>
+        <option value="opcion4" class="text-base">...</option>
+        </select>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Seleccione sexo de la especie:</label>
+        <select id="tipo-usuario" class="select w-full">
+        <option value="01" class="text-base">Macho</option>
+        <option value="02" class="text-base">Hembra</option>
+        <option value="03" class="text-base">Indistinto</option>
+        <option value="04" class="text-base">Todas las anteriores (pendiente)</option>
+        </select>
+        <div class="mt-4">
+            <p class="text-lg font-medium text-gray-700 mb-1">
+               ¿El sexo estara disponible?
+            </p>
+            <div class="flex flex-col gap-2 pl-2">
+                <label class="inline-flex items-center gap-2 text-lg">
+                <input type="radio" name="equipo" value="1" class="radio" />
+                    Sí
+                </label>
+                <label class="inline-flex items-center gap-2 text-lg">
+                <input type="radio" name="equipo" value="2" class="radio" checked />
+                    No
+                </label>
+            </div>
+        </div>
+
+        <div class="justify-items-end">
+            <input type="submit" class="btn btn-success mt-8 text-2xl flex justify-end-safe" value="Registrar sexo">
+        </div>
+    </form>
+    <div class="flex justify-end gap-4 mt-10">
+        <button [routerLink]="'/admin'"class="btn btn-light p-6">Salir</button>
+    </div>
+    
+    </div>
+</div>

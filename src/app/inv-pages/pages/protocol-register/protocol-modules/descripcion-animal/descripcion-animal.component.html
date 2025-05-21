@@ -1,0 +1,120 @@
+<h5 class="text-center text-xl font-bold text-gray-800 mb-8">
+  Descripción de animales a utilizar en el protocolo
+</h5>
+
+<div class="flex flex-col gap-8">
+
+  <!-- Formulario principal -->
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <!-- Grupo de selects -->
+    <div class="flex flex-col gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Especie:</label>
+        <select class="select w-full md:w-64">
+          <option value="1">Opción 1</option>
+          <option value="2">Opción 2</option>
+          <option value="3">Opción 3</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Cepa:</label>
+        <select class="select w-full md:w-64">
+          <option value="1">Opción 1</option>
+          <option value="2">Opción 2</option>
+          <option value="3">Opción 3</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Edad o peso:</label>
+        <select class="select w-full md:w-64">
+          <option value="1">Opción 1</option>
+          <option value="2">Opción 2</option>
+          <option value="3">Opción 3</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Frecuencia de uso:</label>
+        <select class="select w-full md:w-64">
+          <option value="1">Opción 1</option>
+          <option value="2">Opción 2</option>
+          <option value="3">Opción 3</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Cantidad solicitada:</label>
+        <input
+          type="text"
+          placeholder="Cantidad solicitada"
+          class="input input-sm w-full md:w-64"
+        />
+      </div>
+
+      <div>
+        <button class="btn btn-outline btn-success btn-sm flex items-center gap-2">
+          <i class="ki-filled ki-plus-squared text-lg"></i>
+          Agregar
+        </button>
+      </div>
+    </div>
+
+    <!-- Grupo de opciones de sexo y alojamiento -->
+    <div class="flex flex-col gap-6">
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Sexo:</label>
+        <div class="flex flex-col gap-2 pl-2">
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="sexo" value="M" class="radio" />
+            M
+          </label>
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="sexo" value="H" class="radio" checked />
+            H
+          </label>
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="sexo" value="I" class="radio" />
+            Indefinido
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Justificación -->
+  <div>
+    <div>
+        <p class="text-sm font-medium text-gray-700 mb-1">
+          ¿Cuenta con el equipo adecuado para alojar animales?
+        </p>
+        <div class="flex flex-col gap-2 pl-2">
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="equipo" value="1" class="radio" />
+            Sí
+          </label>
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="equipo" value="2" class="radio" checked />
+            No
+          </label>
+        </div>
+      </div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">
+      Justificación del uso de animales:
+    </label>
+    <textarea
+      class="textarea w-full"
+      rows="5"
+      placeholder="Describir el diseño experimental (grupos, animales por grupo y por periodo de tiempo)..."
+    ></textarea>
+  </div>
+
+  <!-- Botones -->
+  <div class="flex justify-end gap-4 mt-6">
+    <button class="btn btn-success">Guardar y avanzar</button>
+    <button class="btn btn-outline">Guardar</button>
+  </div>
+</div>

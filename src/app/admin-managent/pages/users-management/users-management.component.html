@@ -1,0 +1,33 @@
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10 px-4">
+  <!-- Tarjeta principal -->
+  <div class="col-span-3 ">
+    <div class="bg-white shadow-xl rounded-2xl p-6 h-full">
+
+      <!-- Header de la tarjeta -->
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold text-gray-700">
+          <i class="ki-duotone ki-setting-2"></i>
+          Menu de gestion de usuarios
+        </h3>
+      </div>
+
+      <!-- Body de la tarjeta -->
+      <div class="overflow-y-auto h-64 flex flex-col items-center justify-start space-y-6">
+        <!-- Botones -->
+        <div class="flex flex-col md:flex-row gap-4 mt-4">
+          <button [routerLink]="'/admin/nuevo-usuario'" class="btn btn-outline btn-success">
+            Crear nuevo usuario
+            <i class="ki-solid ki-user-tick"></i>
+          </button>
+        </div>
+        <div class="flex flex-col md:flex-row gap-4 mt-4">
+          <button [routerLink]="'/admin/modificar-usuario'" class="btn btn-outline btn-success">
+            Modificar un usuario ya existente
+            <i class="ki-duotone ki-user-edit"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
