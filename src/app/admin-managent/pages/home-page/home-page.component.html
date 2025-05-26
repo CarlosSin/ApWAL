@@ -1,10 +1,10 @@
-<h3 class="mt-4 text-center text-2xl font-semibold text-gray-700">
+<h3 class="mt-12 text-center text-2xl font-semibold text-gray-700">
   UNIDAD DE PRODUCCIÓN Y EXPERIMENTACIÓN DE ANIMALES DE LABORATORIO DEL CINVESTAV
 </h3>
-<div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10 px-4">
+<div class="grid justify-items-center grid-cols-1 lg:grid-cols-4 gap-6 mt-10 px-4 pr-8 pl-8">
   <!-- Tarjeta principal -->
-  <div class="col-span-3 ">
-    <div class="bg-white shadow-xl rounded-2xl p-6 h-full">
+  <div class="col-span-8">
+    <div class="bg-white shadow-xl rounded-2xl p-10 h-full">
 
       <!-- Header de la tarjeta -->
       <div class="text-center mb-6">
@@ -15,28 +15,34 @@
       </div>
 
       <!-- Body de la tarjeta -->
-      <div class="overflow-y-auto h-64 flex flex-col items-center justify-start space-y-6">
+      <div class="overflow-y-auto pb-30 flex flex-col items-center justify-start space-y-6 pl-16 pr-16">
         <!-- Botones -->
-        <div class="flex flex-col md:flex-row gap-4 mt-4">
-          <button [routerLink]="'/admin/users'" class="btn btn-outline btn-success">
+        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
+          <button [routerLink]="'/admin/users'" class="text-lg btn btn-outline btn-success">
             Gestionar usuarios
             <i class="ki-duotone ki-user-edit"></i>
           </button>
         </div>
-        <div class="flex flex-col md:flex-row gap-4 mt-4">
-          <button [routerLink]="'/admin/library'" class="btn btn-outline btn-success">
+        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2 p-2">
+          <button [routerLink]="'/admin/library'" class="text-lg btn btn-outline btn-success">
             Gestionar biblioteca digital
             <i class="ki-duotone ki-book-square"></i>
           </button>
         </div>
-        <div class="flex flex-col md:flex-row gap-4 mt-4">
-          <button [routerLink]="'/admin/animal'" class="btn btn-outline btn-success">
+        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
+          <button [routerLink]="'/admin/animal'" class="text-lg btn btn-outline btn-success">
             Gestionar cátalogo de animales
-            <i class="ki-duotone ki-heart"></i>
+            <i class="ki-solid ki-address-book"></i>
           </button>
         </div>
-        <div class="flex flex-col md:flex-row gap-4 mt-4">
-          <button [routerLink]="'/admin/protocol'" class="btn btn-outline btn-success">
+        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
+          <button [routerLink]="'/admin/department'" class="text-lg btn btn-outline btn-success">
+            Gestionar de Departamentos
+            <i class="ki-solid ki-address-book"></i>
+          </button>
+        </div>
+        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
+          <button [routerLink]="'/admin/protocol'" class="text-lg btn btn-outline btn-success">
             Gestionar protocolos UPEAL
             <i class="ki-duotone ki-abstract-33"></i>
           </button>

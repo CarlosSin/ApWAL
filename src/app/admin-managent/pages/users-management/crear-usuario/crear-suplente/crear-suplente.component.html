@@ -1,0 +1,78 @@
+<div class="flex flex-col md:flex-row gap-10 justify-center items-center min-h-screen">
+  <!-- Columna izquierda -->
+    <div class="flex-1 space-y-6">
+    <h1 class="card-header justify-center text-lg mt-8">Ingrese los datos del suplente:</h1>
+    <form action="" method="post" class="p-20 bg-gray-100">
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1">No. Control:</label>
+        <input type="number" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Numero de control del nuevo suplente">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Nombre(s):</label>
+        <input type="text" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Ingrese los nombres del nuevo suplente">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Apellido paterno:</label>
+        <input type="text" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Ingrese el Apellido paterno del nuevo suplente">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Apellido materno:</label>
+        <input type="text" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Ingrese el Apellido materno del nuevo suplente">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Telefono personal:</label>
+        <input type="number" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Ingrese el telefono personal del nuevo suplente">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Extension:</label>
+        <input type="number" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Numero de extension del nuevo suplente">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Grado de estudios:</label>
+        <input type="text" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Ingrese el grado de estudios del nuevo del suplente">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Correo electronico:</label>
+        <input type="text" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Ingrese el correo electronico del nuevo suplente">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Departamento del suplente:</label>
+        <select id="tipo-usuario" class="select w-full">
+        <option value="opcion1" class="text-base">Departamento1</option>
+        <option value="opcion2" class="text-base">Departamento2</option>
+        <option value="opcion3" class="text-base">Departamento3</option>
+        <option value="opcion3" class="text-base">...</option>
+        </select>
+        <div>
+            <p class="text-lg font-medium text-gray-700 mb-1 mt-8">
+            ¿El suplente estara disponible?
+            </p>
+        <div class="flex flex-col gap-2 pl-2">
+            <label class="inline-flex items-center gap-2 text-lg">
+            <input type="radio" name="equipo" value="1" class="radio" />
+                Sí
+            </label>
+            <label class="inline-flex items-center gap-2 text-lg">
+            <input type="radio" name="equipo" value="2" class="radio" checked />
+                No
+            </label>
+            </div>
+        </div>
+
+        <div class="justify-items-end">
+            <input type="submit" class="btn btn-success mt-8 text-2xl flex justify-end-safe" value="Registrar suplente">
+        </div>
+    </form>
+
+    <div class="flex justify-end gap-4 mt-10">
+        <button [routerLink]="'/admin'"class="btn btn-light p-6">Salir</button>
+    </div>
+    </div>
+</div>
