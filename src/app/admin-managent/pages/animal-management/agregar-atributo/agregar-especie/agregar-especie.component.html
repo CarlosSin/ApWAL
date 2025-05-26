@@ -1,0 +1,34 @@
+<div class="flex-1 space-y-6 mt-6">
+    <h1 class="card-header justify-center text-lg">Ingrese la nueva especie:</h1>    
+    <form action="" method="post" class="p-20 bg-gray-100">
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1">Nombre de la especie:</label>
+        <input type="text" name="" id="" 
+        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Ingrese los nombres de la especie">
+        <br>
+        <label for="" class="block text-lg font-medium text-gray-700 mb-1 mt-4">Descripcion de la especie:</label>
+        <textarea name="3." id="" cols="30" rows="5" class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <div class="mt-4">
+            <p class="text-lg font-medium text-gray-700 mb-1">
+                ¿La especie estara disponoble?
+            </p>
+            <div class="flex flex-col gap-2 pl-2">
+                <label class="inline-flex items-center gap-2 text-lg">
+                <input type="radio" name="equipo" value="1" class="radio" />
+                    Sí
+                </label>
+                <label class="inline-flex items-center gap-2 text-lg">
+                <input type="radio" name="equipo" value="2" class="radio" checked />
+                    No
+                </label>
+            </div>
+        </div>
+        <div class="justify-items-end">
+            <input type="submit" class=" btn btn-success mt-8 text-2xl flex w-1/5" value="Registrar nueva especie">
+        </div>
+    </form>
+    <div class=" flex justify-end pr-28 shadow-xl/30">
+        <button [routerLink]="'/admin'"class="btn btn-success text-4xl btn btn-light p-6">Salir</button>
+    </div>    
+</div>
+

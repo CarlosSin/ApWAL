@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-users-management',
+  selector: 'app-agregar-sexo',
   imports: [RouterLink],
-  templateUrl: './users-management.component.html',
+  templateUrl: './agregar-sexo.component.html',
 })
-export class UsersManagementComponent { }
+export class AgregarSexoComponent { }
