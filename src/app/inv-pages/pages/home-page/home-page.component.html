@@ -3,7 +3,7 @@
 </h3>
 <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10 px-4">
   <!-- Tarjeta principal -->
-  <div class="col-span-3 ">
+  <div class="col-span-8">
     <div class="bg-white shadow-xl rounded-2xl p-6 h-full">
 
       <!-- Header de la tarjeta -->
@@ -14,23 +14,23 @@
       </div>
 
       <!-- Body de la tarjeta -->
-      <div class="overflow-y-auto h-64 flex flex-col items-center justify-start space-y-6">
+      <div class="overflow-y-auto h-72 flex flex-col items-center justify-start space-y-6">
 
         <!-- Título principal -->
         <h6 class="text-3xl font-extrabold text-gray-700">CREAR NUEVO PROTOCOLO</h6>
 
         <!-- Imagen -->
         <img
-          src="https://svgsilh.com/svg/1148152.svg"
-          alt="rata-icono"
-          class="w-24 h-24" />
+          src="/assets/media/images/Logo4.png"
+          alt="ApWAL"
+          class="w-40 h-40" />
 
         <!-- Botones -->
         <div class="flex flex-col md:flex-row gap-4 mt-4">
-          <button [routerLink]="'/inv/protocol-register'"class="border border-green-500 text-green-500 px-4 py-2 rounded-lg hover:bg-green-500 hover:text-white transition">
+          <button [routerLink]="'/inv/protocol-register'"class="btn btn-outline btn-success">
             PROTOCOLO DE INVESTIGACIÓN
           </button>
-          <button [routerLink]="'/inv/pilot-register'" class="border border-green-500 text-green-500 px-4 py-2 rounded-lg hover:bg-green-500 hover:text-white transition">
+          <button [routerLink]="'/inv/pilot-register'" class="btn btn-outline btn-success">
             ESTUDIO PILOTO
           </button>
         </div>

@@ -1,0 +1,407 @@
+
+<div class="grid">
+ <div class="card card-grid min-w-full">
+  <div class="card-header py-5 flex-wrap">
+   <div class="flex gap-6">
+    <div class="my-8">
+    <button  routerLink="add-user" class="btn btn-outline btn-success" >
+      <i class="ki-filled ki-plus"></i>
+      Agregar usuario
+    </button>
+    </div>
+    <div class="input">
+      <input placeholder="Buscar usuario" type="text" value=""/>
+      <i class="ki-filled ki-magnifier"></i>
+      <button class="btn btn-icon">
+      </button>
+    </div>
+   </div>
+  </div>
+  <div class="card-body">
+   <div data-datatable="true" data-datatable-page-size="5">
+    <div class="scrollable-x-auto">
+     <table class="table table-auto table-border" data-datatable-table="true" id="grid_table">
+      <thead>
+       <tr>
+
+        <th class="min-w-[175px]">
+         <span class="sort asc">
+          <span class="sort-label">
+           Nombre de usuario
+          </span>
+          <span class="sort-icon">
+          </span>
+         </span>
+        </th>
+        <th class="min-w-[150px]">
+         <span class="sort">
+          <span class="sort-label">
+           Rol
+          </span>
+          <span class="sort-icon">
+          </span>
+         </span>
+        </th>
+        <th class="min-w-[125px]">
+         <span class="sort">
+          <span class="sort-label">
+           Estado
+          </span>
+          <span class="sort-icon">
+          </span>
+         </span>
+        </th>
+        <th class="w-[80px]">
+          Modificar
+        </th>
+        <th class="w-[100px]">
+          Eliminar/Reactivar
+        </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Admin
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+           Admin
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-success">
+          Active
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-danger" href="#">
+          <i class="ki-filled ki-trash"></i>
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Esther Howard
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+           Investigador
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-success">
+          Active
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-danger" href="#">
+          <i class="ki-filled ki-trash"></i>
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Jacob Jones
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+            Investigador
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-success">
+          Active
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-danger" href="#">
+          <i class="ki-filled ki-trash"></i>
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Cody Fisher
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+           Investigador
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-success">
+          Active
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-danger" href="#">
+          <i class="ki-filled ki-trash"></i>
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Leslie Alexander
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+           Investigador
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-success">
+          Active
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-danger" href="#">
+          <i class="ki-filled ki-trash"></i>
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Martha Craig
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+           Investigador
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-success">
+          Active
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-danger" href="#">
+          <i class="ki-filled ki-trash"></i>
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Ronald Richards
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+           Investigador
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-success">
+          Active
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-danger" href="#">
+          <i class="ki-filled ki-trash"></i>
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Jane Cooper
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+           Investigador
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-secondary">
+          Inactive
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-success" href="#">
+          <i class="ki-filled ki-check"></i>
+         </a>
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <div class="flex items-center gap-2.5">
+          <div class="flex flex-col gap-0.5">
+           <a class="leading-none font-semibold text-sm text-gray-900 hover:text-primary" href="#">
+            Robert Fox
+           </a>
+          </div>
+         </div>
+        </td>
+        <td>
+         <div class="flex items-center gap-1.5">
+          <span class="leading-none text-gray-700">
+           Investigador
+          </span>
+         </div>
+        </td>
+        <td>
+         <span class="badge badge-sm badge-outline badge-success">
+          Active
+         </span>
+        </td>
+        <td>
+         <a class="btn btn-sm btn-light" href="#">
+          <i class="ki-filled ki-pencil"></i>
+         </a>
+        </td>
+        <td>
+         <a class="btn btn-danger" href="#">
+          <i class="ki-filled ki-trash"></i>
+         </a>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="card-footer justify-center md:justify-between flex-col md:flex-row gap-3 text-gray-600 text-2sm font-medium">
+     <div class="flex items-center gap-2">
+      Show
+      <select class="select select-sm w-16" data-datatable-size="true" name="perpage">
+      </select>
+      per page
+     </div>
+     <div class="flex items-center gap-4">
+      <span data-datatable-info="true">
+      </span>
+      <div class="pagination">
+ <button class="btn" disabled="">
+  <i class="ki-filled ki-black-left"></i>
+ </button>
+ <button class="btn active">
+  1
+ </button>
+ <button class="btn">
+  2
+ </button>
+ <button class="btn">
+  3
+ </button>
+ <span class="btn disabled">
+  ...
+ </span>
+ <button class="btn">
+  24
+ </button>
+ <button class="btn">
+  25
+ </button>
+ <button class="btn">
+  26
+ </button>
+ <button class="btn">
+  <i class="ki-filled ki-black-right"></i>
+ </button>
+</div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
