@@ -15,6 +15,8 @@ export class FormUtils{
   static namePattern = '([a-zA-Z]+) ([a-zA-Z]+)';
   static emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   static notOnlySpacesPattern = '^[a-zA-Z0-9]+$';
+  static numberPattern = '^\\d+$';
+
 
   static getTextErrors(errors: ValidationErrors){
     for( const key of Object.keys(errors)){
@@ -34,13 +36,17 @@ export class FormUtils{
         case 'email':
           return `El valor ingresado no es un correo electronico`;
 
-        case 'noSinister':
-          return `No se puede usae el nombre Sinister en esta app`;
+        case 'dateInPast':
+          return `La fecha seleccionada no puede ser anterior a la actual`
 
         case 'pattern':
           if(errors['pattern'].requiredPattern === FormUtils.emailPattern){
             return `El valor ingresado no luce como un correo electronico`
           }
+          if(errors['pattern'].requiredPattern === FormUtils.numberPattern){
+            return `El valor ingresado no es un número`
+          }
+
 
           return `Error de patrón contra expresión regular`
 
@@ -52,6 +58,8 @@ export class FormUtils{
     }
     return null;
   }
+
+
 
   static isValidField(form: FormGroup, fieldName: string): boolean | null {
     return (!! form.controls[fieldName].errors && form.controls[fieldName].touched);
@@ -113,6 +121,20 @@ export class FormUtils{
     }
     return null;
   }
+
+  static dateNotInPast(control: AbstractControl): ValidationErrors | null {
+    if (!control.value) return null;
+
+    const today = new Date();
+    const inputDate = new Date(control.value);
+
+  // Resetear la hora a 00:00:00 para comparar solo la fecha
+    today.setHours(0, 0, 0, 0);
+    inputDate.setHours(0, 0, 0, 0);
+
+    return inputDate < today ? { dateInPast: true } : null;
+  }
+
 
 
 }

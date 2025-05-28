@@ -1,19 +1,18 @@
 <nav class="p-4 w-full bg-gray-800 flex items-center justify-between">
-      <!-- Imagen a la izquierda -->
+    <!-- Imagen a la izquierda -->
   <div class="flex flex-shrink">
     <img src="/assets/media/images/logonavbar3.png" class="w-40 h-auto" alt="Logo">
   </div>
-
-  <div class="flex-1 flex justify-center">
+<div class="flex-1 flex justify-center">
   <ul class="menu bg-base-200 sm:menu-horizontal rounded-box flex justify-center">
     <li>
-      <button routerLink="home" class="btn btn-clear btn-success">
-        <i class="ki-filled ki-home"></i>
-        Inicio
+      <button (click)="volver()" class="btn btn-clear btn-success">
+       <i class="ki-filled ki-left"></i>
+        Volver
        </button>
     </li>
     <li>
-      <button [routerLink]="'/library'" class="btn btn-clear btn-success">
+      <button routerLink="library" class="btn btn-clear btn-success">
         <i class="ki-filled ki-book-square"></i>
         Biblioteca digital
        </button>
@@ -21,5 +20,3 @@
   </ul>
 </div>
 </nav>
-
-
