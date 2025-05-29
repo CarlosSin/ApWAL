@@ -1,25 +1,30 @@
-<nav class="p-4 w-full bg-gray-800 flex items-center justify-between">
+<nav class="p-4 w-full bg-teal-600 flex items-center justify-between">
       <!-- Imagen a la izquierda -->
   <div class="flex flex-shrink">
-    <img src="/assets/media/images/logonavbar3.png" class="w-40 h-auto" alt="Logo">
+    <img src="/assets/media/images/logoApWAL-blanco.png" class="w-40 h-auto" alt="Logo">
   </div>
-
-  <div class="flex-1 flex justify-center">
-  <ul class="menu bg-base-200 sm:menu-horizontal rounded-box flex justify-center">
-    <li>
-      <button routerLink="home" class="btn btn-clear btn-success">
-        <i class="ki-filled ki-home"></i>
-        Inicio
-       </button>
-    </li>
-    <li>
-      <button [routerLink]="'/library'" class="btn btn-clear btn-success">
-        <i class="ki-filled ki-book-square"></i>
-        Biblioteca digital
-       </button>
-    </li>
-  </ul>
-</div>
 </nav>
 
 
+<nav class="bg-slate-100 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+
+<div class="flex flex-wrap justify-center">
+
+<div >
+    <ul class="menu bg-base-200 sm:menu-horizontal rounded-box flex gap-4">
+      <li>
+      <button routerLink="home" class="btn btn-clear btn-success">
+        <i class="ki-filled ki-home"></i>
+            Inicio
+       </button>
+    </li>
+      <li>
+        <button [routerLink]="'/library'" class="btn btn-clear btn-success">
+          <i class="ki-filled ki-book-square"></i>
+            Biblioteca digital
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>

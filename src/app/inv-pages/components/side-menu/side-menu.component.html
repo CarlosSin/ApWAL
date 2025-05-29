@@ -1,64 +1,92 @@
-<div class="menu menu-default flex flex-wrap justify-center gap-2.5 border rounded-lg py-2">
-  <div class="menu-item">
-   <a routerLink="my-protocols" routerLinkActive="btn-success" class="menu-link">
-    <span class="menu-icon">
-      <i class="ki-filled ki-book"></i>
-    </span>
-    <span class="menu-title">
-     Mis protocolos
-    </span>
-   </a>
-  </div>
-  <div class="menu-separator">
-  </div>
-  <div class="menu-item">
-   <a routerLink="approved" routerLinkActive="btn-success" class="menu-link">
-    <span class="menu-icon">
-      <i class="ki-filled ki-like"></i>
-    </span>
-    <span class="menu-title">
-     Aprobados
-    </span>
-   </a>
-  </div>
-  <div class="menu-item">
-   <a routerLink="unapproved" routerLinkActive="btn-success" class="menu-link">
-    <span class="menu-icon">
-      <i class="ki-filled ki-dislike"></i>
-    </span>
-    <span class="menu-title">
-     No aprobados
-    </span>
-   </a>
-  </div>
-  <div class="menu-item">
-    <a routerLink="recomendations" routerLinkActive="btn-success" class="menu-link">
+<nav class="bg-slate-100 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+
+<div class="flex flex-wrap justify-center">
+<div class="dropdown" data-dropdown="true" data-dropdown-trigger="click">
+ <button class="dropdown-toggle btn btn-clear btn-success">
+  <i class="ki-filled ki-archive"></i>
+  Mis protocolos
+ </button>
+ <div class="dropdown-content w-full max-w-56 py-2">
+  <div class="menu menu-default flex flex-col w-full">
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/my-protocols'">
      <span class="menu-icon">
-      <i class="ki-filled ki-message-question"></i>
+      <i class="ki-filled ki-book"></i>
+     </span>
+     <span class="menu-title">
+      General
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/approved'">
+     <span class="menu-icon">
+     <i class="ki-filled ki-like"></i>
+     </span>
+     <span class="menu-title">
+      Aprobados
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/unapproved'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-dislike"></i>
+     </span>
+     <span class="menu-title">
+      No aprobados
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/recomendations'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-dislike"></i>
      </span>
      <span class="menu-title">
       Aprobados con recomendaciones
      </span>
     </a>
    </div>
-  <div class="menu-item">
-   <a routerLink="unfinished" routerLinkActive="btn-success" class="menu-link">
-    <span class="menu-icon">
-      <i class="ki-filled ki-tablet-delete"></i>
-    </span>
-    <span class="menu-title">
-     No enviados
-    </span>
-   </a>
-  </div>
-  <div class="menu-item">
-   <a routerLink="underreview" routerLinkActive="btn-success" class="menu-link">
-    <span class="menu-icon">
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/unfinished'">
+     <span class="menu-icon">
+     <i class="ki-filled ki-loading"></i>
+     </span>
+     <span class="menu-title">
+      En proceso
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/underreview'">
+     <span class="menu-icon">
       <i class="ki-filled ki-questionnaire-tablet"></i>
-    </span>
-    <span class="menu-title">
-     En revisión
-    </span>
-   </a>
+     </span>
+     <span class="menu-title">
+      En revisión
+     </span>
+    </a>
+   </div>
   </div>
  </div>
+</div>
+
+<div>
+    <ul class="menu bg-base-200 sm:menu-horizontal rounded-box flex gap-4">
+      <li>
+        <button routerLink="home" class="btn btn-clear btn-success">
+          <i class="ki-filled ki-home"></i>
+          Inicio
+        </button>
+      </li>
+      <li>
+        <button [routerLink]="'/library'" class="btn btn-clear btn-success">
+          <i class="ki-filled ki-book-square"></i>
+          Biblioteca digital
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
