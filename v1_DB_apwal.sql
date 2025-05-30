@@ -318,3 +318,21 @@ CREATE TABLE clasificacion (
 -- CONSTRAINT PK_clasificacion PRIMARY KEY (ID_registro_protocolo, ID_registro_clasificacion),
 -- CONSTRAINT FK_clasificacion FOREIGN KEY (ID_registro_protocolo) REFERENCES protocolo(ID_registro_protocolo) ON DELETE CASCADE
 -- );
+
+
+--Tablas para la biblioteca digital
+CREATE TABLE TipoRecurso (
+  ID_tipo_recurso INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE BibliotecaDigital (
+  ID_recurso INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL,
+  descripcion TEXT NOT NULL,
+  ID_tipo INT,
+  url TEXT NOT NULL,
+  fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+  fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (ID_Tipo) REFERENCES TipoRecurso(ID_tipo_recurso)
+);
