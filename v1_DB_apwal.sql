@@ -229,7 +229,7 @@ CREATE TABLE descripcion_animal (
 -- Crear tabla Formulario
 CREATE TABLE procedimientos_experimentales (
 	ID_registro_procedimientos_experimentales INT,
-    alojamiento_animal BOOLEAN,
+    alojamiento_animal VARCHAR(50),
 	procedimientos VARCHAR(255),
 	descripcion_procedimientos TEXT,
 	ID_registro_protocolo INT NOT NULL,
@@ -285,6 +285,14 @@ CREATE TABLE clasificacion (
 
 -- Crear tabla Formulario
 -- CREATE TABLE capacitacion( -- pendiente
+--   ID_registro_capacitacion INT AUTO_INCREMENT,
+--   nombre_investigador VARCHAR(255),
+--   ruta_archivo_investigador VARCHAR(500),
+--   nombre_suplente VARCHAR(255),
+--   ruta_archivo_suplente VARCHAR(500),
+--   ID_registro_protocolo INT NOT NULL,
+--   CONSTRAINT PK_alternativas PRIMARY KEY (ID_registro_protocolo, ID_registro_capacitacion),
+--   CONSTRAINT FK_clasificacion FOREIGN KEY (ID_registro_protocolo) REFERENCES protocolo(ID_registro_protocolo) ON DELETE CASCADE
 -- );
 
 -- Crear tabla Formulario
@@ -331,7 +339,7 @@ CREATE TABLE BibliotecaDigital (
   nombre VARCHAR(100) NOT NULL,
   descripcion TEXT NOT NULL,
   ID_tipo INT,
-  url TEXT NOT NULL,
+  ruta TEXT NOT NULL,
   fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
   fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (ID_Tipo) REFERENCES TipoRecurso(ID_tipo_recurso)
