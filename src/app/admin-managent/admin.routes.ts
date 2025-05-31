@@ -18,8 +18,9 @@ import {CrearEvaluadorComponent} from '../admin-managent/pages/users-management/
 import {CrearInvestigadorComponent} from '../admin-managent/pages/users-management/crear-usuario/crear-investigador/crear-investigador.component';
 import {CrearSuplenteComponent} from '../admin-managent/pages/users-management/crear-usuario/crear-suplente/crear-suplente.component';
 import {ModificarUsuarioComponent} from '../admin-managent/pages/users-management/modificar-usuario/modificar-usuario.component';
+import {BienvenidaInvestigadorComponent} from './pages/home-page/bienvenida-investigador/bienvenida-investigador.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-
+ 
 export const adminRoutes: Routes = [
 
   {
@@ -29,6 +30,32 @@ export const adminRoutes: Routes = [
       {
         path: 'home',
         component: HomePageComponent,
+        title: 'inicio-admin',
+        children:[
+        {path: 'bienvenida', title: 'Welcome page', component: BienvenidaInvestigadorComponent },
+        {path: 'nuevo-usuario1',
+          component: CrearUsuarioComponent,
+          children: [
+          {path: 'nuevo-investigador', component: CrearInvestigadorComponent},
+          {path: 'nuevo-suplente', component: CrearSuplenteComponent},
+          {path: 'nuevo-evaluador', component: CrearEvaluadorComponent},
+          {
+            path: '**',
+            redirectTo: 'home',
+          }
+          ]
+        },
+
+
+
+
+
+
+        {
+          path: '**',
+          redirectTo: 'bienvenida',
+          }
+        ]
       },
       {
         path: 'users',
@@ -98,6 +125,7 @@ export const adminRoutes: Routes = [
         title: 'Gestor de departamentos',
         component: DepartmentManagementComponent
       },
+
       {
         path: '**',
         redirectTo: 'home',

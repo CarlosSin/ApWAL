@@ -1,0 +1,153 @@
+<div class="menu menu-default flex flex-col border rounded-lg w-full max-w-max py-2 mt-4 border border-teal-600">
+    <div class="menu-header rounded-xl text-center bg-teal-600 pt-2 pb-2">
+        <span class="text-2xl text-white font-semibold">Menú</span>
+    </div>
+
+    <nav>
+        <li class="menu-item mt-2" (click)="toggleSubmenu()" [class.active]="submenuOpen">
+            <a  class="menu-link">
+                <span class="menu-icon">
+                    <i class="ki-filled ki-user-square"></i>
+                </span>
+                <span class="menu-title">
+                    Gestion de usuarios
+                </span>
+                <span [ngClass]="submenuOpen ? 'ki-outline ki-up' : ' ki-outline ki-down'"></span>
+            </a>
+            <ul *ngIf="submenuOpen" class="submenu ml-3">
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/nuevo-usuario1">
+                        <span class="menu-icon">
+                            <i class="ki-solid ki-user-tick"></i>
+                        </span>
+                        <span class="menu-title">
+                            Crear nuevo usuario
+                        </span>
+                    </a>
+                </li>
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/nuevo-usuario1">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-user-edit"></i>
+                        </span>
+                        <span class="menu-title">
+                            Modificar un usuario ya existente
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--
+        <li class="menu-item mt-2">
+            <a routerLink="datos-personales" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+                <span class="menu-icon">
+                    <i class="ki-filled ki-user-edit"></i>
+                </span>
+                <span class="menu-title">
+                    Gestionar usuarios
+                </span>
+            </a>
+        </li>
+        -->
+
+        <li class="menu-item">
+            <a routerLink="datos-generales" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+                <span class="menu-icon">
+                <i class="ki-filled ki-paper-clip"></i>
+                </span>
+                <span class="menu-title">
+                    Gestionar biblioteca digital
+                </span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a routerLink="descripcion-animal" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+                <span class="menu-icon">
+                <i class="ki-filled ki-heart"></i>
+                </span>
+                <span class="menu-title">
+                    Gestionar cátalogo de animales
+                </span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a routerLink="procedimientos" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+                <span class="menu-icon">
+                <i class="ki-filled ki-flask"></i>
+                </span>
+                <span class="menu-title">
+                    Gestionar departamentos
+                </span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a routerLink="alternativas" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+                <span class="menu-icon">
+                <i class="ki-filled ki-capsule"></i>
+                </span>
+                <span class="menu-title">
+                Gestionar protocolos UPEAL
+                </span>
+            </a>
+        </li>
+   </nav>
+</div>
+
+<!--
+<div class="menu menu-default flex flex-col border rounded-lg w-full max-w-max py-2 mt-4">
+    <div class="menu-header">
+        <span>Menú</span>
+    </div>
+    <div class="menu-item">
+        <a routerLink="datos-personales" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+            <span class="menu-icon">
+                <i class="ki-filled ki-user-edit"></i>
+            </span>
+            <span class="menu-title">
+                Gestionar usuarios
+            </span>
+        </a>
+    </div>
+    <div class="menu-item">
+        <a routerLink="datos-generales" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+            <span class="menu-icon">
+            <i class="ki-filled ki-paper-clip"></i>
+            </span>
+            <span class="menu-title">
+                Gestionar biblioteca digital
+            </span>
+        </a>
+    </div>
+    <div class="menu-item">
+        <a routerLink="descripcion-animal" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+            <span class="menu-icon">
+            <i class="ki-filled ki-heart"></i>
+            </span>
+            <span class="menu-title">
+                Gestionar cátalogo de animales
+            </span>
+        </a>
+    </div>
+    <div class="menu-item">
+        <a routerLink="procedimientos" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+            <span class="menu-icon">
+            <i class="ki-filled ki-flask"></i>
+            </span>
+            <span class="menu-title">
+                Gestionar departamentos
+            </span>
+        </a>
+   </div>
+   <div class="menu-item">
+        <a routerLink="alternativas" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+            <span class="menu-icon">
+            <i class="ki-filled ki-capsule"></i>
+            </span>
+            <span class="menu-title">
+               Gestionar protocolos UPEAL
+            </span>
+        </a>
+   </div>
+</div>
+
+-->
