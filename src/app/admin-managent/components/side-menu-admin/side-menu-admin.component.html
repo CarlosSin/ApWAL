@@ -1,0 +1,133 @@
+<div class="menu menu-default flex flex-col border rounded-lg w-full max-w-max py-2 mt-4 border border-teal-600">
+    <div class="menu-header rounded-xl text-center bg-teal-600 pt-2 pb-2">
+        <span class="text-2xl text-white font-semibold">Menú</span>
+    </div>
+
+    <nav>
+        <!--primera seccion del menu (gestion de usuario/con submenu)-->
+        <li class="menu-item mt-2" (click)="toggleSubmenu()" [class.active]="submenuOpen">
+            <a  class="menu-link">
+                <span class="menu-icon">
+                    <i class="ki-filled ki-user-square"></i>
+                </span>
+                <span class="menu-title ">
+                    Gestion de usuarios
+                </span>
+                <span [ngClass]="submenuOpen ? 'ki-outline ki-up' : ' ki-outline ki-down'"></span>
+            </a>
+            <ul *ngIf="submenuOpen" class="submenu ml-3">
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/nuevo-usuario">
+                        <span class="menu-icon">
+                            <i class="ki-solid ki-user-tick"></i>
+                        </span>
+                        <span class="menu-title">
+                            Crear nuevo usuario
+                        </span>
+                    </a>
+                </li>
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/modificar-usuario">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-user-edit"></i>
+                        </span>
+                        <span class="menu-title">
+                            Modificar un usuario ya existente
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!--segunda seccion del menu (libreria/sin submenu)-->
+        <li class="menu-item">
+            <a routerLink="/admin/home/library1" class="menu-link">
+                <span class="menu-icon">
+                <i class="ki-filled ki-paper-clip"></i>
+                </span>
+                <span class="menu-title">
+                    Gestionar biblioteca digital
+                </span>
+            </a>
+        </li>
+
+        <!--tercera seccion del menu(gestion del catalogo animal/con submenu)-->
+        <li class="menu-item mt-2" (click)="toggleSubmenu2()" [class.active]="submenuOpen2">
+            <a  class="menu-link">
+                <span class="menu-icon">
+                    <i class="ki-filled ki-twitter"></i>
+                </span>
+                <span class="menu-title ">
+                    Gestion del cátalogo de animales
+                </span>
+                <span [ngClass]="submenuOpen2 ? 'ki-outline ki-up' : ' ki-outline ki-down'"></span>
+            </a>
+            <ul *ngIf="submenuOpen2" class="submenu ml-3">
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/agregar-atributo">
+                        <span class="menu-icon">
+                            <i class="ki-solid ki-add-files"></i>
+                        </span>
+                        <span class="menu-title">
+                            Agregar atributo
+                        </span>
+                    </a>
+                </li>
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/modificar-atributo">
+                        <span class="menu-icon">
+                            <i class="ki-solid ki-notepad-edit"></i>
+                        </span>
+                        <span class="menu-title">
+                            Modificar atributo ya existente
+                        </span>
+                    </a>
+                </li>
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/agregar-animal">
+                        <span class="menu-icon">
+                            <i class="ki-solid ki-archive"></i>
+                        </span>
+                        <span class="menu-title">
+                            Agregar animal al catalogo de animales
+                        </span>
+                    </a>
+                </li>
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/modificar-animal">
+                        <span class="menu-icon">
+                            <i class="ki-solid ki-wrench"></i>
+                        </span>
+                        <span class="menu-title">
+                            Modificar animal ya existente en el catalogo de animales
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!--cuarta seccion del menu (gestion de departamentos/con submenu)-->
+        <li class="menu-item">
+            <a routerLink="/admin/home/departmento" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+                <span class="menu-icon">
+                <i class="ki-filled ki-flask"></i>
+                </span>
+                <span class="menu-title">
+                    Gestionar departamentos
+                </span>
+            </a>
+        </li>
+
+        <!--quinta seccion del menu (gestion de protocolos de la UPEAL/con submenu)-->
+        <li class="menu-item">
+            <a routerLink="/admin/home/protocol" class="menu-link">
+                <span class="menu-icon">
+                    <i class="ki-duotone ki-abstract-33"></i>
+                </span>
+                <span class="menu-title">
+                    Gestionar protocolos UPEAL
+                </span>
+            </a>
+        </li>
+   </nav>
+</div>

@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { UsersManagementComponent } from './pages/users-management/users-management.component';
 import { LibraryManagementComponent } from './pages/library-management/library-management.component';
 import { AnimalManagementComponent } from './pages/animal-management/animal-management.component';
 import { ProtocolsManagementComponent } from './pages/protocols-management/protocols-management.component';
@@ -18,8 +17,9 @@ import {CrearEvaluadorComponent} from '../admin-managent/pages/users-management/
 import {CrearInvestigadorComponent} from '../admin-managent/pages/users-management/crear-usuario/crear-investigador/crear-investigador.component';
 import {CrearSuplenteComponent} from '../admin-managent/pages/users-management/crear-usuario/crear-suplente/crear-suplente.component';
 import {ModificarUsuarioComponent} from '../admin-managent/pages/users-management/modificar-usuario/modificar-usuario.component';
+import {BienvenidaInvestigadorComponent} from './pages/home-page/bienvenida-investigador/bienvenida-investigador.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-
+ 
 export const adminRoutes: Routes = [
 
   {
@@ -29,15 +29,11 @@ export const adminRoutes: Routes = [
       {
         path: 'home',
         component: HomePageComponent,
-      },
-      {
-        path: 'users',
-        title: 'Gestor de usuarios',
-        component: UsersManagementComponent
-      },
-      { 
-        path: 'nuevo-usuario', 
-        component: CrearUsuarioComponent,
+        title: 'inicio-admin',
+        children:[
+        {path: 'bienvenida', title: 'Welcome page', component: BienvenidaInvestigadorComponent },
+        {path: 'nuevo-usuario',
+          component: CrearUsuarioComponent,
           children: [
           {path: 'nuevo-investigador', component: CrearInvestigadorComponent},
           {path: 'nuevo-suplente', component: CrearSuplenteComponent},
@@ -46,57 +42,41 @@ export const adminRoutes: Routes = [
             path: '**',
             redirectTo: 'home',
           }
-        ]
-      },
-      {
-        path: 'modificar-usuario', 
-        component: ModificarUsuarioComponent
-      },
-      {
-        path: 'library',
-        title: 'Gestor de biblioteca',
-        component: LibraryManagementComponent
-      },
-      {
-        path: 'animal',
-        title: 'Gestor de animales',
-        component: AnimalManagementComponent
-      },
-      {
-        path:'agregar-animal',
-        component: AgregarAnimalCatalogoComponent
-      },
-      {
-        path:'modificar-animal',
-        component: ModificarAnimalCatalogoComponent
-      },
-      {
-        path:'agregar-atributo',
-        component: AgregarAtributoComponent,
+          ]
+        },
+        {path: 'modificar-usuario', component: ModificarUsuarioComponent},
+        {path: 'library1', title: 'Gestor de biblioteca', component: LibraryManagementComponent},
+        {path:'agregar-atributo', 
+          component: AgregarAtributoComponent,
           children: [
-          {path: 'agregar-especie', component: AgregarEspecieComponent},
-          {path: 'agregar-cepa', component: AgregarCepaComponent},
-          {path: 'agregar-sexo', component: AgregarSexoComponent},
-          {path: 'agregar-edadopeso', component: AgregarEdadopesoComponent},
-          {
-            path: '**',
-            redirectTo: 'home',
-          }
-        ]
-      },
-      {
-        path:'modificar-atributo',
-        component: ModificarAtributoComponent
-      },
-      {
+            {path: 'agregar-especie', component: AgregarEspecieComponent},
+            {path: 'agregar-cepa', component: AgregarCepaComponent},
+            {path: 'agregar-sexo', component: AgregarSexoComponent},
+            {path: 'agregar-edadopeso', component: AgregarEdadopesoComponent},
+            {
+              path: '**',
+              redirectTo: 'home',
+            }
+          ]
+        },
+        {path:'modificar-atributo', component: ModificarAtributoComponent},
+        {path:'agregar-animal',component: AgregarAnimalCatalogoComponent},
+        {path:'modificar-animal', component: ModificarAnimalCatalogoComponent},
+        {
+        path: 'departmento',
+        title: 'Gestor de departamentos',
+        component: DepartmentManagementComponent
+        },
+        {
         path: 'protocol',
         title: 'Gestor de protocolos UPEAL',
         component: ProtocolsManagementComponent
-      },
-      {
-        path: 'department',
-        title: 'Gestor de departamentos',
-        component: DepartmentManagementComponent
+        },
+        {
+          path: '**',
+          redirectTo: 'bienvenida',
+          }
+        ]
       },
       {
         path: '**',

@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-users-management',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './users-management.component.html',
 })
 export class UsersManagementComponent { }

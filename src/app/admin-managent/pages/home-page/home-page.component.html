@@ -1,53 +1,14 @@
-<h3 class="mt-12 text-center text-2xl font-semibold text-gray-700">
-  UNIDAD DE PRODUCCIÓN Y EXPERIMENTACIÓN DE ANIMALES DE LABORATORIO DEL CINVESTAV
-</h3>
-<div class="grid justify-items-center grid-cols-1 lg:grid-cols-4 gap-6 mt-10 px-4 pr-8 pl-8">
-  <!-- Tarjeta principal -->
-  <div class="col-span-8">
-    <div class="bg-white shadow-xl rounded-2xl p-10 h-full">
-
-      <!-- Header de la tarjeta -->
-      <div class="text-center mb-6">
-        <h3 class="text-2xl font-bold text-gray-700">
-          <i class="ki-duotone ki-setting-2"></i>
-          Panel Administrativo
-        </h3>
+<div class="card h-full">
+  <div class="card-body">
+    <div class="flex flex-col md:flex-row h-full">
+      <!-- Menú lateral fijo -->
+      <div class="w-64">
+        <side-menu-admin/>
       </div>
 
-      <!-- Body de la tarjeta -->
-      <div class="overflow-y-auto pb-30 flex flex-col items-center justify-start space-y-6 pl-16 pr-16">
-        <!-- Botones -->
-        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
-          <button [routerLink]="'/admin/users'" class="text-lg btn btn-outline btn-success">
-            Gestionar usuarios
-            <i class="ki-duotone ki-user-edit"></i>
-          </button>
-        </div>
-        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
-          <button [routerLink]="'/admin/library'" class="text-lg btn btn-outline btn-success">
-            Gestionar biblioteca digital
-            <i class="ki-duotone ki-book-square"></i>
-          </button>
-        </div>
-        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
-          <button [routerLink]="'/admin/animal'" class="text-lg btn btn-outline btn-success">
-            Gestionar cátalogo de animales
-            <i class="ki-solid ki-address-book"></i>
-          </button>
-        </div>
-        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
-          <button [routerLink]="'/admin/department'" class="text-lg btn btn-outline btn-success">
-            Gestionar de Departamentos
-            <i class="ki-solid ki-address-book"></i>
-          </button>
-        </div>
-        <div class="flex flex-col md:flex-row gap-4 mt-4 p-2">
-          <button [routerLink]="'/admin/protocol'" class="text-lg btn btn-outline btn-success">
-            Gestionar protocolos UPEAL
-            <i class="ki-duotone ki-abstract-33"></i>
-          </button>
-        </div>
-
+      <!-- Contenido dinámico -->
+      <div class="flex-1 p-4 overflow-auto">
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
