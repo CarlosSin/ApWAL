@@ -109,8 +109,8 @@
             name="edo_usuario"
             class="select w-full"
             >
-            <option [ngValue]="1" class="text-base">Si</option>
-            <option [ngValue]="0" class="text-base">No</option>
+            <option [ngValue]="true" class="text-base">Si</option>
+            <option [ngValue]="false" class="text-base">No</option>
         </select>        
 
         <!--Para ingresar el departamento del usuario-->
@@ -155,8 +155,8 @@
             name="sesion_usuario"
             class="select w-full"
             >
-            <option [ngValue]="1" class="text-base">Si</option>
-            <option [ngValue]="0" class="text-base">No</option>
+            <option [ngValue]="true" class="text-base">Si</option>
+            <option [ngValue]="false" class="text-base">No</option>
         </select>
 
         <div class="justify-items-end">
@@ -190,10 +190,31 @@
             </tr>
         </tbody>
     </table>
+
+<br>
+<br>
+<h4>Comprobacion de la correcra insercion de los datos</h4>
+<p *ngFor="let usuario1 of listaUsuarios">
+    no_control: {{ usuario1.no_control }} <br>
+    nombres: {{ usuario1.nombres }} <br>
+    primer_apellido: {{ usuario1.primer_apellido }} <br>
+    segundo_apellido: {{ usuario1.segundo_apellido }} <br>
+    telefono: {{ usuario1.telefono }} <br>
+    extencion: {{ usuario1.extension }} <br>
+    fecha_registro: {{ usuario1.fecha_registro }} <br>
+    gradoestudios: {{ usuario1.gradoestudios }} <br>
+    correo:{{ usuario1.correo }} <br>
+    nombre_usuario:{{ usuario1.nombre_usuario }} <br>  
+    password:{{ usuario1.password }} <br>
+    estado_usuario:{{ usuario1.estado_usuario }} <br>
+    departamento_usuario: {{ usuario1.departamento_usuario }} <br>
+    rol:{{ usuario1.rol }} <br>
+    puede_iniciarsecion: {{ usuario1.puede_iniciarsecion }} <br> <br> <br>
+</p>
 <!--
 <div class="card-header justify-center">
     <h1 class="card-title">Seleccione el tipo de usuario a  registrar</h1>
 </div>
 <side-menu-newuser/>
 <router-outlet></router-outlet>
--->>
+-->
