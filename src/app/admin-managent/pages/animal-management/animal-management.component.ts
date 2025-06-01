@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-animal-management',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './animal-management.component.html',
 })
 export class AnimalManagementComponent { }

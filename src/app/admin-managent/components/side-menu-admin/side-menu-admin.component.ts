@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 export class SideMenuAdminComponent {
   menuOpen = false;
   submenuOpen = false;
+  submenuOpen2 = false;
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -17,5 +18,9 @@ export class SideMenuAdminComponent {
 
   toggleSubmenu() {
     this.submenuOpen = !this.submenuOpen;
+  }
+
+  toggleSubmenu2() {
+    this.submenuOpen2 = !this.submenuOpen2;
   }
 }
