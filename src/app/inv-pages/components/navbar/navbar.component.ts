@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'inv-navbar',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent { }

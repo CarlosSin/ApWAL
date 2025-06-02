@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormUtils } from '../../../../../utils/form-utils';
+import { FormProgressService } from '../../../../services/form-progress.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-datos-generales',
@@ -9,7 +11,11 @@ import { FormUtils } from '../../../../../utils/form-utils';
 })
 export class DatosGeneralesComponent {
   private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private formProgressService = inject(FormProgressService);
+
   formUtils = FormUtils;
+
   myForm: FormGroup = this.fb.group({
     title: ['', [Validators.required,  ]],
     description: ['', [Validators.required, ]],
@@ -18,8 +24,20 @@ export class DatosGeneralesComponent {
   });
 
   onSubmit(){
-    console.log(this.myForm.value)
     this.myForm.markAllAsTouched();
+    if (this.myForm.valid) {
+      // Guardar los datos en el backend aquí si es necesario...
+
+      // Marcar la sección como completada
+      this.formProgressService.markComplete('datos-generales');
+
+      // Opcional: navegar automáticamente a la siguiente sección
+      this.router.navigate(['/inv/protocol-register/descripcion-animal']);
+    }
+  }
+
+  guardarYAvanzar() {
+    this.onSubmit();
   }
 
  }

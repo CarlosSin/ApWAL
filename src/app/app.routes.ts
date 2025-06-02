@@ -17,6 +17,10 @@ export const routes: Routes = [
     loadChildren: () => import('./admin-managent/admin.routes'),
   },
   {
+    path: 'eva',
+    loadChildren: () => import('./eva-pages/eva.routes'),
+  },
+  {
     path:'library',
     component: LibraryPageComponent,
     title: 'Biblioteca digital'

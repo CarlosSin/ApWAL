@@ -1,112 +1,139 @@
 <div class="menu menu-default flex flex-col border rounded-lg w-full max-w-max py-2">
+  <!-- Datos Personales (siempre accesible) -->
   <div class="menu-item">
-   <a routerLink="datos-personales" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-    <span class="menu-icon">
-      <i class="ki-filled ki-user-edit"></i>
-    </span>
-    <span class="menu-title">
-     Datos Personales
-    </span>
-   </a>
+    <a routerLink="datos-personales" routerLinkActive="btn btn-outline btn-success" class="menu-link">
+      <span class="menu-icon"><i class="ki-filled ki-user-edit"></i></span>
+      <span class="menu-title">Datos Personales</span>
+    </a>
   </div>
+
+  <!-- Datos Generales -->
   <div class="menu-item">
-   <a routerLink="datos-generales" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-    <span class="menu-icon">
-      <i class="ki-filled ki-paper-clip"></i>
-    </span>
-    <span class="menu-title">
-     Datos Generales
-    </span>
-   </a>
+    <a
+      routerLink="datos-generales"
+      [class.disabled]="!canAccess('datos-generales')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-paper-clip"></i></span>
+      <span class="menu-title">Datos Generales</span>
+    </a>
   </div>
+
+  <!-- Descripción Animal -->
   <div class="menu-item">
-   <a routerLink="descripcion-animal" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-    <span class="menu-icon">
-      <i class="ki-filled ki-heart"></i>
-    </span>
-    <span class="menu-title">
-     Descripción Animal
-    </span>
-   </a>
+    <a
+      routerLink="descripcion-animal"
+      [class.disabled]="!canAccess('descripcion-animal')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-heart"></i></span>
+      <span class="menu-title">Descripción Animal</span>
+    </a>
   </div>
+
+  <!-- Procedimientos Experimentales -->
   <div class="menu-item">
-    <a routerLink="procedimientos" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-     <span class="menu-icon">
-      <i class="ki-filled ki-flask"></i>
-     </span>
-     <span class="menu-title">
-      Procedimientos Experimentales
-     </span>
+    <a
+      routerLink="procedimientos"
+      [class.disabled]="!canAccess('procedimientos')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-flask"></i></span>
+      <span class="menu-title">Procedimientos Experimentales</span>
     </a>
-   </div>
-   <div class="menu-item">
-    <a routerLink="alternativas" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-     <span class="menu-icon">
-      <i class="ki-filled ki-capsule"></i>
-     </span>
-     <span class="menu-title">
-      Alternativas
-     </span>
+  </div>
+
+  <!-- Alternativas -->
+  <div class="menu-item">
+    <a
+      routerLink="alternativas"
+      [class.disabled]="!canAccess('alternativas')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-capsule"></i></span>
+      <span class="menu-title">Alternativas</span>
     </a>
-   </div>
-   <div class="menu-item">
-    <a routerLink="agentes-ATA" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-     <span class="menu-icon">
-      <i class="ki-filled ki-syringe"></i>
-     </span>
-     <span class="menu-title">
-      Agentes ATA
-     </span>
+  </div>
+
+  <!-- Agentes ATA -->
+  <div class="menu-item">
+    <a
+      routerLink="agentes-ATA"
+      [class.disabled]="!canAccess('agentes-ATA')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-syringe"></i></span>
+      <span class="menu-title">Agentes ATA</span>
     </a>
-   </div>
-   <div class="menu-item">
-    <a routerLink="eutanasia" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-     <span class="menu-icon">
-      <i class="ki-filled ki-pulse"></i>
-     </span>
-     <span class="menu-title">
-      Eutanasia
-     </span>
+  </div>
+
+  <!-- Eutanasia -->
+  <div class="menu-item">
+    <a
+      routerLink="eutanasia"
+      [class.disabled]="!canAccess('eutanasia')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-pulse"></i></span>
+      <span class="menu-title">Eutanasia</span>
     </a>
-   </div>
-   <div class="menu-item">
-    <a routerLink="clasificacion" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-     <span class="menu-icon">
-      <i class="ki-filled ki-category"></i>
-     </span>
-     <span class="menu-title">
-      Clasificación
-     </span>
+  </div>
+
+  <!-- Clasificación -->
+  <div class="menu-item">
+    <a
+      routerLink="clasificacion"
+      [class.disabled]="!canAccess('clasificacion')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-category"></i></span>
+      <span class="menu-title">Clasificación</span>
     </a>
-   </div>
-   <div class="menu-item">
-    <a routerLink="capacitacion" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-     <span class="menu-icon">
-      <i class="ki-filled ki-book-open"></i>
-     </span>
-     <span class="menu-title">
-      Capacitación
-     </span>
+  </div>
+
+  <!-- Capacitación -->
+  <div class="menu-item">
+    <a
+      routerLink="capacitacion"
+      [class.disabled]="!canAccess('capacitacion')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-book-open"></i></span>
+      <span class="menu-title">Capacitación</span>
     </a>
-   </div>
-   <div class="menu-item">
-    <a routerLink="salud-ocupacional" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-     <span class="menu-icon">
-      <i class="ki-filled ki-mask"></i>
-     </span>
-     <span class="menu-title">
-      Salud Ocupacional
-     </span>
+  </div>
+
+  <!-- Salud Ocupacional -->
+  <div class="menu-item">
+    <a
+      routerLink="salud-ocupacional"
+      [class.disabled]="!canAccess('salud-ocupacional')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-mask"></i></span>
+      <span class="menu-title">Salud Ocupacional</span>
     </a>
-   </div>
-   <div class="menu-item">
-    <a routerLink="confirmacion" routerLinkActive="btn btn-outline btn-success" class="menu-link">
-     <span class="menu-icon">
-      <i class="ki-filled ki-check"></i>
-     </span>
-     <span class="menu-title">
-      Confirmación
-     </span>
+  </div>
+
+  <!-- Confirmación -->
+  <div class="menu-item">
+    <a
+      routerLink="confirmacion"
+      [class.disabled]="!canAccess('confirmacion')"
+      routerLinkActive="btn btn-outline btn-success"
+      class="menu-link"
+    >
+      <span class="menu-icon"><i class="ki-filled ki-check"></i></span>
+      <span class="menu-title">Confirmación</span>
     </a>
-   </div>
- </div>
+  </div>
+</div>
