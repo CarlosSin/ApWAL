@@ -34,7 +34,7 @@ export class DepartmentManagementComponent {
   }
   
   agregarUsuario() {
-    if (this.nuevoDepartamento.disponibilidad_departamento && this.nuevoDepartamento.nombre_departamento) {
+    if (this.nuevoDepartamento.id_departamento && this.nuevoDepartamento.nombre_departamento) {
       this.listaDepartamentos.push({ ...this.nuevoDepartamento });
       this.nuevoDepartamento = { 
         id_departamento: 0,

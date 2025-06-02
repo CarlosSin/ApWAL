@@ -53,21 +53,25 @@
 <div class="bg-teal-500 justify-items-center rounded-2xl p-4">
     <h2 class="card-title text-2xl text-white">Tabla de departamentos</h2>                
 </div>
-    <table>
-        <thead>
-            <tr>
-                <th>ID_departamento</th>
-                <th>Nombre del departamento</th>
-                <th>disponibilidad del departamento</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let departamento of listaDepartamentos">
-                <td>{{ departamento.id_departamento }}</td>
-                <td>{{ departamento.nombre_departamento }}</td>
-                <td>{{ departamento.disponibilidad_departamento }}</td>
-                <td>accciones</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID_departamento</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre del departamento</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">disponibilidad del departamento</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let departamento of listaDepartamentos">
+                    <td class="text-center px-6 py-4">{{ departamento.id_departamento }}</td>
+                    <td class="text-center px-6 py-4">{{ departamento.nombre_departamento }}</td>
+                    <td class="text-center px-6 py-4">{{ departamento.disponibilidad_departamento }}</td>
+                    <td class="text-center px-6 py-4">accciones</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

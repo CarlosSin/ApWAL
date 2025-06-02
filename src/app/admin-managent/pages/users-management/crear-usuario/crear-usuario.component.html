@@ -160,7 +160,7 @@
         </select>
 
         <div class="justify-items-end">
-            <button type="submit" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Refistrar nuevo usuario</button>
+            <button type="submit" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Registrar nuevo usuario</button>
             <button type="button" (click)="cerrarFormulario()" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Cancelar</button>
         </div>
     </form>
@@ -170,26 +170,32 @@
     <div class="bg-teal-500 justify-items-center rounded-2xl p-4">
         <h2 class="card-title text-2xl text-white">Tabla de usuarios</h2>                
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Numero de control</th>
-                <th>Nombre</th>
-                <th>grado de estudios</th>
-                <th>Nombre de usuario</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let usuario of listaUsuarios">
-                <td>{{ usuario.no_control }}</td>
-                <td>{{ usuario.nombres }}</td>
-                <td>{{ usuario.gradoestudios }}</td>
-                <td>{{ usuario.nombre_usuario }}</td>
-                <td>accciones</td>
-            </tr>
-        </tbody>
-    </table>
+
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+<!--        <table class="border-collapse border border-teal-400 mt-8 bg-teal-600 text-white">-->
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Numero de control</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">grado de estudios</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre de usuario</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let usuario of listaUsuarios">
+                    <td class="text-center px-6 py-4">{{ usuario.no_control }}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.nombres }}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.gradoestudios }}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.nombre_usuario }}</td>
+                    <td class="text-center px-6 py-4">accciones</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 <br>
 <br>
