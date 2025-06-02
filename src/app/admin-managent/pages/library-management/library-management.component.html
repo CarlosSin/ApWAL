@@ -1,121 +1,233 @@
-<p>library-management works!</p>,
-
-<div>
-    ver como dividirlas secciones(por el momento lo dejara todo junto)
+<div class="m-4 pb-10">
+    <button (click)="abrirFormulario()" class="btn btn-success mt-8 text-3xl h-16 flex justify-end-safe">+ Nuevo archivo</button>
 </div>
 
-<div>
-    <h1>
-        hola administrador bienvenodo a la gestion de biblioteca digital
-    </h1>
-    <p>
-        por favor selecione la bibblioteca que desea administrar
-    </p>
-    <br>
-    <br>
-    <br>
-    <div>
-        <h2>
-            Seccion: Procedimientos experimentales
-        </h2>
-        <form action="" method="post">
-            <input type="file" name="" id="">
-            <button type="submit">agregar</button>
-        </form>
+<div class="bg-white border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl max-h-[90vh] overflow-y-auto rounded-xl" *ngIf="mostrarFormulario">
+    <div class="">
+        <h1 class="card-header justify-center text-4xl">Ingrese los datos del nuevo departamento</h1>
 
-        <p>tabla dinamica donde se puede eliminar archivos</p>
-        <table>
-        <tr>
-            <th>Nombre</th>
-            <th>acciones</th>
-        </tr>
-        <tr>
-            <td>Cuidado en laboratorio-I</td>
-            <td>x</td>
-        </tr>
-        <tr>
-            <td>Cuidado en laboratorio-II</td>
-            <td>x</td>
-        </tr>
+        <form (ngSubmit)="agregararchivo()" class="p-20 bg-gray-100">
+
+            <!--para ingresar el nombre del archivo-->
+            <label for="nombre_archivo" class="block text-lg font-medium text-gray-700 mb-1">
+                ID del archivo:
+                <input [(ngModel)]="nuevoArchivo.nombre_archivo" type="text" name="nombre_archivo" id="nombre_archivo" 
+                class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Ingrese el nombre del departamento">
+            </label>
+            
+            <!--Para ingresar los nombres-->
+            <label for="seccion_archivo" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
+                selecione a que secion pertence el archivo:
+            </label>
+            <select 
+                id="seccion_archivo"
+                [(ngModel)]="nuevoArchivo.seccion"
+                name="seccion_archivo"
+                class="select w-full"
+                >
+                <option [ngValue]="1" class="text-base">01-procedimientos experimentales</option>
+                <option [ngValue]="2" class="text-base">02-alternativas</option>
+                <option [ngValue]="3" class="text-base">03-agentes ata</option>
+                <option [ngValue]="4" class="text-base">04-eutanasia</option>
+                <option [ngValue]="5" class="text-base">05-clasificacion</option>
+                <option [ngValue]="6" class="text-base">06-salud ocupacional</option>
+            </select>
+
+
+            <label for="archivo_nuevo" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
+                Seleccione el archivo a ingresar
+                <input (change)="capturarArchivo($event)"  type="file" name="archivo_nuevo" id="archivo_nuevo" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el archivo">
+            </label>
+
+            <div class="justify-items-end">
+                <button type="submit" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Registrar archivo</button>
+                <button type="button" (click)="cerrarFormulario()" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--tablas-->
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4">
+    <h2 class="card-title text-2xl text-white">Tabla de archivos de la seccion de procedimientos experimentales</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">seccion a la que pertenece</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let archivo of listaarchivoS1">
+                    <td class="text-center px-6 py-4">{{ archivo.nombre_archivo }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.seccion }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.archivo.name }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square"></i>   
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
+</div>
 
-    <div>
-        <h2>
-            Seccion: agentes ATA
-        </h2>
-        <form action="" method="post">
-            <input type="file" name="" id="">
-            <button type="submit">agregar</button>
-        </form>
-
-        <p>tabla dinamica donde se puede eliminar archivos</p>
-        <table>
-        <tr>
-            <th>Nombre</th>
-            <th>acciones</th>
-        </tr>
-        <tr>
-            <td>Cuidado en laboratorio-I</td>
-            <td>x</td>
-        </tr>
-        <tr>
-            <td>Cuidado en laboratorio-I</td>
-            <td>x</td>
-        </tr>
+<!--tablas-->
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4 mt-16">
+    <h2 class="card-title text-2xl text-white">Tabla de archivos de la seccion alternativas</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">seccion a la que pertenece</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let archivo of listaarchivoS2">
+                    <td class="text-center px-6 py-4">{{ archivo.nombre_archivo }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.seccion }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.archivo.name }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square"></i>   
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
+</div>
 
-    <div>
-        <h2>
-            Datos generales
-        </h2>
-        <form action="" method="post">
-            <input type="file" name="" id="">
-            <button type="submit">agregar</button>
-        </form>
-
-        <p>tabla dinamica donde se puede eliminar archivos</p>
-        <table>
-        <tr>
-            <th>Nombre</th>
-            <th>acciones</th>
-        </tr>
-        <tr>
-            <td>Cuidado en laboratorio-I</td>
-            <td>x</td>
-        </tr>
-        <tr>
-            <td>Cuidado en laboratorio-I</td>
-            <td>x</td>
-        </tr>
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4 mt-16">
+    <h2 class="card-title text-2xl text-white">Tabla de archivos de la seccion agentes ata</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">seccion a la que pertenece</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let archivo of listaarchivosS3">
+                    <td class="text-center px-6 py-4">{{ archivo.nombre_archivo }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.seccion }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.archivo.name }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square"></i>   
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
+</div>
 
-        <div>
-        <h2>
-            Datos generales
-        </h2>
-        <form action="" method="post">
-            <input type="file" name="" id="">
-            <button type="submit">agregar</button>
-        </form>
-
-        <p>tabla dinamica donde se puede eliminar archivos</p>
-        <table>
-        <tr>
-            <th>Nombre</th>
-            <th>acciones</th>
-        </tr>
-        <tr>
-            <td>Cuidado en laboratorio-I</td>
-            <td>x</td>
-        </tr>
-        <tr>
-            <td>Cuidado en laboratorio-I</td>
-            <td>x</td>
-        </tr>
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4 mt-16">
+    <h2 class="card-title text-2xl text-white">Tabla de archivos de la seccion eutanasia</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">seccion a la que pertenece</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let archivo of listaarchivosS4">
+                    <td class="text-center px-6 py-4">{{ archivo.nombre_archivo }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.seccion }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.archivo.name }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square"></i>   
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
+</div>
 
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4 mt-16">
+    <h2 class="card-title text-2xl text-white">Tabla de archivos de la seccion clasificacion</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">seccion a la que pertenece</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let archivo of listaarchivosS5">
+                    <td class="text-center px-6 py-4">{{ archivo.nombre_archivo }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.seccion }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.archivo.name }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square"></i>   
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4 mt-16">
+    <h2 class="card-title text-2xl text-white">Tabla de archivos de la seccion salud ocupacional</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">seccion a la que pertenece</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre archivo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let archivo of listaarchivosS6">
+                    <td class="text-center px-6 py-4">{{ archivo.nombre_archivo }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.seccion }}</td>
+                    <td class="text-center px-6 py-4">{{ archivo.archivo.name }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square"></i>   
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
