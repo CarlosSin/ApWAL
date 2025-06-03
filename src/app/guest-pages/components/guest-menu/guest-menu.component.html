@@ -1,0 +1,21 @@
+<nav class="bg-cyan-50 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+
+<div class="flex flex-wrap justify-center">
+<div>
+    <ul class="menu bg-base-200 sm:menu-horizontal rounded-box flex gap-4">
+      <li>
+        <button routerLink="home" class="btn btn-clear btn-success">
+          <i class="ki-filled ki-home"></i>
+          Inicio
+        </button>
+      </li>
+      <li>
+        <button [routerLink]="'/library'" class="btn btn-clear btn-success">
+          <i class="ki-filled ki-book-square"></i>
+          Biblioteca digital
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>

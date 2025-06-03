@@ -21,6 +21,10 @@ export const routes: Routes = [
     loadChildren: () => import('./eva-pages/eva.routes'),
   },
   {
+    path: 'guest',
+    loadChildren: () => import('./guest-pages/guest.routes'),
+  },
+  {
     path:'library',
     component: LibraryPageComponent,
     title: 'Biblioteca digital'

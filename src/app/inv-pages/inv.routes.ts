@@ -20,6 +20,17 @@ import { ClasificacionComponent } from "./pages/protocol-register/protocol-modul
 import { CapacitacionComponent } from "./pages/protocol-register/protocol-modules/capacitacion/capacitacion.component";
 import { SaludOcupacionalComponent } from "./pages/protocol-register/protocol-modules/salud-ocupacional/salud-ocupacional.component";
 import { ConfirmacionComponent } from "./pages/protocol-register/protocol-modules/confirmacion/confirmacion.component";
+import { DatosPersonalesPComponent } from "./pages/pilot-register/pilot-modules/datos-personales/datos-personales.component";
+import { DatosGeneralesPComponent } from "./pages/pilot-register/pilot-modules/datos-generales/datos-generales.component";
+import { DescripcionAnimalPComponent } from "./pages/pilot-register/pilot-modules/descripcion-animal/descripcion-animal.component";
+import { ProcExperimentalesPComponent } from "./pages/pilot-register/pilot-modules/proc-experimentales/proc-experimentales.component";
+import { AlternativasPComponent } from "./pages/pilot-register/pilot-modules/alternativas/alternativas.component";
+import { AgentesAtaPComponent } from "./pages/pilot-register/pilot-modules/agentes-ata/agentes-ata.component";
+import { EutanasiaPComponent } from "./pages/pilot-register/pilot-modules/eutanasia/eutanasia.component";
+import { ClasificacionPComponent } from "./pages/pilot-register/pilot-modules/clasificacion/clasificacion.component";
+import { CapacitacionPComponent } from "./pages/pilot-register/pilot-modules/capacitacion/capacitacion.component";
+import { SaludOcupacionalPComponent } from "./pages/pilot-register/pilot-modules/salud-ocupacional/salud-ocupacional.component";
+import { ConfirmacionPComponent } from "./pages/pilot-register/pilot-modules/confirmacion/confirmacion.component";
 
 export const invRoutes: Routes = [
   {
@@ -77,7 +88,24 @@ export const invRoutes: Routes = [
       },
       {
         path: 'pilot-register',
-        component:PilotRegisterComponent
+        component:PilotRegisterComponent,
+        children: [
+          {path: 'datos-personales', component: DatosPersonalesPComponent},
+          {path: 'datos-generales', component: DatosGeneralesPComponent},
+          {path: 'descripcion-animal', component: DescripcionAnimalPComponent},
+          {path: 'procedimientos', component: ProcExperimentalesPComponent},
+          {path: 'alternativas', component: AlternativasPComponent},
+          {path: 'agentes-ATA', component: AgentesAtaPComponent},
+          {path: 'eutanasia', component: EutanasiaPComponent},
+          {path: 'clasificacion', component: ClasificacionPComponent},
+          {path: 'capacitacion', component: CapacitacionPComponent},
+          {path: 'salud-ocupacional', component: SaludOcupacionalPComponent},
+          {path: 'confirmacion', component: ConfirmacionPComponent},
+          {
+            path: '**',
+            redirectTo: 'datos-personales',
+          }
+        ]
       },
 
       {
