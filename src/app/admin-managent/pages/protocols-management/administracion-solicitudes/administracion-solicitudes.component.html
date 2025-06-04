@@ -1,0 +1,109 @@
+<p>administracion-solicitudes works!</p>,
+
+<!--tablas-->
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4">
+    <h2 class="card-title text-2xl text-white">Tabla de solicitudes en revicion</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID protocolo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre protocolo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre investigador</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Tipo de solicitud</th>                    
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let revicion of lista_solicitud_revicion">
+                    <td class="text-center px-6 py-4">{{ revicion.ID_protocolo }}</td>
+                    <td class="text-center px-6 py-4">{{ revicion.nombre_protocolo }}</td>
+                    <td class="text-center px-6 py-4">{{ revicion.nombre_investigador }}</td>
+                    <td class="text-center px-6 py-4">{{ revicion.tipo_solicitud }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square">mostrar</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--
+interface solicitudrule{
+
+  seccion:number,
+  tipo_solicitud:string,
+  fecha:string
+  peticion:string,
+  edo_solicitud:boolean
+}
+-->
+<!--tablas-->
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4 mt-16">
+    <h2 class="card-title text-2xl text-white">Tabla de solicitudes aceptadas</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID protocolo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre protocolo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre investigador</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Tipo de solicitud</th>                    
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let aceptadas of lista_solicitud_aprovada">
+                    <td class="text-center px-6 py-4">{{ aceptadas.ID_protocolo }}</td>
+                    <td class="text-center px-6 py-4">{{ aceptadas.nombre_protocolo }}</td>
+                    <td class="text-center px-6 py-4">{{ aceptadas.nombre_investigador }}</td>
+                    <td class="text-center px-6 py-4">{{ aceptadas.tipo_solicitud }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square"></i>   
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4 mt-16">
+    <h2 class="card-title text-2xl text-white">Tabla de solicitudes rechazadas</h2>                
+</div>
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID protocolo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre protocolo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">nombre investigador</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Tipo de solicitud</th>                    
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let rechazadas of lista_solicitud_rechazada">
+                    <td class="text-center px-6 py-4">{{ rechazadas.ID_protocolo }}</td>
+                    <td class="text-center px-6 py-4">{{ rechazadas.nombre_protocolo }}</td>
+                    <td class="text-center px-6 py-4">{{ rechazadas.nombre_investigador }}</td>
+                    <td class="text-center px-6 py-4">{{ rechazadas.tipo_solicitud }}</td>
+                    <td class="text-center px-6 py-4">
+                        <button>
+                            <i class="ki-filled ki-cross-square"></i>   
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
