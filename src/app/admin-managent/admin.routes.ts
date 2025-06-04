@@ -12,12 +12,8 @@ import {AgregarSexoComponent} from '../admin-managent/pages/animal-management/ag
 import {AgregarEdadopesoComponent} from '../admin-managent/pages/animal-management/agregar-atributo/agregar-edadopeso/agregar-edadopeso.component';
 import {ModificarAnimalCatalogoComponent} from '../admin-managent/pages/animal-management/modificar-animal-catalogo/modificar-animal-catalogo.component';
 import {ModificarAtributoComponent} from '../admin-managent/pages/animal-management/modificar-atributo/modificar-atributo.component';
-import {CrearUsuarioComponent} from '../admin-managent/pages/users-management/crear-usuario/crear-usuario.component';
-import {CrearEvaluadorComponent} from '../admin-managent/pages/users-management/crear-usuario/crear-evaluador/crear-evaluador.component';
-import {CrearInvestigadorComponent} from '../admin-managent/pages/users-management/crear-usuario/crear-investigador/crear-investigador.component';
-import {CrearSuplenteComponent} from '../admin-managent/pages/users-management/crear-usuario/crear-suplente/crear-suplente.component';
-import {ModificarUsuarioComponent} from '../admin-managent/pages/users-management/modificar-usuario/modificar-usuario.component';
 import {BienvenidaInvestigadorComponent} from './pages/home-page/bienvenida-investigador/bienvenida-investigador.component';
+import {UsersManagementComponent} from '../admin-managent/pages/users-management/users-management.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
  
 export const adminRoutes: Routes = [
@@ -32,19 +28,7 @@ export const adminRoutes: Routes = [
         title: 'inicio-admin',
         children:[
         {path: 'bienvenida', title: 'Welcome page', component: BienvenidaInvestigadorComponent },
-        {path: 'nuevo-usuario',
-          component: CrearUsuarioComponent,
-          children: [
-          {path: 'nuevo-investigador', component: CrearInvestigadorComponent},
-          {path: 'nuevo-suplente', component: CrearSuplenteComponent},
-          {path: 'nuevo-evaluador', component: CrearEvaluadorComponent},
-          {
-            path: '**',
-            redirectTo: 'home',
-          }
-          ]
-        },
-        {path: 'modificar-usuario', component: ModificarUsuarioComponent},
+        {path: 'gestion-usuario', title: 'Gestion de usuarios', component: UsersManagementComponent,},
         {path: 'library1', title: 'Gestor de biblioteca', component: LibraryManagementComponent},
         {path:'agregar-atributo', 
           component: AgregarAtributoComponent,
@@ -78,6 +62,7 @@ export const adminRoutes: Routes = [
           }
         ]
       },
+
       {
         path: '**',
         redirectTo: 'home',

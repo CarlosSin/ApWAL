@@ -4,39 +4,16 @@
     </div>
 
     <nav>
-        <!--primera seccion del menu (gestion de usuario/con submenu)-->
-        <li class="menu-item mt-2" (click)="toggleSubmenu()" [class.active]="submenuOpen">
-            <a  class="menu-link">
+        <!--segunda seccion del menu (libreria/sin submenu)-->
+        <li class="menu-item mt-2">
+            <a routerLink="/admin/home/gestion-usuario" class="menu-link">
                 <span class="menu-icon">
-                    <i class="ki-filled ki-user-square"></i>
+                <i class="ki-filled ki-user-square"></i>
                 </span>
-                <span class="menu-title ">
+                <span class="menu-title">
                     Gestion de usuarios
                 </span>
-                <span [ngClass]="submenuOpen ? 'ki-outline ki-up' : ' ki-outline ki-down'"></span>
             </a>
-            <ul *ngIf="submenuOpen" class="submenu ml-3">
-                <li class="submenu-item">
-                    <a class="menu-link" routerLink="/admin/home/nuevo-usuario">
-                        <span class="menu-icon">
-                            <i class="ki-solid ki-user-tick"></i>
-                        </span>
-                        <span class="menu-title">
-                            Crear nuevo usuario
-                        </span>
-                    </a>
-                </li>
-                <li class="submenu-item">
-                    <a class="menu-link" routerLink="/admin/home/modificar-usuario">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-user-edit"></i>
-                        </span>
-                        <span class="menu-title">
-                            Modificar un usuario ya existente
-                        </span>
-                    </a>
-                </li>
-            </ul>
         </li>
 
         <!--segunda seccion del menu (libreria/sin submenu)-->
