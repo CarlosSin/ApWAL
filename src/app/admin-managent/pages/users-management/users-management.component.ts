@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormsModule, Validators, FormGroup } from '@angular/forms';
 
-interface usuariorRules {
+interface usuarioRules {
   no_control: number,
   nombres:string,
   primer_apellido:string,
@@ -22,34 +22,38 @@ interface usuariorRules {
 
 @Component({
   selector: 'app-users-management',
-  imports: [ CommonModule, FormsModule],
+  standalone: true,
+  imports: [ CommonModule, FormsModule,ReactiveFormsModule],
   templateUrl: './users-management.component.html',
 })
 
 export class UsersManagementComponent { 
  
   mostrarFormulario = false;
-
-  nuevoUsuario:usuariorRules = {
-    no_control: 0,
-    nombres: '',
-    primer_apellido:'',
-    segundo_apellido:'',
-    telefono: 0,
-    extension: 0,
-    fecha_registro: '',
-    gradoestudios: '',
-    correo: '',
-    nombre_usuario: '',
-    password: '',
-    estado_usuario: false,
-    departamento_usuario: 0,
-    rol: 0,
-    puede_iniciarsecion: false
-  };
-
   
-  listaUsuarios:usuariorRules [] = [];
+  //constructor(private fb: FormBuilder){}
+  private fb =inject(FormBuilder);
+
+  myForm: FormGroup = this.fb.group({
+    no_control: [0,[Validators.required,Validators.min(1)]],
+    nombres: ['',[Validators.required]],
+    primer_apellido:['',[Validators.required]],
+    segundo_apellido:['',[Validators.required]],
+    telefono: [0,[Validators.required,Validators.min(1)]],
+    extension: [0,[Validators.required,Validators.min(1)]],
+    fecha_registro: ['',[Validators.required]],
+    gradoestudios: ['',[Validators.required]],
+    correo: ['',[Validators.required]],
+    nombre_usuario: ['',[Validators.required]],
+    password: ['',[Validators.required]],
+    estado_usuario: [false,[Validators.required]],
+    departamento_usuario: [0,[Validators.required]],
+    rol: [0,[Validators.required]],
+    puede_iniciarsecion: [false,[Validators.required]]
+    
+  })
+  
+  listaUsuarios: usuarioRules [] = [];
 
   abrirFormulario() {
     console.log('¡Botón presionado!');
@@ -58,29 +62,86 @@ export class UsersManagementComponent {
 
   cerrarFormulario() {
     this.mostrarFormulario = false;
+    this.myForm.reset({ 
+      no_control:0,
+      nombres: '',
+      primer_apellido:'',
+      segundo_apellido:'',
+      telefono: 0,
+      extension: 0,
+      fecha_registro: '',
+      gradoestudios: '',
+      correo: '',
+      nombre_usuario:'',
+      password: '',
+      estado_usuario: false,
+      departamento_usuario: 0,
+      rol: 0,
+      puede_iniciarsecion: false
+    });
   }
 
   agregarUsuario() {
-    if (this.nuevoUsuario.nombres && this.nuevoUsuario.correo) {
-      this.listaUsuarios.push({ ...this.nuevoUsuario });
-      this.nuevoUsuario = { 
-        no_control: 0,
-        nombres: '',
-        primer_apellido:'',
-        segundo_apellido:'',
-        telefono: 0,
-        extension: 0,
-        fecha_registro: '',
-        gradoestudios: '',
-        correo: '',
-        nombre_usuario: '',
-        password: '',
-        estado_usuario: false,
-        departamento_usuario: 0,
-        rol: 0,
-        puede_iniciarsecion: false
-      };
+    if (this.myForm.valid) {
+      this.listaUsuarios.push({ ...this.myForm.value as usuarioRules});
+      this.myForm.reset({ 
+      no_control:0,
+      nombres: '',
+      primer_apellido:'',
+      segundo_apellido:'',
+      telefono: 0,
+      extension: 0,
+      fecha_registro: '',
+      gradoestudios: '',
+      correo: '',
+      nombre_usuario:'',
+      password: '',
+      estado_usuario: false,
+      departamento_usuario: 0,
+      rol: 0,
+      puede_iniciarsecion: false
+      });
       this.cerrarFormulario();
     }
   }
+
+  isValidFiel(fieldName:string): boolean|null{
+    return (
+      this.myForm.controls[fieldName].errors && 
+      this.myForm.controls[fieldName].touched
+    );
+  }
+  
+  onSave(){
+    if(this.myForm.invalid){
+      this.myForm.markAllAsTouched();
+      return;
+    }
+    this.myForm.reset(
+      { no_control:0,
+          nombres: '',
+          primer_apellido:'',
+          segundo_apellido:'',
+          telefono: 0,
+          extension: 0,
+          fecha_registro: '',
+          gradoestudios: '',
+          correo: '',
+          nombre_usuario:'',
+          password: '',
+          estado_usuario: false,
+          departamento_usuario: 0,
+          rol: 0,
+          puede_iniciarsecion: false
+        }
+    );
+  }
+
+  /*
+  isValidFiel(fieldName:string): boolean|null{
+    return !!(
+      this.myForm.controls[fieldName].errors || 
+      this.myForm.controls[fieldName].touched
+    );
+  }*/
 }

@@ -50,94 +50,11 @@ export class AdministracionSolicitudesComponent {
       } else if(solicitud.edo_solicitud===false){
         this.lista_solicitud_rechazada.push({ ...solicitud });
       }
-    }
-
-
-    /*
-    for (let i:number = 0; i < this.nuevaSolicitud.length; i++) {
-      if(this.nuevaSolicitud[i].edo_solicitud==null){
-        this.lista_solicitud_revicion.push({ ...this.nuevaSolicitud[i] });
-      }
-
-      //cuando la solicitud es aprovada
-      if(this.nuevaSolicitud[i].edo_solicitud==true){
-        this.lista_solicitud_revicion.push({ ...this.nuevaSolicitud[i] });
-      }
-
-      // cuando la solicitud es rechazada
-      if(this.nuevaSolicitud[i].edo_solicitud==false){
-        this.lista_solicitud_revicion.push({ ...this.nuevaSolicitud[i] });
-      }
-    }
-    */
-    
+    }    
   }
 
 } 
 
-/*
-
-  agregararchivo() {
-    if (this.nuevoArchivo.nombre_archivo && this.nuevoArchivo.seccion) {
-      
-      if(this.nuevoArchivo.seccion==1){ //01-procedimientos experimentales
-        this.listaarchivoS1.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-
-      if(this.nuevoArchivo.seccion==2){//02-alternativas
-        this.listaarchivoS2.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-      
-      if(this.nuevoArchivo.seccion==3){//03-agentes ata
-        this.listaarchivosS3.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-
-      if(this.nuevoArchivo.seccion==4){//04-eutanasia
-        this.listaarchivosS4.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-
-      if(this.nuevoArchivo.seccion==5){//05-clasificacion
-        this.listaarchivosS5.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-
-      if(this.nuevoArchivo.seccion==6){//06-salud ocupacional
-        this.listaarchivosS6.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-      this.cerrarFormulario();
-    }
-  }
-
-}
 
 /*
 secciones posibles
