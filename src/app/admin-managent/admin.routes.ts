@@ -14,8 +14,13 @@ import {ModificarAnimalCatalogoComponent} from '../admin-managent/pages/animal-m
 import {ModificarAtributoComponent} from '../admin-managent/pages/animal-management/modificar-atributo/modificar-atributo.component';
 import {BienvenidaInvestigadorComponent} from './pages/home-page/bienvenida-investigador/bienvenida-investigador.component';
 import {UsersManagementComponent} from '../admin-managent/pages/users-management/users-management.component';
+import {RevisiónProtocoloComponent} from '../admin-managent/pages/protocols-management/revisión-protocolo/revisión-protocolo.component';
+import {AdministracionSolicitudesComponent} from '../admin-managent/pages/protocols-management/administracion-solicitudes/administracion-solicitudes.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
- 
+
+
+
+
 export const adminRoutes: Routes = [
 
   {
@@ -54,7 +59,11 @@ export const adminRoutes: Routes = [
         {
         path: 'protocol',
         title: 'Gestor de protocolos UPEAL',
-        component: ProtocolsManagementComponent
+        component: ProtocolsManagementComponent,
+        children:[
+          {path: 'revision-protocolos', title: 'revision-protocolos', component: RevisiónProtocoloComponent},
+          {path: 'admon-solicitudes', title: 'Administación de solicitudes', component: AdministracionSolicitudesComponent},
+        ]
         },
         {
           path: '**',

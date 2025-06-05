@@ -8,10 +8,10 @@
         <li class="menu-item mt-2">
             <a routerLink="/admin/home/gestion-usuario" class="menu-link">
                 <span class="menu-icon">
-                <i class="ki-filled ki-user-square"></i>
+                <i class="ki-filled ki-user-square "></i>
                 </span>
                 <span class="menu-title">
-                    Gestion de usuarios
+                    Gestionar usuarios
                 </span>
             </a>
         </li>
@@ -29,17 +29,17 @@
         </li>
 
         <!--tercera seccion del menu(gestion del catalogo animal/con submenu)-->
-        <li class="menu-item mt-2" (click)="toggleSubmenu2()" [class.active]="submenuOpen2">
+        <li class="menu-item mt-2" (click)="toggleSubmenu()" [class.active]="submenuOpen">
             <a  class="menu-link">
                 <span class="menu-icon">
                     <i class="ki-filled ki-twitter"></i>
                 </span>
                 <span class="menu-title ">
-                    Gestion del cátalogo de animales
+                    Gestionar el cátalogo de animales
                 </span>
-                <span [ngClass]="submenuOpen2 ? 'ki-outline ki-up' : ' ki-outline ki-down'"></span>
+                <span [ngClass]="submenuOpen ? 'ki-outline ki-up' : ' ki-outline ki-down'"></span>
             </a>
-            <ul *ngIf="submenuOpen2" class="submenu ml-3">
+            <ul *ngIf="submenuOpen" class="submenu ml-3">
                 <li class="submenu-item">
                     <a class="menu-link" routerLink="/admin/home/agregar-atributo">
                         <span class="menu-icon">
@@ -96,15 +96,38 @@
         </li>
 
         <!--quinta seccion del menu (gestion de protocolos de la UPEAL/con submenu)-->
-        <li class="menu-item">
-            <a routerLink="/admin/home/protocol" class="menu-link">
+        <li class="menu-item mt-2" (click)="toggleSubmenu2()" [class.active]="submenuOpen2">
+            <a  class="menu-link">
                 <span class="menu-icon">
                     <i class="ki-duotone ki-abstract-33"></i>
                 </span>
-                <span class="menu-title">
+                <span class="menu-title ">
                     Gestionar protocolos UPEAL
                 </span>
+                <span [ngClass]="submenuOpen2 ? 'ki-outline ki-up' : ' ki-outline ki-down'"></span>
             </a>
+            <ul *ngIf="submenuOpen2" class="submenu ml-3">
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/protocol/revision-protocolos">
+                        <span class="menu-icon">
+                            <i class="ki-filled ki-book-open"></i>
+                        </span>
+                        <span class="menu-title">
+                            Revisión de protocolos
+                        </span>
+                    </a>
+                </li>
+                <li class="submenu-item">
+                    <a class="menu-link" routerLink="/admin/home/protocol/admon-solicitudes">
+                        <span class="menu-icon">
+                            <i class="ki-filled ki-questionnaire-tablet"></i>
+                        </span>
+                        <span class="menu-title">
+                            Administar solicitudes sobre protocolos
+                        </span>
+                    </a>
+                </li>
+            </ul>
         </li>
    </nav>
 </div>
