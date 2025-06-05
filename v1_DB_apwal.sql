@@ -327,6 +327,43 @@ CREATE TABLE clasificacion (
 -- CONSTRAINT FK_clasificacion FOREIGN KEY (ID_registro_protocolo) REFERENCES protocolo(ID_registro_protocolo) ON DELETE CASCADE
 -- );
 
+-- Posibles tablas para SALUD OCUPACIONAL
+
+-- CREATE TABLE salud_categorias_riesgo (
+--    ID_categorias INT AUTO_INCREMENT PRIMARY KEY,
+--    nombre_categoria VARCHAR(100) -- Ej: 'Agentes infecciosos', 'Radioisótopos', etc.
+-- );
+
+-- CREATE TABLE salud_riesgos (
+--    ID_riesgos INT AUTO_INCREMENT PRIMARY KEY,
+--    ID_categorias INT NOT NULL,
+--    ID_registro_animales_protocolo INT NOT NULL,
+--    nombre_agente VARCHAR(255),
+--    dosis VARCHAR(255),
+--    via_administracion VARCHAR(255),
+--    frecuencia_uso VARCHAR(255),
+--    FOREIGN KEY (ID_categorias) REFERENCES salud_categorias_riesgo(ID_categorias)
+--    FOREIGN KEY (ID_registro_animales_protocolo) REFERENCES animales_protocolo(ID_registro_animales_protocolo)
+-- );
+
+
+-- CREATE TABLE salud_detalles (
+--    ID_salud_detalles INT AUTO_INCREMENT PRIMARY KEY,
+--    nivel_bioseguridad VARCHAR(50),
+--    descripcion_equipo TEXT,
+--    descripcion_procedimientos TEXT
+-- );
+
+
+-- CREATE TABLE salud_ocupacional (
+--    ID_salud_ocupacional INT AUTO_INCREMENT PRIMARY KEY,
+--    ID_registro_protocolo INT NOT NULL,
+--    ID_salud_detalles INT NOT NULL,
+--    ID_salud_riesgo INT NOT NULL,
+--    FOREIGN KEY (ID_salud_detalles) REFERENCES salud_detalles(ID_salud_detalles),
+--    FOREIGN KEY (ID_salud_riesgo) REFERENCES riesgos(ID_salud_riesgos)
+--    FOREIGN KEY (ID_registro_protocolo) REFERENCES protocolo(ID_registro_protocolo)
+-- );
 
 --Tablas para la biblioteca digital
 CREATE TABLE TipoRecurso (
