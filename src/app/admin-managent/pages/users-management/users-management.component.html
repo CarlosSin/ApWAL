@@ -1,103 +1,141 @@
-<div class="card h-full shadow-xl p-5">
-<div class="m-4 pb-10">
-    <button (click)="abrirFormulario()" class="btn btn-success mt-8 text-3xl h-16 flex justify-end-safe">+ Nuevo usuario</button>
-</div>
+<div class="card shadow-xl p-5">
+    <div class="m-4 pb-10">
+        <button (click)="abrirFormulario()" class="btn btn-success mt-8 text-3xl h-16 flex justify-end-safe">+ Nuevo usuario</button>
+    </div>
 
-<!--formulario en cuestion-->
+    <!--formulario en cuestion-->
 
-<!--<div class="bg-white  overscroll-contain border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl " *ngIf="mostrarFormulario">-->
-    <div class="bg-white border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl max-h-[90vh] overflow-y-auto rounded-xl" *ngIf="mostrarFormulario">
+    <!--<div class="bg-white  overscroll-contain border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl " *ngIf="mostrarFormulario">-->
+<div class="bg-white border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl max-h-[90vh] overflow-y-auto rounded-xl" *ngIf="mostrarFormulario">
     <div class="">
         <h1 class="card-header justify-center text-4xl">Ingrese los datos del nuevo usuario:</h1>
 
-        <form (ngSubmit)="agregarUsuario()" class="p-20 bg-gray-100">
+        <form (ngSubmit)="agregarUsuario()" class="p-20 bg-gray-100" [formGroup]="myForm">
 
         <!--para ingresar el numero de control-->
         <label for="numero_control" class="block text-lg font-medium text-gray-700 mb-1">
             No. Control:
-            <input [(ngModel)]="nuevoUsuario.no_control" type="number" name="numero_control" id="numero_control" 
+            <input 
+            formControlName="no_control" 
+            type="number" 
+            name="numero_control" id="numero_control" 
             class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Ingrese el numero de control del nuevo usuario">        
+            placeholder="Ingrese el numero de control del nuevo usuario">
+            @if(myForm.controls['no_control'].errors?.['required']){
+                <span class="text-red-600">
+                    El numero de control es necesario
+                </span>
+            }     
         </label>
         
         <!--Para ingresar los nombres-->
         <label for="nombres" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Nombre(s):
-            <input [(ngModel)]="nuevoUsuario.nombres" type="text" name="nombres" id="nombres" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese los nombres del nuevo usuario">
+            <input
+            formControlName="nombres" 
+            type="text" 
+            name="nombres" id="nombres" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese los nombres del nuevo usuario">
         </label>
-        
+
         <!--Para ingresar el primer apellido-->
         <label for="primer_apellido" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Primer apellido:
-            <input [(ngModel)]="nuevoUsuario.primer_apellido" type="text" name="primer_apellido" id="primer_apellido" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese el primer apellido del nuevo usuario">
+            <input 
+            formControlName="primer_apellido" 
+            type="text" 
+            name="primer_apellido" id="primer_apellido" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el primer apellido del nuevo usuario">
         </label>
 
         <!--Para ingresar el segundo apellido-->
         <label for="segundo_apellido" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Segundo apellido:
-            <input [(ngModel)]="nuevoUsuario.segundo_apellido" type="text" name="segundo_apellido" id="segundo_apellido" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese el segundo apellido del nuevo usuario">
+            <input 
+            formControlName="segundo_apellido" 
+            type="text" 
+            name="segundo_apellido" id="segundo_apellido" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el segundo apellido del nuevo usuario">
         </label>
 
         <!--Para ingresar el numero de telofono-->
         <label for="telefono" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Telefono:
-            <input [(ngModel)]="nuevoUsuario.telefono" type="number" name="telefono" id="telefono" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese el telefono del nuevo usuario">
+            <input 
+            formControlName="telefono"
+            type="number" 
+            name="telefono" id="telefono" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el telefono del nuevo usuario">
         </label>
 
         <!--Para ingresar la extension -->
         <label for="extension" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Extension:
-            <input [(ngModel)]="nuevoUsuario.extension" type="number" name="extension" id="extension" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese la extension del nuevo usuario">
+            <input 
+            formControlName="extension"
+            type="number" 
+            name="extension" id="extension" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese la extension del nuevo usuario">
         </label>
 
         <!--Para ingresar fecha de registro -->
         <label for="fecha_registro" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Fecha registro:
-            <input [(ngModel)]="nuevoUsuario.fecha_registro" type="date" name="fecha_registro" id="fecha_registro" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese la extension del nuevo usuario">
+            <input 
+            formControlName="fecha_registro"
+            type="date" 
+            name="fecha_registro" id="fecha_registro" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese la extension del nuevo usuario">
         </label>
 
         <!--Para ingresar el grado academino -->
         <label for="grado_estudios" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Grado de estudios:
-            <input [(ngModel)]="nuevoUsuario.gradoestudios" type="text" name="grado_estudios" id="grado_estudios" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese el grado de estudios del nuevo usuario">
+            <input 
+            formControlName="gradoestudios" 
+            type="text" 
+            name="grado_estudios" id="grado_estudios" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el grado de estudios del nuevo usuario">
         </label>
 
         <!--Para ingresar el correo -->
         <label for="correo" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Correo electronico:
-            <input [(ngModel)]="nuevoUsuario.correo" type="email" name="correo" id="correo" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese el correo del nuevo usuario">
+            <input 
+            formControlName="correo"
+            type="email" 
+            name="correo" id="correo" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el correo del nuevo usuario">
         </label>
 
         <!--Para ingresar el usuario -->
         <label for="nombre_usuario" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Nombre usuario:
-            <input [(ngModel)]="nuevoUsuario.nombre_usuario" type="email" name="nombre_usuario" id="nombre_usuario" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese el nombre de usuario del nuevo usuario">
+            <input 
+            formControlName="nombre_usuario" 
+            type="email" 
+            name="nombre_usuario" id="nombre_usuario" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el nombre de usuario del nuevo usuario">
         </label>
 
         <!--Para ingresar la contrasena-->
         <label for="contrasena" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Contraseña:
-            <input [(ngModel)]="nuevoUsuario.password" type="password" name="contrasena" id="contrasena" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese el nombre de usuario del nuevo usuario">
+            <input 
+            formControlName="password" 
+            type="password" 
+            name="contrasena" id="contrasena" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el nombre de usuario del nuevo usuario">
         </label>
 
         <!--Para ingresar el estado del usuario-->
@@ -106,7 +144,7 @@
         </label>
         <select 
             id="edo_usuario"
-            [(ngModel)]="nuevoUsuario.estado_usuario"
+            formControlName="estado_usuario"
             name="edo_usuario"
             class="select w-full"
             >
@@ -120,7 +158,7 @@
         </label>
         <select 
             id="depto_usuario"
-            [(ngModel)]="nuevoUsuario.departamento_usuario"
+            formControlName="departamento_usuario"
             name="depto_usuario"
             class="select w-full"
             >
@@ -137,7 +175,7 @@
         </label>
         <select 
             id="rol_usuario"
-            [(ngModel)]="nuevoUsuario.rol"
+            formControlName="rol"
             name="rol_usuario"
             class="select w-full"
             >
@@ -152,7 +190,7 @@
         </label>
         <select 
             id="sesion_usuario"
-            [(ngModel)]="nuevoUsuario.puede_iniciarsecion"
+            formControlName="puede_iniciarsecion"
             name="sesion_usuario"
             class="select w-full"
             >
@@ -165,7 +203,7 @@
             <button type="button" (click)="cerrarFormulario()" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Cancelar</button>
         </div>
     </form>
-</div>
+    </div>
 </div>
 <!--tablas-->
     <div class="bg-teal-500 justify-items-center rounded-2xl p-4">
@@ -191,7 +229,12 @@
                     <td class="text-center px-6 py-4">{{ usuario.nombres }}</td>
                     <td class="text-center px-6 py-4">{{ usuario.gradoestudios }}</td>
                     <td class="text-center px-6 py-4">{{ usuario.nombre_usuario }}</td>
-                    <td class="text-center px-6 py-4">accciones</td>
+                    <td class="text-center px-6 py-4">
+                        <button class="bg bg-sky-300 p-3 rounded-2xl">
+                            <i class="ki-filled ki-user-edit"></i>
+                            Modificar usuario  
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
