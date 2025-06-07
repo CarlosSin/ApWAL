@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface departamentorules{
-  id_departamento:number,
   nombre_departamento:string,
   disponibilidad_departamento:boolean,
 }
@@ -17,7 +16,6 @@ export class DepartmentManagementComponent {
   mostrarFormulario = false;
 
   nuevoDepartamento:departamentorules={
-    id_departamento: 0,
     nombre_departamento: '',
     disponibilidad_departamento: false
   }
@@ -34,10 +32,9 @@ export class DepartmentManagementComponent {
   }
   
   agregarUsuario() {
-    if (this.nuevoDepartamento.id_departamento && this.nuevoDepartamento.nombre_departamento) {
+    if (this.nuevoDepartamento.nombre_departamento) {
       this.listaDepartamentos.push({ ...this.nuevoDepartamento });
-      this.nuevoDepartamento = { 
-        id_departamento: 0,
+      this.nuevoDepartamento = {
         nombre_departamento: '',
         disponibilidad_departamento: false
       };
