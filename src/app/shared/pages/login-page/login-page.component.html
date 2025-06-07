@@ -1,48 +1,50 @@
 <div class="grid lg:grid-cols-2 min-h-screen">
-    <div class="flex items-center justify-center p-8 lg:p-10 order-2 lg:order-1 h-full">
+  <div class="flex items-center justify-center p-8 lg:p-10 order-2 lg:order-1 h-full">
     <div class="card max-w-[370px] w-full">
-      <form class="card-body flex flex-col gap-5 p-10">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card-body flex flex-col gap-5 p-10">
         <div class="text-center mb-2.5">
           <h3 class="text-lg font-medium text-gray-900 leading-none mb-2.5">
             Iniciar Sesión
           </h3>
         </div>
+
         <div class="flex items-center gap-2">
           <span class="border-t border-gray-200 w-full"></span>
           <span class="border-t border-gray-200 w-full"></span>
         </div>
+
         <div class="flex flex-col gap-1">
           <label class="form-label font-normal text-gray-900">Usuario</label>
-          <input class="input" placeholder="Ingrese su usuario" type="text" />
+          <input formControlName="usuario" class="input" placeholder="Ingrese su usuario" type="text" />
         </div>
+
         <div class="flex flex-col gap-1">
           <div class="flex items-center justify-between gap-1">
             <label class="form-label font-normal text-gray-900">Contraseña</label>
           </div>
           <div class="input flex items-center">
-            <input name="user_password" placeholder="Ingrese la contraseña" type="password" class="flex-grow " />
+            <input formControlName="password" placeholder="Ingrese la contraseña" type="password" class="flex-grow" />
             <button class="btn btn-icon" type="button">
               <i class="ki-filled ki-eye text-gray-500"></i>
-              <!-- Cambiar por lógica de mostrar/ocultar si lo deseas -->
+              <!-- Puedes implementar lógica para mostrar/ocultar contraseña -->
             </button>
           </div>
         </div>
+
         <label class="checkbox-group">
           <input class="checkbox checkbox-sm" type="checkbox" />
           <span class="checkbox-label">Recordarme</span>
         </label>
-        <button class="btn btn-success flex justify-center grow">Iniciar Sesión</button>
+
+        <button type="submit" class="btn btn-success flex justify-center grow">Iniciar Sesión</button>
       </form>
     </div>
   </div>
 
-  <!-- Fondo con imagen -->
   <div
-  class="flex flex-col justify-center items-center lg:rounded-xl lg:border lg:border-gray-200 lg:m-5 order-1 lg:order-2 bg-no-repeat bg-center"
-  style="background-image: url('/assets/media/images/login.jpg'); background-size:cover;"
->
-
-<div class="flex flex-col items-start p-8 lg:p-16 gap-4 text-left w-full max-w-[500px]">
+    class="flex flex-col justify-center items-center lg:rounded-xl lg:border lg:border-gray-200 lg:m-5 order-1 lg:order-2 bg-no-repeat bg-center"
+    style="background-image: url('/assets/media/images/login.jpg'); background-size: cover;">
+    <div class="flex flex-col items-start p-8 lg:p-16 gap-4 text-left w-full max-w-[500px]">
       <a routerLink="/">
         <img class="h-16 max-w-none" src="/assets/media/images/LogoAPWAL-Transparente.png" />
       </a>
