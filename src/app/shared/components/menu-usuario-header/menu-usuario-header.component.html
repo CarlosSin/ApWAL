@@ -1,32 +1,33 @@
-<div class="relative">
+<div class="relative min-w-80">
+<div class="justify-items-end ">
     <button (click)="Formulario_open()" class="flex items-center space-x-2 p-2 rounded-full bg-white shadow pr-6">
-        <h1>(señal con nombre del usuario)</h1>
+ 
         <i class="ki-solid ki-profile-circle text-teal-700 text-5xl"></i>
+        <i class="ki-solid ki-abstract-14 text-teal-700 text-4xl"></i>
     </button>
 </div>
 
 
 <!--<div class=" absolute flex items-center space-x-2 w-full text-left hover:bg-gray-100 p-2 rounded-full" *ngIf="mostrarFormulario">--> 
-<div class=" absolute items-center space-x-2 p-8 rounded-lg bg-gray-200 shadow ml-5w-auto mt-1" *ngIf="mostrarFormulario">
+<div class="absolute justify-items-start min-w-98 items-center space-x-2 rounded-lg bg-gray-200 shadow ml-5w-auto mt-1" *ngIf="mostrarFormulario">
     <div>
-        <p class="text-center text-base text-teal-700">No.control:(señal con el numero)</p>
+        <p class="text-center text-base text-teal-700 mt-4">No.control:(señal con el numero)</p>
         <p class="text-center text-base text-teal-700 mt-3">departamento:(señal con el departamento)</p>
         <p class="text-center text-base text-teal-700 mt-3">Rol:(señal con el rol)</p>
         <p class="text-center text-base text-teal-700 mt-3">Rol:(señal con el rol)</p>
 
     </div>
 
-
     <div>
         <button roterlink="" class="btn btn-success mt-8 text-lg h-16 flex justify-end-safe rounded-full">
         <i class="ki-solid ki-users"></i>
             Cambiar de rol
         </button>
-        <button roterlink="" class="btn btn-success mt-3 text-lg h-16 flex justify-end-safe rounded-full">
+        <button roterlink="" class="btn btn-success mt-3 mb-3 text-lg h-16 flex justify-end-safe rounded-full">
         <i class="ki-solid ki-exit-right text-white"></i>
             Salir
         </button>
     </div>
 
-
+</div>
 </div>
