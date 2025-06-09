@@ -1,5 +1,5 @@
-<div class="menu menu-default flex flex-col border rounded-lg w-full max-w-max py-2 mt-4 border border-teal-600">
-    <div class="menu-header rounded-xl text-center bg-teal-600 pt-2 pb-2">
+<div class="menu menu-default flex flex-col rounded-lg w-full max-w-max py-0 mt-4 border border-teal-600">
+    <div class="menu-header rounded-lg text-center bg-teal-600 pt-2 pb-2">
         <span class="text-2xl text-white font-semibold">Menú</span>
     </div>
 
@@ -8,7 +8,7 @@
         <li class="menu-item mt-2">
             <a routerLink="/admin/home/gestion-usuario" class="menu-link">
                 <span class="menu-icon">
-                <i class="ki-filled ki-user-square "></i>
+                    <i class="ki-filled ki-user-square "></i>
                 </span>
                 <span class="menu-title">
                     Gestionar usuarios
@@ -20,7 +20,7 @@
         <li class="menu-item">
             <a routerLink="/admin/home/library1" class="menu-link">
                 <span class="menu-icon">
-                <i class="ki-filled ki-paper-clip"></i>
+                    <i class="ki-filled ki-paper-clip"></i>
                 </span>
                 <span class="menu-title">
                     Gestionar biblioteca digital
@@ -30,7 +30,7 @@
 
         <!--tercera seccion del menu(gestion del catalogo animal/con submenu)-->
         <li class="menu-item mt-2" (click)="toggleSubmenu()" [class.active]="submenuOpen">
-            <a  class="menu-link">
+            <a class="menu-link">
                 <span class="menu-icon">
                     <i class="ki-filled ki-twitter"></i>
                 </span>
@@ -77,7 +77,7 @@
         <li class="menu-item">
             <a routerLink="/admin/home/departmento" routerLinkActive="btn btn-outline btn-success" class="menu-link">
                 <span class="menu-icon">
-                <i class="ki-filled ki-flask"></i>
+                    <i class="ki-filled ki-flask"></i>
                 </span>
                 <span class="menu-title">
                     Gestionar departamentos
@@ -87,7 +87,7 @@
 
         <!--quinta seccion del menu (gestion de protocolos de la UPEAL/con submenu)-->
         <li class="menu-item mt-2" (click)="toggleSubmenu2()" [class.active]="submenuOpen2">
-            <a  class="menu-link">
+            <a class="menu-link">
                 <span class="menu-icon">
                     <i class="ki-duotone ki-abstract-33"></i>
                 </span>
@@ -119,5 +119,5 @@
                 </li>
             </ul>
         </li>
-   </nav>
+    </nav>
 </div>

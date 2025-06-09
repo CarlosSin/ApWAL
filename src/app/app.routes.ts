@@ -9,14 +9,16 @@ export const routes: Routes = [
     component: LoginPageComponent,
   },
   {
-    path: 'inv',
-    loadChildren: () => import('./inv-pages/inv.routes'),
-    canActivate: [AuthGuard] // 👈 Protegida
-  },
-  {
     path: 'admin',
     loadChildren: () => import('./admin-managent/admin.routes'),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: ['Administrador'] }
+  },
+  {
+    path: 'inv',
+    loadChildren: () => import('./inv-pages/inv.routes'),
+    canActivate: [AuthGuard],
+    data: { roles: ['Investigador'] }
   },
   {
     path: 'eva',

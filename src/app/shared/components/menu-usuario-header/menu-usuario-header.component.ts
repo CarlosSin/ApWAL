@@ -39,4 +39,33 @@ export class MenuUsuarioHeaderComponent implements OnInit {
     localStorage.removeItem('usuario');
     location.href = '/';
   }
+
+  cambiarDeRol() {
+    const usuario = localStorage.getItem('usuario');
+    if (!usuario) return;
+
+    try {
+      const parsed = JSON.parse(usuario);
+      const roles: string[] = parsed.roles || [];
+
+      if (roles.includes('Investigador') && roles.includes('Evaluador')) {
+        const rutaActual = window.location.pathname;
+
+        if (rutaActual.includes('/inv')) {
+          location.href = '/eva'; // Cambiar a Evaluador
+        } else if (rutaActual.includes('/eva')) {
+          location.href = '/inv'; // Cambiar a Investigador
+        } else {
+          console.warn('Ruta actual desconocida para cambio de rol.');
+        }
+
+      } else {
+        alert('Tu cuenta no tiene múltiples roles disponibles para cambiar.');
+      }
+
+    } catch (err) {
+      console.error('Error al cambiar de rol:', err);
+    }
+  }
+
 }

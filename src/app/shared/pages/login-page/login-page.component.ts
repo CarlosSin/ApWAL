@@ -59,5 +59,7 @@ export class LoginPageComponent {
           alert('Error al conectar con el servidor');
         }
       });
+
+      
   }
 }
