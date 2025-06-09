@@ -1,78 +1,8 @@
 <div class="card h-full shadow-xl p-5">
-<div class="m-4 pb-10">
-    <button (click)="abrirFormulario()" class="btn btn-success mt-8 text-3xl h-16 flex justify-end-safe">+ Nuevo departamento</button>
+<div>
+    <app-add-department></app-add-department>
 </div>
-
-<!--formulario en cuestion-->
-
-<!--<div class="bg-white  overscroll-contain border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl " *ngIf="mostrarFormulario">-->
-<div class="bg-white border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl max-h-[90vh] overflow-y-auto rounded-xl" *ngIf="mostrarFormulario">
-    <div class="">
-        <h1 class="card-header justify-center text-4xl">Ingrese los datos del nuevo departamento</h1>
-
-        <form (ngSubmit)="agregarUsuario()" class="p-20 bg-gray-100">
-
-        <!--Para ingresar los nombres-->
-        <label for="nombre_departamento" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
-            Nombre(s):
-            <input [(ngModel)]="nuevoDepartamento.nombre_departamento" type="text" name="nombre_departamento" id="nombre_departamento" 
-        class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Ingrese el nombre del nuevo departamento">
-        </label>
-        
-        <!--Para ingresar el estado del usuario-->
-        <label for="edo_departamento" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
-            ¿El departamento estara disponible?
-        </label>
-        <select 
-            id="edo_departamento"
-            [(ngModel)]="nuevoDepartamento.disponibilidad_departamento"
-            name="edo_departamento"
-            class="select w-full"
-            >
-            <option [ngValue]="true" class="text-base">Si</option>
-            <option [ngValue]="false" class="text-base">No</option>
-        </select>        
-
-        <div class="justify-items-end">
-            <button type="submit" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Registrar nuevo departamento</button>
-            <button type="button" (click)="cerrarFormulario()" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Cancelar</button>
-        </div>
-    </form>
+<div>
+    <app-get-info-department></app-get-info-department>
 </div>
-
-</div>
-<!--tablas
-<div class="bg-teal-500 justify-items-center rounded-2xl p-4">
-    <h2 class="card-title text-2xl text-white">Tabla de departamentos</h2>                
-</div>
-<div class="p-4">
-    <div class="overflow-x-auto rounded-lg shadow-lg">
-        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
-            <thead class="bg-teal-500 text-white">
-                <tr>
-                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID_departamento</th>
-                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre del departamento</th>
-                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">disponibilidad del departamento</th>
-                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-teal-100">
-                <tr class="hover:bg-teal-50" *ngFor="let departamento of listaDepartamentos">
-                    <td class="text-center px-6 py-4"> señal con el id departamento </td>
-                    <td class="text-center px-6 py-4">{{ departamento.nombre_departamento }}</td>
-                    <td class="text-center px-6 py-4">{{ departamento.disponibilidad_departamento }}</td>
-                    <td class="text-center px-6 py-4">
-                        <button class="bg bg-sky-300 p-3 rounded-2xl">
-                            <i class="ki-filled ki-notepad-edit text-lg"></i>
-                            Modificar departamento 
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
--->
-<app-get-info-department></app-get-info-department>
 </div>

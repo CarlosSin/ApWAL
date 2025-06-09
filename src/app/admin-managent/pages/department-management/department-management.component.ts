@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GetInfoDepartmentComponent} from '../department-management/get-info-department/get-info-department.component';
+import {AddDepartmentComponent} from '../department-management/add-department/add-department.component';
 
 interface departamentorules{
   nombre_departamento:string,
@@ -10,7 +11,7 @@ interface departamentorules{
 
 @Component({
   selector: 'app-department-management',
-  imports: [CommonModule, FormsModule,GetInfoDepartmentComponent],
+  imports: [CommonModule, FormsModule,GetInfoDepartmentComponent,AddDepartmentComponent],
   templateUrl: './department-management.component.html',
 })
 export class DepartmentManagementComponent { 

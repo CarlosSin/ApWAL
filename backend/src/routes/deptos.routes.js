@@ -26,4 +26,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const nuevoDepartamento = req.body;
+
+    await pool.query('INSERT INTO departamento SET ?', [nuevoDepartamento]);
+    res.status(201).json({ message: 'Usuario creado' });
+  } catch (error) {
+    console.error('Error al insertar usuario:', error);
+    res.status(500).json({ error: 'Error al insertar usuario' });
+  }
+});
+
 export default router;

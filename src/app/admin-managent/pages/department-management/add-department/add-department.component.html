@@ -1,1 +1,57 @@
-<p>add-department works!</p>,
+<div class="m-4 pb-10">
+    <button (click)="abrirFormulario()" class="btn btn-success mt-8 text-3xl h-16 flex justify-end-safe">+ Nuevo departamento</button>
+</div>
+
+<!--formulario en cuestion-->
+
+<!--<div class="bg-white  overscroll-contain border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl " *ngIf="mostrarFormulario">-->
+<div class="bg-white border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl max-h-[90vh] overflow-y-auto rounded-xl" *ngIf="mostrarFormulario">
+    <div class="">
+        <h1 class="card-header justify-center text-4xl">Ingrese los datos del nuevo departamento</h1>
+
+        <form class="p-20 bg-gray-100" [formGroup]="myForm" (ngSubmit)="onSave()">
+
+        <!--Para ingresar los nombres-->
+        <label for="nombre_departamento" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
+            Nombre(s):
+            <input 
+            formControlName="nombre_departamento"  
+            type="text" 
+            name="nombre_departamento" id="nombre_departamento" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el nombre del nuevo departamento">
+            @if (isValidFiel('nombre_departamento')){
+                <span class="text-red-600">
+                    El numero de control es necesario
+                </span>
+            }
+        </label>
+
+
+        <!--Para ingresar el estado del usuario-->
+        <label for="edo_departamento" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
+            ¿El departamento estara disponible?
+        </label>
+        <select 
+            id="edo_departamento"
+            formControlName="disponibilidad_departamento"  
+            name="edo_departamento"
+            class="select w-full"
+            >
+            <option [ngValue]="true" class="text-base">Si</option>
+            <option [ngValue]="false" class="text-base">No</option>       
+        </select>
+        @if (isValidFiel('disponibilidad_departamento')){
+            <span class="text-red-600">
+                El numero de control es necesario
+            </span>
+        }        
+
+        <div class="justify-items-end">
+            <button type="submit" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Registrar nuevo departamento</button>
+            <button type="button" (click)="cerrarFormulario()" class="btn btn-success mt-8 text-2xl flex justify-end-safe">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+</div>

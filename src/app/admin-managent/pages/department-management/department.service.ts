@@ -22,8 +22,8 @@ export class DepartamentService {
     return this.http.get<departamentorules[]>(this.apiUrl);
   }
 
-  /*
-  crearUsuarioback(usuario: usuarioRules): Observable<any> {
+  
+  creardepartamentoback(usuario: departamentorules): Observable<any> {
     return this.http.post(this.apiUrl, usuario);
-  }*/
+  }
 }
