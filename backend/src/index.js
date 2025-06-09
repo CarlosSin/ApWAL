@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Usa las rutas
-//app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 import usuarioRoutes from './routes/usuarios.routes.js';
 app.use('/api/usuarios',usuarioRoutes);
 
