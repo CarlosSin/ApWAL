@@ -8,3 +8,5 @@ export const pool = mysql.createPool({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
 });
+
+console.log('Conectando a:', process.env.DB_HOST);
