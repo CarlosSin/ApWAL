@@ -1,0 +1,35 @@
+
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4">
+        <h2 class="card-title text-2xl text-white">Tabla de usuarios</h2>                
+</div>
+
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+<!--        <table class="border-collapse border border-teal-400 mt-8 bg-teal-600 text-white">-->
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Numero de control</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">grado de estudios</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre de usuario</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let usuario of usuariosdb">
+                    <td class="text-center px-6 py-4">{{ usuario.no_decontrol_usuario }}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.nombre_pila}} {{usuario.primer_apellido}} {{usuario.segunda_apellido}}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.grado_estudio}}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.nombre_usuario}}</td>
+                    <td class="text-center px-6 py-4">
+                        <button class="bg bg-sky-300 p-3 rounded-2xl">
+                            <i class="ki-filled ki-user-edit"></i>
+                            Modificar usuario  
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

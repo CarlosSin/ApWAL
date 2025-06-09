@@ -11,6 +11,11 @@ app.use(express.json());
 
 // Usa las rutas
 app.use('/api/auth', authRoutes);
+import usuarioRoutes from './routes/usuarios.routes.js';
+app.use('/api/usuarios',usuarioRoutes);
+
+import deptosRoutes from './routes/deptos.routes.js';
+app.use('/api/deptos', deptosRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Servidor corriendo en puerto ${process.env.PORT}`);
