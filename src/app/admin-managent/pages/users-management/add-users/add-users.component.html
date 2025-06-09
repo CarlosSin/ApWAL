@@ -1,44 +1,40 @@
-<p>add-users works!</p>,
-
-    <div class="m-4 pb-10">
-        <button (click)="abrirFormulario()" class="btn btn-success mt-8 text-3xl h-16 flex justify-end-safe">+ Nuevo usuario</button>
-    </div>
-
+<div class="m-4 pb-10">
+    <button (click)="abrirFormulario()" class="btn btn-success mt-8 text-3xl h-16 flex justify-end-safe">+ Nuevo usuario</button>
+</div>
     <!--formulario en cuestion-->
-
     <!--<div class="bg-white  overscroll-contain border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl " *ngIf="mostrarFormulario">-->
 <div class="bg-white border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl max-h-[90vh] overflow-y-auto rounded-xl" *ngIf="mostrarFormulario">
     <div class="">
         <h1 class="card-header justify-center text-4xl">Ingrese los datos del nuevo usuario:</h1>
 
-        <form (ngSubmit)="agregarUsuario()" class="p-20 bg-gray-100" [formGroup]="myForm" (ngSubmit)="onSave()">
+        <form class="p-20 bg-gray-100" [formGroup]="myForm" (ngSubmit)="onSave()">
 
         <!--para ingresar el numero de control-->
         <label for="numero_control" class="block text-lg font-medium text-gray-700 mb-1">
             No. Control:
             <input 
-            formControlName="no_control" 
+            formControlName="no_decontrol_usuario" 
             type="number" 
             name="numero_control" id="numero_control" 
             class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Ingrese el numero de control del nuevo usuario">
-            @if (isValidFiel('no_control')){
+            @if (isValidFiel('no_decontrol_usuario')){
                 <span class="text-red-600">
                     El numero de control es necesario
                 </span>
             }    
         </label>
-        
+
         <!--Para ingresar los nombres-->
         <label for="nombres" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Nombre(s):
             <input
-            formControlName="nombres" 
+            formControlName="nombre_pila" 
             type="text" 
             name="nombres" id="nombres" 
             class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Ingrese los nombres del nuevo usuario">
-            @if(isValidFiel('nombres')){
+            @if(isValidFiel('nombre_pila')){
                 <span class="text-red-600">
                     El nombre es necesario
                 </span>
@@ -63,14 +59,14 @@
 
         <!--Para ingresar el segundo apellido-->
         <label for="segundo_apellido" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
-            Segundo apellido:
+            segunda_apellido:
             <input 
-            formControlName="segundo_apellido" 
+            formControlName="segunda_apellido" 
             type="text" 
             name="segundo_apellido" id="segundo_apellido" 
             class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Ingrese el segundo apellido del nuevo usuario">
-            @if(isValidFiel('segundo_apellido')){
+            @if(isValidFiel('segunda_apellido')){
                 <span class="text-red-600">
                     El segundo apellido es necesario
                 </span>
@@ -129,12 +125,12 @@
         <label for="grado_estudios" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Grado de estudios:
             <input 
-            formControlName="gradoestudios" 
+            formControlName="grado_estudio" 
             type="text" 
             name="grado_estudios" id="grado_estudios" 
             class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Ingrese el grado de estudios del nuevo usuario">
-            @if(isValidFiel('gradoestudios')){
+            @if(isValidFiel('grado_estudio')){
                 <span class="text-red-600">
                     El grado de estudios es necesario
                 </span>
@@ -145,12 +141,12 @@
         <label for="correo" class="block text-lg font-medium text-gray-700 mb-1 mt-4">
             Correo electronico:
             <input 
-            formControlName="correo"
+            formControlName="correo_electronico"
             type="email" 
             name="correo" id="correo" 
             class="w-full px-3 py-2 border border-gray-300 rounded-md text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Ingrese el correo del nuevo usuario">
-            @if(isValidFiel('correo')){
+            @if(isValidFiel('correo_electronico')){
                 <span class="text-red-600">
                     El correo es necesario
                 </span>
@@ -202,7 +198,7 @@
             <option [ngValue]="true" class="text-base">Si</option>
             <option [ngValue]="false" class="text-base">No</option>
         </select>
-        @if(isValidFiel('edo_usuario')){
+        @if(isValidFiel('estado_usuario')){
             <span class="text-red-600">
                 El estado del usuario es necesario
             </span>
@@ -214,17 +210,17 @@
         </label>
         <select 
             id="depto_usuario"
-            formControlName="departamento_usuario"
+            formControlName="ID_departamento_usuario"
             name="depto_usuario"
             class="select w-full"
             >
-            <option [ngValue]="0" class="text-base">departamento 0</option>
-            <option [ngValue]="1" class="text-base">departamento 1</option>
-            <option [ngValue]="2" class="text-base">departamento 2</option>
-            <option [ngValue]="3" class="text-base">departamento 3</option>
-            <option [ngValue]="4" class="text-base">....</option>
+            <option [ngValue]="1" class="text-base">departamento 0</option>
+            <option [ngValue]="2" class="text-base">departamento 1</option>
+            <option [ngValue]="3" class="text-base">departamento 2</option>
+            <option [ngValue]="4" class="text-base">departamento 3</option>
+            <option [ngValue]="5" class="text-base">....</option>
         </select>
-        @if(isValidFiel('departamento_usuario')){
+        @if(isValidFiel('ID_departamento_usuario')){
             <span class="text-red-600">
                 la fecha de registro es necesaria
             </span>
@@ -243,6 +239,7 @@
             <option [ngValue]="1" class="text-base">Investigador</option>
             <option [ngValue]="2" class="text-base">Suplente</option>
             <option [ngValue]="3" class="text-base">Evaluador</option>
+            <option [ngValue]="5" class="evaluador">Evaluador</option>
         </select>
         @if(isValidFiel('rol')){
             <span class="text-red-600">
@@ -276,7 +273,7 @@
     </form>
     </div>
 </div>
-
+<!--        <table class="border-collapse border border-teal-400 mt-8 bg-teal-600 text-white">
 <div class="bg-teal-500 justify-items-center rounded-2xl p-4">
         <h2 class="card-title text-2xl text-white">Tabla de usuarios</h2>                
     </div>
@@ -284,7 +281,7 @@
 <div class="p-4">
     <div class="overflow-x-auto rounded-lg shadow-lg">
         <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
-<!--        <table class="border-collapse border border-teal-400 mt-8 bg-teal-600 text-white">-->
+
             <thead class="bg-teal-500 text-white">
                 <tr>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Numero de control</th>
@@ -296,9 +293,9 @@
             </thead>
             <tbody class="divide-y divide-teal-100">
                 <tr class="hover:bg-teal-50" *ngFor="let usuario of listaUsuarios">
-                    <td class="text-center px-6 py-4">{{ usuario.no_control }}</td>
-                    <td class="text-center px-6 py-4">{{ usuario.nombres }}</td>
-                    <td class="text-center px-6 py-4">{{ usuario.gradoestudios }}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.no_decontrol_usuario }}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.nombre_pila }}</td>
+                    <td class="text-center px-6 py-4">{{ usuario.grado_estudio }}</td>
                     <td class="text-center px-6 py-4">{{ usuario.nombre_usuario }}</td>
                     <td class="text-center px-6 py-4">
                         <button class="bg bg-sky-300 p-3 rounded-2xl">
@@ -314,19 +311,19 @@
 
 <h4>Comprobacion de la correcra insercion de los datos</h4>
 <p *ngFor="let usuario1 of listaUsuarios">
-    no_control: {{ usuario1.no_control }} <br>
-    nombres: {{ usuario1.nombres }} <br>
+    no_control: {{ usuario1.no_decontrol_usuario }} <br>
+    nombres: {{ usuario1.nombre_pila }} <br>
     primer_apellido: {{ usuario1.primer_apellido }} <br>
-    segundo_apellido: {{ usuario1.segundo_apellido }} <br>
+    segundo_apellido: {{ usuario1.segunda_apellido }} <br>
     telefono: {{ usuario1.telefono }} <br>
     extencion: {{ usuario1.extension }} <br>
     fecha_registro: {{ usuario1.fecha_registro }} <br>
-    gradoestudios: {{ usuario1.gradoestudios }} <br>
-    correo:{{ usuario1.correo }} <br>
+    gradoestudios: {{ usuario1.grado_estudio }} <br>
+    correo:{{ usuario1.correo_electronico }} <br>
     nombre_usuario:{{ usuario1.nombre_usuario }} <br>  
     password:{{ usuario1.password }} <br>
     estado_usuario:{{ usuario1.estado_usuario }} <br>
-    departamento_usuario: {{ usuario1.departamento_usuario }} <br>
+    departamento_usuario: {{ usuario1.ID_departamento_usuario }} <br>
     rol:{{ usuario1.rol }} <br>
     puede_iniciarsecion: {{ usuario1.puede_iniciarsecion }} <br> <br> <br>
-</p>
+</p>-->

@@ -31,4 +31,8 @@ export class UsuariosService {
   getUsuarios(): Observable<usuarioRules[]> {
     return this.http.get<usuarioRules[]>(this.apiUrl);
   }
+
+  crearUsuarioback(usuario: usuarioRules): Observable<any> {
+    return this.http.post(this.apiUrl, usuario);
+  }
 }
