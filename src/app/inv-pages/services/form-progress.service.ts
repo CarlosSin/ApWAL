@@ -4,7 +4,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FormProgressService {
-private completedSections = new Set<string>();
+  private completedSections = new Set<string>();
+
+  // 🔹 NUEVO: ID del protocolo en memoria
+  private protocoloId: number | null = null;
+
+  // 🔹 Métodos para manipular el ID
+  setProtocoloId(id: number) {
+    if (id !== null && !isNaN(id)) {
+      this.protocoloId = Number(id); // Fuerza conversión a número
+    }
+  }
+
+  getProtocoloId(): number | null {
+    return this.protocoloId;
+  }
+
+  clearProtocoloId() {
+    this.protocoloId = null;
+  }
 
   markComplete(section: string) {
     this.completedSections.add(section);
@@ -14,7 +32,6 @@ private completedSections = new Set<string>();
     return this.completedSections.has(section);
   }
 
-  // Orden de secciones
   private sectionOrder = [
     'datos-personales',
     'datos-generales',
@@ -29,7 +46,6 @@ private completedSections = new Set<string>();
     'confirmacion'
   ];
 
-  // Permitir navegación solo si la sección anterior fue completada
   canAccess(section: string): boolean {
     const index = this.sectionOrder.indexOf(section);
     if (index === 0) return true;
@@ -40,4 +56,8 @@ private completedSections = new Set<string>();
   getCompletedSections(): Set<string> {
     return this.completedSections;
   }
+  resetProgreso() {
+  this.completedSections.clear();
+  this.protocoloId = null;
+}
 }

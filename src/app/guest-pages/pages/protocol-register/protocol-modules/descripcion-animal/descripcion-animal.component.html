@@ -1,0 +1,209 @@
+<h5 class="text-center text-xl font-bold text-gray-800 mb-8">
+  Descripción de animales a utilizar en el protocolo
+</h5>
+
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<div class="flex flex-col gap-8">
+
+  <!-- Formulario principal -->
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <!-- Grupo de selects -->
+  <div>
+    <div class="flex flex-col gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Especie:</label>
+        <select class="select w-full md:w-64" formControlName="especie">
+          <option value="1">Opción 1</option>
+          <option value="2">Opción 2</option>
+          <option value="3">Opción 3</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Cepa:</label>
+        <select class="select w-full md:w-64" formControlName="cepa">
+          <option value="1">Opción 1</option>
+          <option value="2">Opción 2</option>
+          <option value="3">Opción 3</option>
+        </select>
+      </div>
+      <!-- Grupo de opciones de sexo y alojamiento -->
+    <div class="flex flex-col gap-6">
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Sexo:</label>
+        <div class="flex flex-col gap-2 pl-2">
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="sexo" value="M" class="radio" formControlName="sexo"/>
+            M
+          </label>
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="sexo" value="H" class="radio" formControlName="sexo" checked />
+            H
+          </label>
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="sexo" value="I" class="radio" formControlName="sexo"/>
+            Indefinido
+          </label>
+        </div>
+      </div>
+    </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Edad o peso:</label>
+        <select class="select w-full md:w-64" formControlName="edadPeso">
+          <option value="1">Opción 1</option>
+          <option value="2">Opción 2</option>
+          <option value="3">Opción 3</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Frecuencia de uso:</label>
+        <select class="select w-full md:w-64" formControlName="frecuenciaUso">
+          <option value="1">Opción 1</option>
+          <option value="2">Opción 2</option>
+          <option value="3">Opción 3</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Cantidad solicitada:</label>
+        <input
+          type="text"
+          placeholder="Cantidad solicitada"
+          class="input input-sm w-40 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
+          formControlName="cantidad"
+          />
+      </div>
+
+      <div>
+        <button type="button" (click)="onAddToAnimales()"  class="btn btn-outline btn-success btn-sm flex items-center gap-2">
+          <i class="ki-filled ki-plus-squared text-lg"></i>
+          Agregar animal
+        </button>
+      </div>
+    </div>
+    </div>
+
+
+  </div>
+
+
+<!-- Listado de animales -->
+  <div class="mb-3 row">
+    <label class="block text-sm font-medium text-gray-700 mb-1">Lista de animales:</label>
+    <div class="col-sm-9" formArrayName = "animales">
+     @for (animalGroup of animales.controls; track $index; let i = $index) {
+      <div [formGroupName]="i" class="border p-4 rounded mb-4 bg-gray-50 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div>
+            <label>Especie:</label>
+            <select class="select w-full" formControlName="especie">
+              <option value="">Seleccione</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Cepa:</label>
+            <select class="select w-full" formControlName="cepa">
+              <option value="">Seleccione</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Sexo:</label>
+            <div class="flex gap-4">
+              <label><input type="radio" formControlName="sexo" value="M"> M</label>
+              <label><input type="radio" formControlName="sexo" value="H"> H</label>
+              <label><input type="radio" formControlName="sexo" value="I"> Indefinido</label>
+            </div>
+          </div>
+
+          <div>
+            <label>Edad o peso:</label>
+            <select class="select w-full" formControlName="edadPeso">
+              <option value="">Seleccione</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Frecuencia de uso:</label>
+            <select class="select w-full" formControlName="frecuenciaUso">
+              <option value="">Seleccione</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Cantidad solicitada:</label>
+            <input type="text" formControlName="cantidad" class="input input-sm w-full" placeholder="Cantidad">
+          </div>
+
+        </div>
+
+        <div class="mt-2 flex justify-end">
+          <button type="button" (click)="onDeleteFavorite(i)" class="btn btn-error btn-sm">Eliminar</button>
+        </div>
+
+      </div>
+    }
+    </div>
+  </div>
+
+
+  <!-- Justificación -->
+  <div>
+    <div>
+        <p class="text-sm font-medium text-gray-700 mb-1">
+          ¿Cuenta con el equipo adecuado para alojar animales?
+        </p>
+        <div class="flex flex-col gap-2 pl-2">
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="equipo" value="1" class="radio" />
+            Sí
+          </label>
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="radio" name="equipo" value="2" class="radio" checked />
+            No
+          </label>
+        </div>
+      </div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">
+      Justificación del uso de animales:
+    </label>
+    <div class="flex flex-col">
+    <textarea
+      class="textarea w-full focus:outline-none focus:ring-2 focus:ring-teal-600"
+      rows="5"
+      placeholder="Describir el diseño experimental (grupos, animales por grupo y por periodo de tiempo)..."
+      formControlName="justificacionUso"
+      ></textarea>
+      @if ( formUtils.isValidField(myForm, 'justificacionUso')) {
+          <span class="form-text text-danger text-sm mt-1">
+            {{formUtils.getFieldError(myForm, "justificacionUso")}}
+          </span>
+        }
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div class="flex justify-end gap-4 mt-6">
+    <input class="btn btn-success" type="button" value="Guardar y avanzar" (click)="guardarYAvanzar()">
+    <button class="btn btn-outline">Guardar</button>
+  </div>
+</div>
+</form>

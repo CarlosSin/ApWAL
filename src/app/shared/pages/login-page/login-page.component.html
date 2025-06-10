@@ -2,9 +2,10 @@
   <div class="flex items-center justify-center p-8 lg:p-10 order-2 lg:order-1 h-full">
     <div class="card max-w-[370px] w-full">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card-body flex flex-col gap-5 p-10">
-        <div class="text-center mb-2.5">
+         <img class="h-auto w-auto" src="/assets/media/images/logonavbar3.png" />
+        <div class="text-center mb-auto">
           <h3 class="text-lg font-medium text-gray-900 leading-none mb-2.5">
-            Iniciar Sesión
+            Iniciar sesión
           </h3>
         </div>
 
@@ -44,18 +45,5 @@
   <div
     class="flex flex-col justify-center items-center lg:rounded-xl lg:border lg:border-gray-200 lg:m-5 order-1 lg:order-2 bg-no-repeat bg-center"
     style="background-image: url('/assets/media/images/login.jpg'); background-size: cover;">
-    <div class="flex flex-col items-start p-8 lg:p-16 gap-4 text-left w-full max-w-[500px]">
-      <a routerLink="/">
-        <img class="h-16 max-w-none" src="/assets/media/images/LogoAPWAL-Transparente.png" />
-      </a>
-      <div class="flex flex-col gap-3">
-        <h3 class="text-2xl font-semibold text-gray-900">APWAL</h3>
-        <div class="text-base font-medium text-gray-900">
-          Aplicación Web de administración<br />
-          para el cuidado y uso de Animales<br />
-          de Laboratorio.
-        </div>
-      </div>
-    </div>
   </div>
 </div>

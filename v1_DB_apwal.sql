@@ -1,5 +1,5 @@
   -- creeacion de la base de datos
-CREATE DATABASE appwal; 
+CREATE DATABASE ; 
 USE appwal;
 
 -- creacion de las tablas 
@@ -10,7 +10,7 @@ CREATE TABLE administrador (
     primer_apellido VARCHAR(255),   
     segunda_apellido VARCHAR(255), 
     nombre_usuario VARCHAR(255), 
-    telefono INT, 
+    telefono VARCHAR(255), 
     extension INT,
     fechayhora VARCHAR(255),
     correo_electronico VARCHAR(255) NOT NULL,

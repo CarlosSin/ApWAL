@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-confirmacion',
+  selector: 'confirmacion-p',
   imports: [],
   templateUrl: './confirmacion.component.html',
 })

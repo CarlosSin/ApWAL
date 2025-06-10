@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormProgressService } from '../../../../services/form-progress.service';
 
 @Component({
-  selector: 'app-descripcion-animal',
+  selector: 'descripcion-animal-p',
   imports: [ReactiveFormsModule],
   templateUrl: './descripcion-animal.component.html',
 })

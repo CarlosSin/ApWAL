@@ -1,33 +1,50 @@
-<div class="relative min-w-80">
-<div class="justify-items-end ">
-    <button (click)="Formulario_open()" class="flex items-center space-x-2 p-2 rounded-full bg-white shadow pr-6">
- 
-        <i class="ki-solid ki-profile-circle text-teal-700 text-5xl"></i>
-        <i class="ki-solid ki-abstract-14 text-teal-700 text-4xl"></i>
+<div class="relative w-full max-w-xs text-gray-800">
+  <!-- Botón de perfil -->
+  <div class="flex justify-end">
+    <button (click)="Formulario_open()"
+      class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 transition">
+      <i class="ki-solid ki-profile-circle text-teal-700 text-3xl"></i>
+      <i class="ki-solid ki-abstract-14 text-teal-700 text-2xl"></i>
     </button>
-</div>
+  </div>
 
+  <!-- Menú desplegable -->
+  <div *ngIf="mostrarFormulario"
+    class="absolute right-0 mt-3 w-80 bg-white border border-gray-200 rounded-xl shadow-lg z-50 p-6">
 
-<!--<div class=" absolute flex items-center space-x-2 w-full text-left hover:bg-gray-100 p-2 rounded-full" *ngIf="mostrarFormulario">--> 
-<div class="absolute justify-items-start min-w-98 items-center space-x-2 rounded-lg bg-gray-200 shadow ml-5w-auto mt-1" *ngIf="mostrarFormulario">
-    <div>
-        <p class="text-center text-base text-teal-700 mt-4">No.control:(señal con el numero)</p>
-        <p class="text-center text-base text-teal-700 mt-3">departamento:(señal con el departamento)</p>
-        <p class="text-center text-base text-teal-700 mt-3">Rol:(señal con el rol)</p>
-        <p class="text-center text-base text-teal-700 mt-3">Rol:(señal con el rol)</p>
-
+    <!-- Encabezado -->
+    <div class="mb-4">
+      <h4 class="text-center text-xl font-bold text-teal-700">Información del usuario</h4>
     </div>
 
-    <div>
-        <button roterlink="" class="btn btn-success mt-8 text-lg h-16 flex justify-end-safe rounded-full">
+    <!-- Datos del usuario -->
+    <div class="text-sm text-gray-700 space-y-2">
+      <p><span class="font-semibold">Usuario:</span> {{ usuario || '---' }}</p>
+      <p><span class="font-semibold">No. Control:</span> {{ noControl || '---' }}</p>
+      <p><span class="font-semibold">Departamento:</span> {{ departamento || '---' }}</p>
+
+      <div *ngIf="roles.length > 0">
+        <p class="font-semibold">Roles:</p>
+        <ul class="list-disc list-inside">
+          <li *ngFor="let rol of roles">{{ rol }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="mt-6 flex flex-col gap-3">
+      <button (click)="cambiarDeRol()"
+        class="w-full bg-teal-600 text-white hover:bg-teal-700 rounded-full py-2 text-center transition flex items-center justify-center gap-2">
         <i class="ki-solid ki-users"></i>
-            Cambiar de rol
-        </button>
-        <button roterlink="" class="btn btn-success mt-3 mb-3 text-lg h-16 flex justify-end-safe rounded-full">
-        <i class="ki-solid ki-exit-right text-white"></i>
-            Salir
-        </button>
-    </div>
+        Cambiar de rol
+      </button>
 
-</div>
+
+      <button (click)="logout()"
+        class="w-full bg-red-600 text-white hover:bg-red-700 rounded-full py-2 text-center transition flex items-center justify-center gap-2">
+        <i class="ki-solid ki-exit-right"></i>
+        Salir
+      </button>
+    </div>
+  </div>
 </div>

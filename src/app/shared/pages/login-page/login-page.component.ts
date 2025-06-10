@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +14,8 @@ export class LoginPageComponent {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       usuario: ['', Validators.required],
@@ -23,31 +24,42 @@ export class LoginPageComponent {
   }
 
   onSubmit() {
-  if (this.loginForm.invalid) {
-    console.warn('Formulario incompleto');
-    return;
-  }
+    if (this.loginForm.invalid) {
+      console.warn('Formulario incompleto');
+      return;
+    }
 
-  const { usuario, password } = this.loginForm.value;
+    const { usuario, password } = this.loginForm.value;
 
-  this.http.post<any>('http://localhost:3000/api/auth/login', { usuario, password })
-    .subscribe({
-      next: (res) => {
-        if (res.ok) {
-          localStorage.setItem('token', res.token);
-          localStorage.setItem('usuario', JSON.stringify(res.usuario));
-          console.log('✅ Login exitoso');
-          // Redirige a otra ruta si ya tienes
-          // this.router.navigate(['/dashboard']);
-        } else {
-          alert('Credenciales incorrectas');
+    this.http.post<any>('http://localhost:3000/api/auth/login', { usuario, password })
+      .subscribe({
+        next: (res) => {
+          if (res.ok) {
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('usuario', JSON.stringify(res.usuario));
+
+            const roles = res.usuario.roles || [];
+
+            if (roles.includes('Administrador')) {
+              this.router.navigate(['/admin']);
+            } else if (roles.includes('Investigador')) {
+              this.router.navigate(['/inv']);
+            } else if (roles.includes('Evaluador')) {
+              this.router.navigate(['/eva']);
+            } else {
+              this.router.navigate(['/guest']);
+            }
+
+          } else {
+            alert('Credenciales incorrectas');
+          }
+        },
+        error: (err) => {
+          console.error('Error:', err);
+          alert('Error al conectar con el servidor');
         }
-      },
-      error: (err) => {
-        console.error('Error:', err);
-        alert('Error al conectar con el servidor');
-      }
-    });
-}
+      });
 
+      
+  }
 }

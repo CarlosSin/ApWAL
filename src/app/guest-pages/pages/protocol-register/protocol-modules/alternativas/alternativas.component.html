@@ -1,0 +1,62 @@
+<h5 class="text-center text-xl font-bold text-gray-800 mb-8">Alternativas</h5>
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<div class="flex flex-col md:flex-row gap-10">
+<div class="flex-1 space-y-6">
+    <h2 class=" text-lg font-medium text-gray-800 mb-1">Reemplazo</h2>
+    <p class="block text-sm font-medium text-gray-700 mb-1">
+        Sustitución de animales conscientes por inconscientes o materiales no sensibles
+        <li>Modelos in vitro</li>
+        <li>Modelos por computadora</li>
+        <li>Ayudas audiovisuales</li>
+        <li>Invertebrados</li>
+        <li>Animales muertos</li>
+        <li>Material de rastros</li>
+    </p>
+
+    <h2 class=" text-lg font-medium text-gray-800 mb-1">Reducción</h2>
+    <p class="block text-sm font-medium text-gray-700 mb-1">
+        Reducción del número de animales sin disminución de la precisión
+        <li>selección del modelo animal(Colonias genéticamente homogéneas sin influencias ambientales)</li>
+        <li>Calidad sanitaria, genética, ambiental</li>
+        <li>Criopreservación</li>
+        <li>Metodología Bioestadística avanzada</li>
+        <li>Banco de datos: publicación de resultados negativos para no repetir</li>
+        <li>Acceso a literatura especializada</li>
+    </p>
+
+    <h2 class=" text-lg font-medium text-gray-800 mb-1">Refinamiento</h2>
+    <p class="block text-sm font-medium text-gray-700 mb-1">
+        Refinamiento de técnicas para reducir el dolor y las molestias
+        <li>Cuidado y bienestar animal</li>
+        <li>Destreza y capacitación del personal</li>
+        <li>Perfeccionamiento de métodos para detectar dolor</li>
+        <li>Uso de anestésicos, analgésicos y tranquilizantes</li>
+        <li>Uso de técnicas no invasivas o telemétricas</li>
+        <li>Uso radiografias(tomografías) para detectar tumores o deterioro orgánico</li>
+        <li>aplicar eutanasia anticipada</li>
+    </p>
+</div>
+
+<div class="flex-1 space-y-6">
+  <label class="text-sm font-medium text-gray-700 mb-1">Describa cómo se han analizado cada una de las anteriores alternativas para el desarrollo de su protocolo o justifique el por qué no es aplicable:</label>
+  <br>
+   <div class="flex flex-col">
+      <textarea
+        rows="10"
+        class="w-full md:w-[600px] px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        placeholder="Escriba una descripción"
+        formControlName="description"
+      ></textarea>
+      @if ( formUtils.isValidField(myForm, 'description')) {
+          <span class="form-text text-danger text-sm mt-1">
+            {{formUtils.getFieldError(myForm, "description")}}
+          </span>
+        }
+   </div>
+</div>
+</div>
+<div class="flex justify-end gap-4 mt-10">
+  <button class="btn btn-success">Guardar y avanzar</button>
+  <button class="btn btn-light">Guardar</button>
+</div>
+</form>

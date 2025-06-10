@@ -1,0 +1,63 @@
+
+  <h5 class="text-center text-xl font-bold text-gray-800 mb-8">
+    Registro de investigador y suplente
+  </h5>
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+  <div class="flex flex-col md:flex-row gap-8">
+    <!-- Investigador -->
+    <div class="md:w-1/2 bg-gray-50 p-4 rounded-lg shadow-sm">
+      <h2 class="text-center text-lg font-semibold text-gray-700 mb-4">Datos del Investigador</h2>
+
+      <label for="b_noControlInv" class="block text-sm font-medium text-gray-700 mb-1">Número de control:</label>
+      <div class="flex items-center gap-2 mb-1">
+        <div class="flex flex-col">
+        <!-- Input numero de control del investigador -->
+        <input class="input input-sm w-40 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" placeholder="Ej: 12345678" formControlName="numInv" type="text" id="b_noControlInv">
+        @if ( formUtils.isValidField(myForm, 'numInv')) {
+          <span class="form-text text-danger text-sm mt-1">
+            {{formUtils.getFieldError(myForm, "numInv")}}
+          </span>
+        }
+        </div>
+        <button class="btn btn-outline btn-success">Buscar</button>
+      </div>
+
+      <p class="text-sm text-gray-700 mb-1">Nombre: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700 mb-1">Email: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700 mb-1">Departamento: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700 mb-1">Teléfono: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700">Extensión: <span class="font-medium text-gray-900">---</span></p>
+    </div>
+
+    <!-- Suplente -->
+    <div class="md:w-1/2 bg-gray-50 p-4 rounded-lg shadow-sm">
+      <h2 class="text-center text-lg font-semibold text-gray-700 mb-4">Datos del Suplente</h2>
+
+      <label for="b_noControlSuplente" class="block text-sm font-medium text-gray-700 mb-1">Número de control:</label>
+      <div class="flex items-center gap-2 mb-4">
+        <div class="flex flex-col">
+              <!-- input numero de control del suplente -->
+        <input class="input input-sm w-40 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" placeholder="Ej: 87654321" formControlName="numSupl" type="text" id="b_noControlSuplente">
+        @if ( formUtils.isValidField(myForm, 'numSupl')) {
+          <span class="form-text text-danger text-sm mt-1">
+            {{formUtils.getFieldError(myForm, "numSupl")}}
+          </span>
+        }
+        </div>
+        <button class="btn btn-outline btn-success">Buscar</button>
+      </div>
+
+      <p class="text-sm text-gray-700 mb-1">Nombre: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700 mb-1">Email: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700 mb-1">Departamento: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700 mb-1">Teléfono: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700">Extensión: <span class="font-medium text-gray-900">---</span></p>
+    </div>
+  </div>
+
+  <div class="flex justify-end gap-4 mt-8">
+    <input class="btn btn-success" type="button" value="Guardar y avanzar" (click)="guardarYAvanzar()">
+    <input class="btn btn-light" type="button" value="Guardar">
+  </div>
+</form>
