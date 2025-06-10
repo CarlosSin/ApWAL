@@ -1,0 +1,79 @@
+<h5 class="text-center text-xl font-bold text-gray-800 mb-8">Procedimientos experimentales</h5>
+<form autocomplete="off">
+<div class="flex flex-col md:flex-row gap-10">
+  <div class="flex-1 space-y-6">
+    <label class="block text-sm font-medium text-gray-700 mb-1">Alojamiento de los animales:</label>
+        <div class="flex flex-col gap-2 pl-2">
+        <label class="inline-flex items-center gap-2 text-sm text-gray-700">
+          <input type="radio" name="colaboracion" value="1" class="radio" />
+          Unidad de experimentación
+        </label>
+        <label class="inline-flex items-center gap-2 text-sm text-gray-700">
+          <input type="radio" name="colaboracion" value="2" class="radio" checked />
+          Laboratorio del investigador
+        </label>
+      </div>
+        <p class="block text-sm font-medium text-gray-700 mb-1">Nota: si se almacenan en el laboratorio del investigador nunca podra ser por mas de 24 horas</p>
+  </div>
+
+  <div class="flex-1 space-y-6">
+    <label class="block text-sm font-medium text-gray-700 mb-1">Procedimientos que se emplearán en este proyecto:</label>
+    <div class="flex flex-col items-start gap-4">
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Restriccion de agua y/o alimento
+      </label>
+      <textarea
+        rows="6"
+        class="w-full md:w-96 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        placeholder="Describa el procedimiento de restricción de agua y/o alimento."
+      ></textarea>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Inoculación de microorganismos y/o derivados
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Producción de anticuerpos monoclonales
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Cateterización y/o entubación
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Inoculación de material de origen humano/animal
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Producción de anticuerpos policlonales
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Cateterización y/o entubación
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Extracción de líquidos y/o fluídos
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Procedimientos de cirugía con recuperación
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Procedimientos de cirugía sin recuperación
+      </label>
+      <label class="form-label flex items-center gap-2.5">
+      <input class="checkbox" name="check" type="checkbox" value="1"/>
+        Agentes peligrosos
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-end gap-4 mt-10">
+  <button class="btn btn-success">Guardar y avanzar</button>
+  <button class="btn btn-light">Guardar</button>
+</div>
+</form>

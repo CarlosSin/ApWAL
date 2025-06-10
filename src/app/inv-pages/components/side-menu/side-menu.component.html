@@ -1,13 +1,175 @@
 <nav class="bg-cyan-50 border-gray-200 dark:bg-gray-900 dark:border-gray-700">
 
 <div class="flex flex-wrap justify-center">
+
 <div class="dropdown" data-dropdown="true" data-dropdown-trigger="click">
  <button class="dropdown-toggle btn btn-clear btn-success">
   <i class="ki-filled ki-archive"></i>
-  Mis protocolos
+  Gestionar protocolos
  </button>
  <div class="dropdown-content w-full max-w-56 py-2">
-  <div class="menu menu-default flex flex-col w-full">
+
+<div class="menu menu-default flex flex-col border rounded-lg w-full max-w-56 py-2" data-menu="true">
+
+ <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+  <a class="menu-link" href="#">
+   <span class="menu-icon">
+  <i class="ki-filled ki-tablet-text-up"></i>
+   </span>
+   <span class="menu-title">
+    Protocolos de investigación
+   </span>
+   <span class="menu-arrow">
+    <!-- <i 'outline'}="" class="ki-{" default':="" ki-plus="" menu-item-show:hidden'="">
+    </i>
+    <i 'outline'}="" class="ki-{" default':="" hidden="" ki-minus="" menu-item-show:block'="">
+    </i> -->
+
+   </span>
+  </a>
+  <div class="menu-accordion">
+    <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/general-protocol'">
+     <span class="menu-icon">
+    <i class="ki-filled ki-book"></i>
+     </span>
+     <span class="menu-title">
+      Generales
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/approved-protocol'">
+     <span class="menu-icon">
+     <i class="ki-filled ki-like"></i>
+     </span>
+     <span class="menu-title">
+      Aprobados
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/unapproved-protocol'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-dislike"></i>
+     </span>
+     <span class="menu-title">
+      No aprobados
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+   <a class="menu-link" [routerLink]="'/inv/recomendations-protocol'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-search-list"></i>
+     </span>
+     <span class="menu-title">
+      Aprobados con recomendaciones
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/unfinished-protocol'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-loading"></i>
+     </span>
+     <span class="menu-title">
+      En proceso
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/underreview-protocol'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-questionnaire-tablet"></i>
+     </span>
+     <span class="menu-title">
+      En revisión
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+ <div class="menu-separator">
+ </div>
+ <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+  <a class="menu-link" href="#">
+   <span class="menu-icon">
+    <i class="ki-filled ki-tablet"></i>
+   </span>
+   <span class="menu-title">
+    Estudios piloto
+   </span>
+   <span class="menu-arrow">
+
+   </span>
+  </a>
+  <div class="menu-accordion">
+    <div class="menu-item">
+    <a class="menu-link" [routerLink]="'/inv/general-pilot'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-book"></i>
+     </span>
+     <span class="menu-title">
+      Generales
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+     <a class="menu-link" [routerLink]="'/inv/approved-pilot'">
+     <span class="menu-icon">
+     <i class="ki-filled ki-like"></i>
+     </span>
+     <span class="menu-title">
+      Aprobados
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+     <a class="menu-link" [routerLink]="'/inv/unapproved-pilot'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-dislike"></i>
+     </span>
+     <span class="menu-title">
+      No aprobados
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+   <a class="menu-link" [routerLink]="'/inv/recomendations-pilot'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-search-list"></i>
+     </span>
+     <span class="menu-title">
+      Aprobados con recomendaciones
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+     <a class="menu-link" [routerLink]="'/inv/unfinished-pilot'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-loading"></i>
+     </span>
+     <span class="menu-title">
+      En proceso
+     </span>
+    </a>
+   </div>
+   <div class="menu-item">
+     <a class="menu-link" [routerLink]="'/inv/underreview-pilot'">
+     <span class="menu-icon">
+      <i class="ki-filled ki-questionnaire-tablet"></i>
+     </span>
+     <span class="menu-title">
+      En revisión
+     </span>
+    </a>
+   </div>
+  </div>
+ </div>
+</div>
+
+  <!-- <div class="menu menu-default flex flex-col w-full">
    <div class="menu-item">
     <a class="menu-link" [routerLink]="'/inv/my-protocols'">
      <span class="menu-icon">
@@ -68,7 +230,7 @@
      </span>
     </a>
    </div>
-  </div>
+  </div> -->
  </div>
 </div>
 
