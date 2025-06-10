@@ -10,28 +10,28 @@ const pool = mysql.createPool({
   port: process.env.DB_PORT
 });
 
-console.log('Ruta deptos lista');
+console.log('Ruta sexo lista');
 
 const router = express.Router();
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM departamento');
+    const [rows] = await pool.query('SELECT * FROM sexo');
     res.json(rows);
   } catch (err) {
     console.error('❌ ERROR EN QUERY:', err);
-    res.status(500).json({ error: 'Error al obtener departamentos' });
+    res.status(500).json({ error: 'Error al obtener sexo' });
   }
 });
 
 router.post('/', async (req, res) => {
   try {
-    const nuevoDepartamento = req.body;
+    const nuevosexo = req.body;
 
-    await pool.query('INSERT INTO departamento SET ?', [nuevoDepartamento]);
-    res.status(201).json({ message: 'departamento creado' });
+    await pool.query('INSERT INTO sexo SET ?', [nuevosexo]);
+    res.status(201).json({ message: 'sexo creado' });
   } catch (error) {
-    console.error('Error al insertar departamento:', error);
-    res.status(500).json({ error: 'Error al insertar departamento' });
+    console.error('Error al insertar sexo:', error);
+    res.status(500).json({ error: 'Error al insertar sexo' });
   }
 });
 

@@ -10,28 +10,28 @@ const pool = mysql.createPool({
   port: process.env.DB_PORT
 });
 
-console.log('Ruta deptos lista');
+console.log('Ruta especie lista');
 
 const router = express.Router();
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM departamento');
+    const [rows] = await pool.query('SELECT * FROM especie');
     res.json(rows);
   } catch (err) {
     console.error('❌ ERROR EN QUERY:', err);
-    res.status(500).json({ error: 'Error al obtener departamentos' });
+    res.status(500).json({ error: 'Error al obtener especie' });
   }
 });
 
 router.post('/', async (req, res) => {
   try {
-    const nuevoDepartamento = req.body;
+    const nuevaespecie = req.body;
 
-    await pool.query('INSERT INTO departamento SET ?', [nuevoDepartamento]);
-    res.status(201).json({ message: 'departamento creado' });
+    await pool.query('INSERT INTO especie SET ?', [nuevaespecie]);
+    res.status(201).json({ message: 'especie creada' });
   } catch (error) {
-    console.error('Error al insertar departamento:', error);
-    res.status(500).json({ error: 'Error al insertar departamento' });
+    console.error('Error al insertar especie:', error);
+    res.status(500).json({ error: 'Error al insertar especie' });
   }
 });
 

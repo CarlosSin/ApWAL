@@ -16,8 +16,13 @@
                 <tr class="hover:bg-teal-50" *ngFor="let departamento of departamentdb">
                     <td class="text-center px-6 py-4"> {{departamento.ID_departamento}} </td>
                     <td class="text-center px-6 py-4">{{ departamento.nombre_departamento }}</td>
-                    <td class="text-center px-6 py-4">{{ departamento.disponibilidad_departamento}}</td>
                     <td class="text-center px-6 py-4">
+                        @if(departamento.disponibilidad_departamento){
+                            <i class="ki-solid ki-check-circle text-green-500 text-4xl"></i>
+                        }@else {
+                            <i class="ki-solid ki-cross-circle text-red-400 text-4xl"></i>
+                        }
+                        <td class="text-center px-6 py-4">
                         <button class="bg bg-sky-300 p-3 rounded-2xl">
                             <i class="ki-filled ki-notepad-edit text-lg"></i>
                             Modificar departamento 
