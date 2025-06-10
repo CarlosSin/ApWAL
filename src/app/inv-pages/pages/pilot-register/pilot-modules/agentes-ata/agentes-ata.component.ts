@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { FormUtils } from '../../../../../utils/form-utils';
 
 @Component({
-  selector: 'app-agentes-ata',
+  selector: 'agentes-ata-p',
   imports: [ReactiveFormsModule],
   templateUrl: './agentes-ata.component.html',
 })

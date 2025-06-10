@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormProgressService } from '../../../../services/form-progress.service';
 
 @Component({
-  selector: 'app-salud-ocupacional',
+  selector: 'salud-ocupacional-p',
   imports: [ReactiveFormsModule],
   templateUrl: './salud-ocupacional.component.html',
 })

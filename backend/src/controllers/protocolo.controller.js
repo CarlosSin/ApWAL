@@ -9,9 +9,9 @@ export const crearProtocolo = async (req, res) => {
   try {
     const [result] = await pool.query(`
       INSERT INTO protocolo (
-        estado_protocolo, fecha_elaboracion, vigencia,
+        ID_tipo_proto, estado_protocolo, fecha_elaboracion, vigencia,
         no_decontrol_investigador, no_decontrol_suplente
-      ) VALUES (NULL, '1000-01-01', NULL, ?, ?)
+      ) VALUES (1, NULL, '1000-01-01', NULL, ?, ?)
     `, [no_decontrol_investigador, no_decontrol_suplente]);
 
     res.status(201).json({ id: result.insertId });

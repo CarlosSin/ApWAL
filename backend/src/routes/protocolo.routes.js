@@ -9,4 +9,5 @@ router.post('/', crearProtocolo);
 // Actualizar protocolo existente por ID
 router.put('/:id', actualizarProtocolo);
 
+
 export default router;

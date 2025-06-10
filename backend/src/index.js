@@ -7,6 +7,7 @@ import usuarioRoutes from './routes/usuarios.routes.js';
 import deptosRoutes from './routes/deptos.routes.js';
 import personalesRoutes from './routes/datos-personales.routes.js';
 import protocoloRoutes from './routes/protocolo.routes.js';
+import datosGeneralesRoutes from './routes/datos-generales.routes.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use('/api/usuarios',usuarioRoutes);
 app.use('/api/deptos', deptosRoutes);
 app.use('/api/datos-personales', personalesRoutes);
 app.use('/api/protocolo', protocoloRoutes);
+app.use('/api/datos-generales', datosGeneralesRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Servidor corriendo en puerto ${process.env.PORT}`);

@@ -5,7 +5,7 @@ import { FormProgressService } from '../../../../services/form-progress.service'
 import { FormUtils } from '../../../../../utils/form-utils';
 
 @Component({
-  selector: 'app-eutanasia',
+  selector: 'eutanasia-p',
   imports: [ReactiveFormsModule],
   templateUrl: './eutanasia.component.html',
 })
