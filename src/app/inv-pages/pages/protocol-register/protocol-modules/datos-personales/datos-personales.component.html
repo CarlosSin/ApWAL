@@ -20,14 +20,16 @@
           </span>
         }
         </div>
-        <button class="btn btn-outline btn-success">Buscar</button>
+        <button type="button" (click)="buscarInvestigador()" class="btn btn-outline btn-success">Buscar</button>
       </div>
 
-      <p class="text-sm text-gray-700 mb-1">Nombre: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700 mb-1">Email: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700 mb-1">Departamento: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700 mb-1">Teléfono: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700">Extensión: <span class="font-medium text-gray-900">---</span></p>
+
+      <p class="text-sm text-gray-700 mb-1">No. de control: <span class="font-medium text-gray-900">{{investigador?.noControl || '---'}}</span></p>
+      <p class="text-sm text-gray-700 mb-1">Nombre: <span class="font-medium text-gray-900">{{investigador?.nombre || '---'}}</span></p>
+      <p class="text-sm text-gray-700 mb-1">Email: <span class="font-medium text-gray-900"> {{investigador?.email || '---'}}</span></p>
+      <p class="text-sm text-gray-700 mb-1">Departamento: <span class="font-medium text-gray-900">{{investigador?.departamento || '---'}}</span></p>
+      <p class="text-sm text-gray-700 mb-1">Teléfono: <span class="font-medium text-gray-900">{{investigador?.telefono || '---'}}</span></p>
+      <p class="text-sm text-gray-700">Extensión: <span class="font-medium text-gray-900">{{investigador?.extension || '---'}}</span></p>
     </div>
 
     <!-- Suplente -->
@@ -45,19 +47,20 @@
           </span>
         }
         </div>
-        <button class="btn btn-outline btn-success">Buscar</button>
+        <button type="button" (click)="buscarSuplente()" class="btn btn-outline btn-success">Buscar</button>
       </div>
 
-      <p class="text-sm text-gray-700 mb-1">Nombre: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700 mb-1">Email: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700 mb-1">Departamento: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700 mb-1">Teléfono: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700">Extensión: <span class="font-medium text-gray-900">---</span></p>
+      <p class="text-sm text-gray-700 mb-1">No. de control: <span class="font-medium text-gray-900">{{suplente?.noControl || '---'}}</span></p>
+      <p class="text-sm text-gray-700 mb-1">Nombre: <span class="font-medium text-gray-900">{{suplente?.nombre || '---'}}</span></p>
+      <p class="text-sm text-gray-700 mb-1">Email: <span class="font-medium text-gray-900">{{suplente?.email || '---'}}</span></p>
+      <p class="text-sm text-gray-700 mb-1">Departamento: <span class="font-medium text-gray-900">{{suplente?.departamento || '---'}}</span></p>
+      <p class="text-sm text-gray-700 mb-1">Teléfono: <span class="font-medium text-gray-900">{{suplente?.telefono || '---'}}</span></p>
+      <p class="text-sm text-gray-700">Extensión: <span class="font-medium text-gray-900">{{suplente?.extension || '---'}}</span></p>
     </div>
   </div>
 
   <div class="flex justify-end gap-4 mt-8">
     <input class="btn btn-success" type="button" value="Guardar y avanzar" (click)="guardarYAvanzar()">
-    <input class="btn btn-light" type="button" value="Guardar">
+    <input class="btn btn-light" type="button" value="Guardar" (click)="guardarSinAvanzar()">
   </div>
 </form>
