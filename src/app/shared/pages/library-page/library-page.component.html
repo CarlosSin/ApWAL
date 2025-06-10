@@ -1,18 +1,38 @@
 <app-navbar></app-navbar>
-<div class="card h-full shadow-xl">
 
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-    <!-- Tarjeta principal -->
-        <div class="col-span-8">
-            <div class="bg-white rounded-2xl p-6 h-full">
+<div class="p-6 max-w-5xl mx-auto">
+  <div class="bg-white rounded-2xl shadow-xl p-6">
+    <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Biblioteca Digital</h2>
 
-                <!-- Header de la tarjeta -->
-                <h4 class="text-3xl font-extrabold text-gray-700 text-center">Biblioteca digital</h4>
-                <!-- Body de la tarjeta -->
-                <div class="overflow-y-auto h-72 flex flex-col items-center justify-start space-y-6">
+    <table class="min-w-full table-auto border border-gray-200 rounded-xl overflow-hidden">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-4 py-2 text-left">Nombre</th>
+          <th class="px-4 py-2 text-left">Descripción</th>
+          <th class="px-4 py-2 text-left">Tipo</th>
+          <th class="px-4 py-2 text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let recurso of recursos" class="border-t">
+          <td class="px-4 py-2">{{ recurso.nombre }}</td>
+          <td class="px-4 py-2">{{ recurso.descripcion }}</td>
+          <td class="px-4 py-2">{{ recurso.tipo }}</td>
+          <td class="px-4 py-2 text-center">
+            <a
+              [href]="obtenerURL(recurso.ruta)"
+              target="_blank"
+              class="bg-blue-600 text-white px-4 py-1 rounded-lg hover:bg-blue-700 transition"
+            >
+              Abrir
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-                </div>
-            </div>
-        </div>
+    <div *ngIf="recursos.length === 0" class="text-center text-gray-500 mt-6">
+      No hay recursos disponibles.
     </div>
+  </div>
 </div>

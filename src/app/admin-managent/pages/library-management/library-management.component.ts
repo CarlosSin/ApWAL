@@ -1,118 +1,157 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-interface archivosrules{
-  nombre_archivo:string,
-  seccion:number,
-  archivo:File,
-}
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-library-management',
+  standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './library-management.component.html',
+  templateUrl: './library-management.component.html'
 })
-
-export class LibraryManagementComponent {
+export class LibraryManagementComponent implements OnInit {
   mostrarFormulario = false;
 
-  nuevoArchivo:archivosrules={
-    nombre_archivo: '',
-    seccion: 0,
-    archivo: undefined,
+  // Lista de recursos mostrados
+  listaRecursos: any[] = [];
+
+  // Lista de tipos de recurso (para el select)
+  tiposRecurso: any[] = [];
+
+  // Modelo para formulario
+  nuevoRecurso: any = {
+    nombre: '',
+    descripcion: '',
+    tipo: '',
+    archivo: null
+  };
+
+  recursoEditando: any = null;
+  modoEdicion: boolean = false;
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    this.cargarRecursos();
+    this.cargarTiposRecurso();
   }
 
-  listaarchivoS1:archivosrules [] = [];//lista de 01-procedimientos experimentales
-  listaarchivoS2:archivosrules [] = [];// lsita de 02-alternativas
-  listaarchivosS3:archivosrules [] = [];// lsita de 03-agentes ata
-  listaarchivosS4:archivosrules [] = [];// lsita de 04-eutanasia
-  listaarchivosS5:archivosrules [] = [];// lsita de 05-clasificacion
-  listaarchivosS6:archivosrules [] = [];// lsita de 06-salud ocupacional
- 
-  abrirFormulario() {
-    console.log('¡Botón presionado!');
+  cargarRecursos(): void {
+    this.http.get<any[]>('http://localhost:3000/api/recursos')
+      .subscribe({
+        next: data => this.listaRecursos = data,
+        error: err => console.error('Error al cargar recursos:', err)
+      });
+  }
+
+  cargarTiposRecurso(): void {
+    this.http.get<any[]>('http://localhost:3000/api/recursos/tipos')
+      .subscribe({
+        next: data => this.tiposRecurso = data,
+        error: err => console.error('Error al cargar tipos de recurso:', err)
+      });
+  }
+
+  abrirFormulario(): void {
     this.mostrarFormulario = true;
   }
-  
-  cerrarFormulario() {
+
+  cerrarFormulario(): void {
     this.mostrarFormulario = false;
+    this.modoEdicion = false;
+    this.recursoEditando = null;
+    this.nuevoRecurso = {
+      nombre: '',
+      descripcion: '',
+      tipo: '',
+      archivo: null
+    };
   }
-  capturarArchivo(event: any) {
-  const archivoSeleccionado = event.target.files[0];
-    if (archivoSeleccionado) {
-      this.nuevoArchivo.archivo = archivoSeleccionado;
+
+
+  capturarArchivo(event: any): void {
+    const file = event.target.files[0];
+    if (this.modoEdicion) {
+      this.recursoEditando.archivo = file;
+    } else {
+      this.nuevoRecurso.archivo = file;
     }
   }
 
-  agregararchivo() {
-    if (this.nuevoArchivo.nombre_archivo && this.nuevoArchivo.seccion) {
-      
-      if(this.nuevoArchivo.seccion==1){ //01-procedimientos experimentales
-        this.listaarchivoS1.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
+  guardarRecurso(): void {
+  const formData = new FormData();
+  formData.append('nombre', this.nuevoRecurso.nombre);
+  formData.append('descripcion', this.nuevoRecurso.descripcion);
+  formData.append('tipo', this.nuevoRecurso.tipo);
 
-      if(this.nuevoArchivo.seccion==2){//02-alternativas
-        this.listaarchivoS2.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-      
-      if(this.nuevoArchivo.seccion==3){//03-agentes ata
-        this.listaarchivosS3.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-
-      if(this.nuevoArchivo.seccion==4){//04-eutanasia
-        this.listaarchivosS4.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-
-      if(this.nuevoArchivo.seccion==5){//05-clasificacion
-        this.listaarchivosS5.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-
-      if(this.nuevoArchivo.seccion==6){//06-salud ocupacional
-        this.listaarchivosS6.push({ ...this.nuevoArchivo });
-        this.nuevoArchivo = { 
-          nombre_archivo: '',
-          seccion: 0,
-          archivo: undefined
-        };
-      }
-      this.cerrarFormulario();
-    }
+  if (this.nuevoRecurso.archivo) {
+    formData.append('archivo', this.nuevoRecurso.archivo);
   }
 
+  if (this.modoEdicion && this.recursoEditando) {
+    // PUT para editar
+    this.http.put(`http://localhost:3000/api/recursos/${this.recursoEditando.ID_recurso}`, formData)
+      .subscribe({
+        next: () => {
+          this.cargarRecursos();
+          this.cerrarFormulario();
+        },
+        error: err => console.error('Error al modificar recurso:', err)
+      });
+  } else {
+    // POST para agregar nuevo
+    this.http.post('http://localhost:3000/api/recursos', formData)
+      .subscribe({
+        next: () => {
+          this.cargarRecursos();
+          this.cerrarFormulario();
+        },
+        error: err => console.error('Error al agregar recurso:', err)
+      });
+  }
 }
 
-/*
-secciones posibles
-01-procedimientos experimentales
-02-alternativas
-03-agentes ata
-04-eutanasia
-05-clasificacion
-06-salud ocupacional
-*/
+
+
+  eliminarRecurso(id: number): void {
+    if (!confirm('¿Estás seguro de eliminar este recurso?')) return;
+
+    this.http.delete(`http://localhost:3000/api/recursos/${id}`)
+      .subscribe({
+        next: () => this.cargarRecursos(),
+        error: err => console.error('Error al eliminar recurso:', err)
+      });
+  }
+
+  // Variables para editar recurso
+
+  editarRecurso(recurso: any) {
+    this.mostrarFormulario = true;
+    this.modoEdicion = true;
+    this.recursoEditando = recurso;
+
+    // const tipoId = this.obtenerIDTipoPorNombre(recurso.tipo);
+    // if (!tipoId) {
+    //   console.error('No se encontró el ID del tipo para:', recurso.tipo);
+    // }
+
+    this.nuevoRecurso = {
+      nombre: recurso.nombre,
+      descripcion: recurso.descripcion,
+      tipo: this.obtenerIDTipoPorNombre(recurso.tipo),
+      archivo: null
+    };
+
+
+    // console.log('nuevoRecurso:', this.nuevoRecurso);
+  }
+
+  obtenerIDTipoPorNombre(nombre: string): number | null {
+    const tipoEncontrado = this.tiposRecurso.find(tipo => tipo.nombre === nombre);
+    return tipoEncontrado ? tipoEncontrado.ID_tipo_recurso : null;
+  }
+
+
+
+
+}
