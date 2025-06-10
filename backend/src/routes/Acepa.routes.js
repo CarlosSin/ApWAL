@@ -15,7 +15,7 @@ console.log('Ruta cepa lista');
 const router = express.Router();
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM cepa');
+    const [rows] = await pool.query('select cepa.ID_registro_especie, cepa.ID_registro_cepa, especie.nombre_especie, cepa.nombre_cepa, cepa.descripcion_cepa, cepa.disponibilidad_cepa FROM cepa INNER JOIN especie ON cepa.ID_registro_especie = especie.ID_registro_especie');
     res.json(rows);
   } catch (err) {
     console.error('❌ ERROR EN QUERY:', err);

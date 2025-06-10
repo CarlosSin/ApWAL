@@ -15,7 +15,7 @@ console.log('Ruta catalogo animal lista');
 const router = express.Router();
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM catalogoAnimal');
+    const [rows] = await pool.query('SELECT catalogoAnimal.linea, especie.ID_registro_especie, especie.nombre_especie, cepa.ID_registro_cepa, cepa.nombre_cepa, sexo.ID_registro_sexo, sexo.nombre_sexo, edadopeso.ID_registro_edadopeso, edadopeso.nombre_edadopeso, catalogoAnimal.disponibilidad_animal FROM ((((catalogoAnimal INNER JOIN especie ON catalogoAnimal.ID_registro_especie = especie.ID_registro_especie) INNER JOIN cepa ON catalogoAnimal.ID_registro_cepa = cepa.ID_registro_cepa) INNER JOIN sexo ON catalogoAnimal.ID_registro_sexo = sexo.ID_registro_sexo) INNER JOIN edadopeso ON catalogoAnimal.ID_registro_edadopeso = edadopeso.ID_registro_edadopeso)');
     res.json(rows);
   } catch (err) {
     console.error('❌ ERROR EN QUERY:', err);

@@ -3,10 +3,11 @@ import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Va
 import { FormUtils } from '../../../../../utils/form-utils';
 import { Router } from '@angular/router';
 import { FormProgressService } from '../../../../services/form-progress.service';
+import {MostrarCatalogoComponent} from '../descripcion-animal/mostrar-catalogo/mostrar-catalogo.component';
 
 @Component({
   selector: 'app-descripcion-animal',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,MostrarCatalogoComponent],
   templateUrl: './descripcion-animal.component.html',
 })
 export class DescripcionAnimalComponent {

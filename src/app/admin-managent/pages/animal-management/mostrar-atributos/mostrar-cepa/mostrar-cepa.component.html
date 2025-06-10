@@ -6,6 +6,7 @@
         <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
             <thead class="bg-teal-500 text-white">
                 <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre de la especie</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre de la cepa</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Descripción de la cepa</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Disponibilidad de la cepa</th>
@@ -14,6 +15,7 @@
             </thead>
             <tbody class="divide-y divide-teal-100">
                 <tr class="hover:bg-teal-50" *ngFor="let cepa of cepadb">
+                    <td class="text-center px-6 py-4"> {{ cepa.nombre_especie}} </td>
                     <td class="text-center px-6 py-4"> {{ cepa.nombre_cepa}} </td>
                     <td class="text-center px-6 py-4">{{ cepa.descripcion_cepa }}</td>
                    <td class="text-center px-6 py-4">

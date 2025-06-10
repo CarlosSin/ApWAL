@@ -1,0 +1,85 @@
+<div class="bg-teal-500 justify-items-center rounded-2xl p-4">
+    <h2 class="card-title text-2xl text-white">Tabla de animales del catalogo</h2>                
+</div>
+<div class="mb-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div>
+            <label for="especieFilter" class="block text-gray-700 text-sm font-bold mb-2">Filtrar por Especie:</label>
+            <select id="especieFilter" [(ngModel)]="selectedEspecie" (change)="applyFilters()"
+                class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <option value="">Todas</option>
+                <option *ngFor="let especie of uniqueEspecies" [value]="especie">{{ especie }}</option>
+            </select>
+        </div>
+        <div>
+            <label for="cepaFilter" class="block text-gray-700 text-sm font-bold mb-2">Filtrar por Cepa:</label>
+            <select id="cepaFilter" [(ngModel)]="selectedCepa" (change)="applyFilters()"
+                class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <option value="">Todas</option>
+                <option *ngFor="let cepa of uniqueCepa" [value]="cepa">{{ cepa }}</option>
+            </select>
+        </div>
+        <div>
+            <label for="sexoFilter" class="block text-gray-700 text-sm font-bold mb-2">Filtrar por Sexo:</label>
+            <select id="sexoFilter" [(ngModel)]="selectedSexo" (change)="applyFilters()"
+                class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <option value="">Todos</option>
+                <option *ngFor="let sexo of uniqueSexo" [value]="sexo">{{ sexo }}</option>
+            </select>
+        </div>
+        <div>
+            <label for="edadPesoFilter" class="block text-gray-700 text-sm font-bold mb-2">Filtrar por Edad/Peso:</label>
+            <select id="edadPesoFilter" [(ngModel)]="selectedEdadPeso" (change)="applyFilters()"
+                class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <option value="">Todas</option>
+                <option *ngFor="let edadPeso of uniqueEdadPeso" [value]="edadPeso">{{ edadPeso }}</option>
+            </select>
+        </div>
+    </div>
+
+<div class="p-4">
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
+            <thead class="bg-teal-500 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">línea</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Especie</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Cepa</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Sexo</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Edad o peso</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Disponibilidad</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acción</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-teal-100">
+                <tr class="hover:bg-teal-50" *ngFor="let animal of filteredAnimaldb">
+                    <td class="text-center px-6 py-4">{{ animal.linea }}</td>
+                    <td class="text-center px-6 py-4">{{ animal.nombre_especie }}</td>
+                    <td class="text-center px-6 py-4">{{ animal.nombre_cepa }}</td>
+                    <td class="text-center px-6 py-4">{{ animal.nombre_sexo }}</td>
+                    <td class="text-center px-6 py-4">{{ animal.nombre_edadopeso }}</td>
+                    <td class="text-center px-6 py-4">
+                        @if(animal.disponibilidad_animal){
+                            <i class="ki-solid ki-check-circle text-green-500 text-4xl"></i>
+                        }@else {
+                            <i class="ki-solid ki-cross-circle text-red-400 text-4xl"></i>
+                        }
+                    </td>
+                    <td class="text-center px-6 py-4">
+                        <!---->
+                        @if(animal.disponibilidad_animal){
+                           <button class="bg bg-green-300 p-3 rounded-2xl">
+                                <i class="ki-filled ki-message-add text-lg"></i>
+                                Agregar animal 
+                            </button>
+                        }@else {
+                            <button disabled class="bg bg-gray-300 p-3 rounded-2xl">
+                                <i class="ki-filled ki-cross-square text-2xl"></i>
+                                Agregar animal 
+                            </button>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

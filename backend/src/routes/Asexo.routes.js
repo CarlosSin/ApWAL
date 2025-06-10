@@ -15,7 +15,7 @@ console.log('Ruta sexo lista');
 const router = express.Router();
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM sexo');
+    const [rows] = await pool.query('select cepa.ID_registro_especie, cepa.ID_registro_cepa, sexo.ID_registro_sexo, especie.nombre_especie, cepa.nombre_cepa, sexo.nombre_sexo, sexo.disponibilidad_sexo FROM ((cepa INNER JOIN especie ON cepa.ID_registro_especie = especie.ID_registro_especie) INNER JOIN sexo ON cepa.ID_registro_cepa = sexo.ID_registro_cepa)');
     res.json(rows);
   } catch (err) {
     console.error('❌ ERROR EN QUERY:', err);

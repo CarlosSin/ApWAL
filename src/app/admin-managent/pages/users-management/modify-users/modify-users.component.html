@@ -1,1 +1,75 @@
 <p>modify-users works!</p>,
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full animate-fade-in-down">
+    <h2 class="text-3xl font-bold text-teal-600 mb-6 text-center">Modificar Usuario</h2>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      <!-- Número de Control (solo lectura) -->
+      <div>
+        <label for="no_decontrol_usuario" class="block text-sm font-medium text-gray-700 mb-1">Número de Control</label>
+        <input id="no_decontrol_usuario" type="text" formControlName="no_decontrol_usuario"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-gray-100 cursor-not-allowed" readonly>
+      </div>
+
+      <!-- Nombre de Pila -->
+      <div>
+        <label for="nombre_pila" class="block text-sm font-medium text-gray-700 mb-1">Nombre de Pila</label>
+        <input id="nombre_pila" type="text" formControlName="nombre_pila"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-teal-500 focus:border-teal-500">
+        <div *ngIf="userForm.controls['nombre_pila'].invalid && userForm.controls['nombre_pila'].touched" class="text-red-600 text-xs mt-1">
+          El nombre es requerido.
+        </div>
+      </div>
+
+      <!-- Primer Apellido -->
+      <div>
+        <label for="primer_apellido" class="block text-sm font-medium text-gray-700 mb-1">Primer Apellido</label>
+        <input id="primer_apellido" type="text" formControlName="primer_apellido"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-teal-500 focus:border-teal-500">
+        <div *ngIf="userForm.controls['primer_apellido'].invalid && userForm.controls['primer_apellido'].touched" class="text-red-600 text-xs mt-1">
+          El primer apellido es requerido.
+        </div>
+      </div>
+
+      <!-- Segundo Apellido -->
+      <div>
+        <label for="segunda_apellido" class="block text-sm font-medium text-gray-700 mb-1">Segundo Apellido</label>
+        <input id="segunda_apellido" type="text" formControlName="segunda_apellido"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-teal-500 focus:border-teal-500">
+        <div *ngIf="userForm.controls['segunda_apellido'].invalid && userForm.controls['segunda_apellido'].touched" class="text-red-600 text-xs mt-1">
+          El segundo apellido es requerido.
+        </div>
+      </div>
+
+      <!-- Grado de Estudios -->
+      <div>
+        <label for="grado_estudio" class="block text-sm font-medium text-gray-700 mb-1">Grado de Estudios</label>
+        <input id="grado_estudio" type="text" formControlName="grado_estudio"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-teal-500 focus:border-teal-500">
+        <div *ngIf="userForm.controls['grado_estudio'].invalid && userForm.controls['grado_estudio'].touched" class="text-red-600 text-xs mt-1">
+          El grado de estudios es requerido.
+        </div>
+      </div>
+
+      <!-- Disponibilidad Usuario (Estado) -->
+      <div class="flex items-center">
+        <input id="estado_usuario" type="checkbox" formControlName="estado_usuario"
+               class="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+        <label for="estado_usuario" class="ml-2 block text-sm font-medium text-gray-700">Usuario Activo</label>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="flex justify-end space-x-4 mt-6">
+        <button type="button" (click)="onCancel()"
+                class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+          Cancelar
+        </button>
+        <button type="submit" [disabled]="userForm.invalid"
+                class="px-6 py-2 bg-teal-600 text-white rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+          Guardar Cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -12,26 +12,35 @@ export interface especierules{
 }
 
 export interface ceparules{
+    ID_registro_especie:number,  
     ID_registro_cepa:number,
+    nombre_especie:string,
     nombre_cepa:string,   
     descripcion_cepa:string,  
     disponibilidad_cepa:boolean,
-    ID_registro_especie:string
 }
 
 export interface sexorules{
-    ID_registro_sexo:number, 
+    ID_registro_especie:number,  
+    ID_registro_cepa:number,
+    ID_registro_sexo:number,
+    nombre_especie:string,
+    nombre_cepa:string,  
     nombre_sexo:string,  
     disponibilidad_sexo:boolean,
-	ID_registro_cepa:number
 }
 
 export interface edadopesorules{
-    ID_registro_edadopeso:number, 
+    ID_registro_especie:number,  
+    ID_registro_cepa:number,
+    ID_registro_sexo:number,  
+    ID_registro_edadopeso:number,
+    nombre_especie:string,
+    nombre_cepa:string,  
+    nombre_sexo:string,  
     nombre_edadopeso:string,   
     descripcion_edadopeso:string,  
-    disponibilidad_edadopeso:boolean, 
-	ID_registro_sexo:number
+    disponibilidad_edadopeso:boolean,
 }
 //-------------------------------------------------
 
