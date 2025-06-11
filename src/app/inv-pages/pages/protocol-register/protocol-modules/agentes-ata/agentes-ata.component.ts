@@ -1,45 +1,91 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormProgressService } from '../../../../services/form-progress.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormUtils } from '../../../../../utils/form-utils';
+import { AgenteAtaService } from '../../../../services/agente-ata.service';
+import { AnimalesService } from '../../../../services/animales.service';
 
 @Component({
-  selector: 'app-agentes-ata',
-  imports: [ReactiveFormsModule],
+  selector: 'app-agente-ata',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './agentes-ata.component.html',
 })
-export class AgentesAtaComponent {
-
+export class AgentesAtaComponent implements OnInit {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private formProgressService = inject(FormProgressService);
+  private agenteAtaService = inject(AgenteAtaService);
+  private animalesService = inject(AnimalesService);
 
-  formUtils = FormUtils;
+  protocoloId: number | null = null;
+  agentesForm!: FormGroup;
+  animales: any[] = [];
 
-  myForm: FormGroup = this.fb.group({
-    agente: ['', [Validators.required,  ]],
-    via: ['', [Validators.required, ]],
-    dosis: ['', [Validators.required,]],
-    dosisComp: ['', [Validators.required,]],
-    frecuencia: ['', [Validators.required,]],
-  });
+  ngOnInit(): void {
+    this.protocoloId = this.formProgressService.getProtocoloId();
 
-  onSubmit(){
-    this.myForm.markAllAsTouched();
-    if (this.myForm.valid) {
-      // Guardar los datos en el backend aquí si es necesario...
+    this.agentesForm = this.fb.group({
+      agentes: this.fb.array([])
+    });
 
-      // Marcar la sección como completada
-      this.formProgressService.markComplete('agentes-ATA');
+    if (this.protocoloId) {
+      this.animalesService.obtenerPorProtocolo(this.protocoloId).subscribe(animales => {
+        this.animales = animales;
+        const agentesArray = this.agentesForm.get('agentes') as FormArray;
+        animales.forEach((animal: any) => {
+          agentesArray.push(this.fb.group({
+            ID_registro_animales_protocolo: [animal.ID_registro_animales_protocolo],
+            agente: [''],
+            via_administracion: [''],
+            dosis: [''],
+            dosis_complementaria: [''],
+            frecuencia_administracion: [''],
+            medios: ['']
+          }));
+        });
 
-      // Opcional: navegar automáticamente a la siguiente sección
-      this.router.navigate(['/protocol-register/agentes-ATA']);
+        // Cargar datos si ya existen
+        this.agenteAtaService.obtenerPorProtocolo(this.protocoloId!).subscribe({
+          next: registros => {
+            this.setDatosExistentes(registros);
+          },
+          error: err => console.warn('No hay registros previos de agentes ATA:', err)
+        });
+      });
     }
   }
 
-  guardarYAvanzar() {
-    this.onSubmit();
+  setDatosExistentes(registros: any[]) {
+    const agentesArray = this.agentesForm.get('agentes') as FormArray;
+    registros.forEach((registro: any, index: number) => {
+      if (agentesArray.at(index)) {
+        agentesArray.at(index).patchValue(registro);
+      }
+    });
   }
 
- }
+  guardar(avanzar: boolean = false) {
+  if (!this.protocoloId) return;
+
+  const datos = {
+    ID_registro_protocolo: this.protocoloId,
+    registros: this.agentesForm.value.agentes
+  };
+
+  this.agenteAtaService.guardar(datos).subscribe({
+    next: () => {
+      this.formProgressService.markComplete('agentes-ATA'); // nota: cuidado con mayúsculas/minúsculas si no coinciden
+      if (avanzar) {
+        this.router.navigate(['/inv/protocol-register/eutanasia']);
+      }
+    },
+    error: err => console.error('Error al guardar agentes ATA:', err)
+  });
+}
+
+  get agentesControls(): FormGroup[] {
+    return (this.agentesForm.get('agentes') as FormArray).controls as FormGroup[];
+  }
+}

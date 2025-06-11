@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormProgressService } from '../../../../services/form-progress.service';
 
 @Component({
-  selector: 'app-datos-personales',
+  selector: 'datos-personales-p',
   imports: [ReactiveFormsModule],
   templateUrl: './datos-personales.component.html',
 })

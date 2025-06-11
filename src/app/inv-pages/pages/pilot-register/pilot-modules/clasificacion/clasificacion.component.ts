@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-clasificacion',
+  selector: 'clasificacion-p',
   imports: [],
   templateUrl: './clasificacion.component.html',
 })

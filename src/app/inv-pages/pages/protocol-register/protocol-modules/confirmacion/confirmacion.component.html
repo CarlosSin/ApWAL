@@ -11,18 +11,33 @@
         <li>Establecer un mecanismo de vigilancia que permita proteger la salud de los trabajadores y estudiantes que realicen procedimientos con animales, cuando este procedimiento pueda poner en riesgo su salud.</li>
       </ol>
 </div>
-<div class="flex-1 space-y-6">
-      <div class="md:w-1/2 bg-gray-50 p-4 rounded-lg shadow-sm">
-      <p class="text-sm text-gray-700 mb-1">Nombre del investigador: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700 mb-1">Departamento: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700 mb-1">Fecha de elaboración: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700">Fecha de inicio: <span class="font-medium text-gray-900">---</span></p>
-      <p class="text-sm text-gray-700">Fecha de fin: <span class="font-medium text-gray-900">---</span></p>
-    </div>
+<div class="flex-1 space-y-6" *ngIf="datosConfirmacion">
+  <div class="md:w-1/2 bg-gray-50 p-4 rounded-lg shadow-sm">
+    <p class="text-sm text-gray-700 mb-1">
+      Nombre del investigador:
+      <span class="font-medium text-gray-900">{{ datosConfirmacion.nombre }}</span>
+    </p>
+    <p class="text-sm text-gray-700 mb-1">
+      Departamento:
+      <span class="font-medium text-gray-900">{{ datosConfirmacion.departamento }}</span>
+    </p>
+    <p class="text-sm text-gray-700 mb-1">
+      Fecha de elaboración:
+      <span class="font-medium text-gray-900">{{ datosConfirmacion.fecha_elaboracion }}</span>
+    </p>
+    <p class="text-sm text-gray-700">
+      Fecha de inicio:
+      <span class="font-medium text-gray-900">{{ datosConfirmacion.fecha_inicio }}</span>
+    </p>
+    <p class="text-sm text-gray-700">
+      Fecha de fin:
+      <span class="font-medium text-gray-900">{{ datosConfirmacion.fecha_termino }}</span>
+    </p>
+  </div>
 </div>
+
 </div>
 <div class="flex justify-end gap-4 mt-10">
-  <button class="btn btn-success">Enviar al CICUAL</button>
-  <button class="btn btn-light">Guardar</button>
+  <button class="btn btn-success" (click)="enviarAlCICUAL()">Enviar al CICUAL</button>
   <button class="btn btn-secondary">Vista previa de impresión</button>
 </div>

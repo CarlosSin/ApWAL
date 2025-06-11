@@ -89,12 +89,10 @@
       </p>
       <div class="flex flex-col gap-2 pl-2">
         <label class="inline-flex items-center gap-2 text-sm text-gray-700">
-          <input type="radio" name="colaboracion" value="1" class="radio" />
-          Sí
+          <input type="radio" [value]="true" formControlName="es_colaboracion" /> Sí
         </label>
         <label class="inline-flex items-center gap-2 text-sm text-gray-700">
-          <input type="radio" name="colaboracion" value="2" class="radio" checked />
-          No
+          <input type="radio" [value]="false" formControlName="es_colaboracion" /> No
         </label>
       </div>
     </div>
@@ -104,6 +102,6 @@
 <!-- Botones -->
 <div class="flex justify-end gap-4 mt-10">
   <input class="btn btn-success" type="button" value="Guardar y avanzar" (click)="guardarYAvanzar()">
-  <button class="btn btn-light">Guardar</button>
+  <button class="btn btn-light" type="button" (click)="guardarSinAvanzar()">Guardar</button>
 </div>
 </form>

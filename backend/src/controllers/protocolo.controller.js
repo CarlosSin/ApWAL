@@ -9,9 +9,9 @@ export const crearProtocolo = async (req, res) => {
   try {
     const [result] = await pool.query(`
       INSERT INTO protocolo (
-        estado_protocolo, fecha_elaboracion, vigencia,
+        ID_tipo_proto, estado_protocolo, fecha_elaboracion, vigencia,
         no_decontrol_investigador, no_decontrol_suplente
-      ) VALUES (NULL, '1000-01-01', NULL, ?, ?)
+      ) VALUES (1, NULL, '1000-01-01', NULL, ?, ?)
     `, [no_decontrol_investigador, no_decontrol_suplente]);
 
     res.status(201).json({ id: result.insertId });
@@ -36,5 +36,20 @@ export const actualizarProtocolo = async (req, res) => {
   } catch (err) {
     console.error('Error al actualizar protocolo:', err);
     res.status(500).json({ message: 'Error al actualizar protocolo', error: err });
+  }
+};
+
+
+export const obtenerProtocolosRevision = async (req, res) => {
+  try {
+    const [protocolos] = await pool.query(`
+      SELECT ID_registro_protocolo, estado_protocolo, fecha_elaboracion
+      FROM protocolo
+      WHERE estado_protocolo = 'R'
+    `);
+    res.status(200).json(protocolos); // ✅ debe ser .json()
+  } catch (error) {
+    console.error('Error al obtener protocolos en revisión:', error);
+    res.status(500).json({ error: 'Error al obtener protocolos en revisión' });
   }
 };

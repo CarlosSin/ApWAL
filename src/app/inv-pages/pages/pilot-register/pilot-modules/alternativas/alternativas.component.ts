@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormProgressService } from '../../../../services/form-progress.service';
 
 @Component({
-  selector: 'app-alternativas',
+  selector: 'alternativas-p',
   imports: [ReactiveFormsModule],
   templateUrl: './alternativas.component.html',
 })
