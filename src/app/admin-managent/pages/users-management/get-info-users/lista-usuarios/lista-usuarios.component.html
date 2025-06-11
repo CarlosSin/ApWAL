@@ -12,7 +12,7 @@
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Numero de control</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">grado de estudios</th>
-                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre de usuario</th>
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Disponibilidad usuario</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
                 </tr>
             </thead>
@@ -21,11 +21,22 @@
                     <td class="text-center px-6 py-4">{{ usuario.no_decontrol_usuario }}</td>
                     <td class="text-center px-6 py-4">{{ usuario.nombre_pila}} {{usuario.primer_apellido}} {{usuario.segunda_apellido}}</td>
                     <td class="text-center px-6 py-4">{{ usuario.grado_estudio}}</td>
-                    <td class="text-center px-6 py-4">{{ usuario.nombre_usuario}}</td>
                     <td class="text-center px-6 py-4">
-                        <button class="bg bg-sky-300 p-3 rounded-2xl">
-                            <i class="ki-filled ki-user-edit"></i>
+                        @if(usuario.estado_usuario){
+                                <i class="ki-solid ki-check-circle text-green-500 text-4xl"></i>
+                        }@else {
+                            <i class="ki-solid ki-cross-circle text-red-400 text-4xl"></i>
+                        }
+                    </td>
+                    <td class="text-center px-6 py-4">
+                        <button class="bg bg-sky-300 p-3 rounded-2xl" (click)="getID_modificacion(usuario.no_decontrol_usuario)">
+                            <i class="ki-filled ki-user-edit text-2xl"></i>
                             Modificar usuario  
+                        </button>
+                        <br>
+                        <button class="bg bg-lime-300 p-3 rounded-2xl mt-3" (click)="getID_nuevorol(usuario.no_decontrol_usuario)">
+                            <i class="ki-filled ki-security-user text-2xl"></i>
+                            Nuevo rol  
                         </button>
                     </td>
                 </tr>
@@ -33,3 +44,12 @@
         </table>
     </div>
 </div>
+
+<!-- Renderizado condicional del formulario de modificación -->
+<!-- El formulario se mostrará solo si showModificationForm es true y selectedUserToModify tiene datos -->
+<app-modify-users
+  *ngIf="showModificationForm && selectedUserToModify"
+  [user]="selectedUserToModify"
+  (formClosed)="closeModificationForm()"
+  (userSaved)="handleUserSaved($event)">
+</app-modify-users>
