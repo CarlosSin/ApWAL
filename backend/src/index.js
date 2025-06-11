@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-//import authRoutes from './routes/auth.routes.js';
+import authRoutes from './routes/auth.routes.js';
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Usa las rutas
-//app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 //ruta de usuario
 import usuarioRoutes from './routes/usuarios.routes.js';
