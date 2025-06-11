@@ -16,10 +16,7 @@ const pool = mysql.createPool({
   port: process.env.DB_PORT
 });
 
-console.log('🧪 Conectando a DB con:');
-console.log('Host:', process.env.DB_HOST);
-console.log('Port:', process.env.DB_PORT);
-console.log('User:', process.env.DB_USER);
+console.log('Ruta usuario lista');
 
 const router = express.Router();
 router.get('/', async (req, res) => {

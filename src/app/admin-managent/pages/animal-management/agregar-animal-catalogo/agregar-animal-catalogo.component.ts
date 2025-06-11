@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import {MostrarAnimalesComponent} from '../mostrar-animales/mostrar-animales.component'; 
 
 interface animlarules {
   linea:string,
@@ -14,7 +14,7 @@ interface animlarules {
 
 @Component({
   selector: 'app-agregar-animal-catalogo',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,MostrarAnimalesComponent],
   templateUrl: './agregar-animal-catalogo.component.html',
 })
 export class AgregarAnimalCatalogoComponent { 
