@@ -1,42 +1,86 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormProgressService } from '../../../../services/form-progress.service';
-import { FormUtils } from '../../../../../utils/form-utils';
+import { EutanasiaService } from '../../../../services/eutanasia.service';
+import { AnimalesService } from '../../../../services/animales.service';
 
 @Component({
   selector: 'app-eutanasia',
-  imports: [ReactiveFormsModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './eutanasia.component.html',
 })
-export class EutanasiaComponent {
+export class EutanasiaComponent implements OnInit {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private formProgressService = inject(FormProgressService);
+  private eutanasiaService = inject(EutanasiaService);
+  private animalesService = inject(AnimalesService);
 
-  formUtils = FormUtils;
+  protocoloId: number | null = null;
+  eutanasiaForm!: FormGroup;
+  animales: any[] = [];
 
-  myForm: FormGroup = this.fb.group({
-    agente: ['', [Validators.required,  ]],
-    via: ['', [Validators.required, ]],
-    dosis: ['', [Validators.required,]],
-  });
+  ngOnInit(): void {
+    this.protocoloId = this.formProgressService.getProtocoloId();
 
-  onSubmit(){
-    this.myForm.markAllAsTouched();
-    if (this.myForm.valid) {
-      // Guardar los datos en el backend aquí si es necesario...
+    this.eutanasiaForm = this.fb.group({
+      registros: this.fb.array([])
+    });
 
-      // Marcar la sección como completada
-      this.formProgressService.markComplete('eutanasia');
+    if (this.protocoloId) {
+      this.animalesService.obtenerPorProtocolo(this.protocoloId).subscribe(animales => {
+        this.animales = animales;
+        const registrosArray = this.eutanasiaForm.get('registros') as FormArray;
+        animales.forEach((animal: any) => {
+          registrosArray.push(this.fb.group({
+            ID_registro_animales_protocolo: [animal.ID_registro_animales_protocolo],
+            agente: [''],
+            dosis: [''],
+            via_administracion: ['']
+          }));
+        });
 
-      // Opcional: navegar automáticamente a la siguiente sección
-      this.router.navigate(['/protocol-register/eutanasia']);
+        // Si ya existen datos, precargar
+        this.eutanasiaService.obtenerPorProtocolo(this.protocoloId!).subscribe({
+          next: registros => this.setDatosExistentes(registros),
+          error: err => console.warn('No hay datos de eutanasia registrados aún:', err)
+        });
+      });
     }
   }
 
-  guardarYAvanzar() {
-    this.onSubmit();
+  setDatosExistentes(registros: any[]) {
+    const registrosArray = this.eutanasiaForm.get('registros') as FormArray;
+    registros.forEach((registro: any, index: number) => {
+      if (registrosArray.at(index)) {
+        registrosArray.at(index).patchValue(registro);
+      }
+    });
   }
 
- }
+  guardar(avanzar: boolean = false) {
+    if (!this.protocoloId) return;
+
+    const datos = {
+      ID_registro_protocolo: this.protocoloId,
+      registros: this.eutanasiaForm.value.registros
+    };
+
+    this.eutanasiaService.guardar(datos).subscribe({
+      next: () => {
+        this.formProgressService.markComplete('eutanasia');
+        if (avanzar) {
+          this.router.navigate(['/inv/protocol-register/clasificacion']);
+        }
+      },
+      error: err => console.error('Error al guardar eutanasia:', err)
+    });
+  }
+
+  get registrosControls(): FormGroup[] {
+    return (this.eutanasiaForm.get('registros') as FormArray).controls as FormGroup[];
+  }
+}

@@ -1,208 +1,80 @@
 <h5 class="text-center text-xl font-bold text-gray-800 mb-8">Salud Ocupacional</h5>
-<label class="block text-sm font-medium text-gray-700 mb-1">Clasifique su protocolo de acuerdo al Nivel de Bioseguridad:</label>
-<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-<div class="flex flex-col items-start gap-4">
- <label class="form-label flex items-center gap-2.5">
-  <input checked="" class="radio" name="radio1" type="radio" value="1"/>
-  Nivel 1
- </label>
- <label class="form-label flex items-center gap-2.5">
-  <input class="radio" name="radio1" type="radio" value="2"/>
-  Nivel 2
- </label>
- <label class="form-label flex items-center gap-2.5">
-  <input class="radio" name="radio1" type="radio" value="3"/>
-  Nivel 3
- </label>
 
-</div>
-<label class="block text-sm font-medium text-gray-700 mb-1">Descripción de agentes peligrosos:</label>
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="guardarYAvanzar()">
 
-<table class="table-auto border-collapse border border-gray-400 w-full text-sm">
-  <thead>
-    <tr class="bg-gray-100">
-      <th class="border border-gray-400 p-2">-Nombre Animal-</th>
-      <th class="border border-gray-400 p-2">Agentes infecciosos</th>
-      <th class="border border-gray-400 p-2">Radioisótopos</th>
-      <th class="border border-gray-400 p-2">Carcinógenos</th>
-      <th class="border border-gray-400 p-2">Tóxicos</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="border border-gray-400 p-2">Agente</td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="nomAgenteInfeccioso">
-        @if ( formUtils.isValidField(myForm, 'nomAgenteInfeccioso')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "nomAgenteInfeccioso")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="nomRadioisotopos">
-        @if ( formUtils.isValidField(myForm, 'nomRadioisotopos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "nomRadioisotopos")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="nomCarcinogenos">
-        @if ( formUtils.isValidField(myForm, 'nomCarcinogenos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "nomCarcinogenos")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="nomToxicos">
-        @if ( formUtils.isValidField(myForm, 'nomToxicos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "nomToxicos")}}
-          </span>
-        }
-      </td>
-    </tr>
-    <tr>
-      <td class="border border-gray-400 p-2">Dosis</td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="dosisAgenteInfeccioso">
-        @if ( formUtils.isValidField(myForm, 'dosisAgenteInfeccioso')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "dosisAgenteInfeccioso")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="dosisRadioisotopos">
-        @if ( formUtils.isValidField(myForm, 'dosisRadioisotopos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "dosisRadioisotopos")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="dosisCarcinogenos">
-        @if ( formUtils.isValidField(myForm, 'dosisCarcinogenos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "dosisCarcinogenos")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="dosisToxicos">
-        @if ( formUtils.isValidField(myForm, 'dosisToxicos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "dosisToxicos")}}
-          </span>
-        }
-      </td>
-    </tr>
-    <tr>
-      <td class="border border-gray-400 p-2">Vía de administración</td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="viaAgenteInfeccioso">
-        @if ( formUtils.isValidField(myForm, 'viaAgenteInfeccioso')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "viaAgenteInfeccioso")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="viaRadioisotopos">
-        @if ( formUtils.isValidField(myForm, 'viaRadioisotopos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "viaRadioisotopos")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="viaCarcinogenos">
-        @if ( formUtils.isValidField(myForm, 'viaCarcinogenos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "viaCarcinogenos")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="viaToxicos">
-        @if ( formUtils.isValidField(myForm, 'viaToxicos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "viaToxicos")}}
-          </span>
-        }
-      </td>
-    </tr>
-    <tr>
-      <td class="border border-gray-400 p-2">Frecuencia de uso</td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="usoAgenteInfeccioso">
-        @if ( formUtils.isValidField(myForm, 'usoAgenteInfeccioso')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "usoAgenteInfeccioso")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="usoRadioisotopos">
-        @if ( formUtils.isValidField(myForm, 'usoRadioisotopos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "usoRadioisotopos")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="usoCarcinogenos">
-        @if ( formUtils.isValidField(myForm, 'usoCarcinogenos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "usoCarcinogenos")}}
-          </span>
-        }
-      </td>
-      <td class="border border-gray-400 p-2">
-        <input type="text" class="w-full rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600" formControlName="usoToxicos">
-        @if ( formUtils.isValidField(myForm, 'usoToxicos')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "usoToxicos")}}
-          </span>
-        }
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<label class="block text-sm font-medium text-gray-700 mb-1">Si tu proyecto implica riesgos mayores, indique el tipo de equipo que utilizará y mencione las medidas adicionales de protección al personal para evitar la transmisión de enfermedades infecciosas, zoonóticas, tóxicas, alérgicas, etc:</label>
- <div class="flex flex-col">
-<textarea
-  rows="10"
-  class="w-full md:w-[600px] px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
-  placeholder="Ingrese una descripción"
-  formControlName="equipDescription"
-></textarea>
- @if ( formUtils.isValidField(myForm, 'equipDescription')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "equipDescription")}}
-          </span>
-        }
+  <!-- Nivel de Bioseguridad -->
+  <label class="block text-sm font-medium text-gray-700 mb-1">
+    Clasifique su protocolo de acuerdo al Nivel de Bioseguridad:
+  </label>
+  <div class="flex flex-col items-start gap-4 mb-6">
+    <label class="form-label flex items-center gap-2.5">
+      <input type="radio" class="radio" formControlName="nivel_bioseguridad" value="1" />
+      Nivel 1
+    </label>
+    <label class="form-label flex items-center gap-2.5">
+      <input type="radio" class="radio" formControlName="nivel_bioseguridad" value="2" />
+      Nivel 2
+    </label>
+    <label class="form-label flex items-center gap-2.5">
+      <input type="radio" class="radio" formControlName="nivel_bioseguridad" value="3" />
+      Nivel 3
+    </label>
   </div>
-<label class="block text-sm font-medium text-gray-700 mb-1">Describa los procedimientos para la disposición de cadáveres, tejidos y/o material contaminado:</label>
-  <div class="flex flex-col">
-<textarea
-  rows="10"
-  class="w-full md:w-[600px] px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
-  placeholder="Ingrese una descripción"
-  formControlName="procDescription"
-></textarea>
 
- @if ( formUtils.isValidField(myForm, 'procDescription')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "procDescription")}}
-          </span>
-        }
-</div>
-<div class="flex justify-end gap-4 mt-10">
-  <button class="btn btn-success">Guardar y avanzar</button>
-  <button class="btn btn-light">Guardar</button>
-</div>
+  <!-- Agentes peligrosos por animal -->
+  <label class="block text-sm font-medium text-gray-700 mb-3">
+    Descripción de agentes peligrosos:
+  </label>
+
+  <div formArrayName="datosAnimales" class="flex flex-col gap-8">
+    <div *ngFor="let grupo of datosAnimales.controls; let i = index" [formGroupName]="i" class="p-4 border rounded-lg bg-gray-50">
+      <h3 class="text-lg font-semibold mb-2">Animal {{ i + 1 }}</h3>
+
+      <label class="block text-sm font-medium text-gray-700 mb-1">Agentes infecciosos:</label>
+      <input type="text" formControlName="agentes_infecciosos" class="input input-bordered w-full mb-3" />
+
+      <label class="block text-sm font-medium text-gray-700 mb-1">Radioisótopos:</label>
+      <input type="text" formControlName="radioisotopos" class="input input-bordered w-full mb-3" />
+
+      <label class="block text-sm font-medium text-gray-700 mb-1">Carcinógenos:</label>
+      <input type="text" formControlName="carcinogenos" class="input input-bordered w-full mb-3" />
+
+      <label class="block text-sm font-medium text-gray-700 mb-1">Tóxicos:</label>
+      <input type="text" formControlName="toxicos" class="input input-bordered w-full" />
+    </div>
+  </div>
+
+  <!-- Descripción equipo -->
+  <div class="mt-8">
+    <label class="block text-sm font-medium text-gray-700 mb-1">
+      Equipo y medidas adicionales de protección:
+    </label>
+    <textarea rows="6" formControlName="equipDescription"
+      class="textarea textarea-bordered w-full"></textarea>
+    @if (formUtils.isValidField(myForm, 'equipDescription')) {
+      <span class="text-red-600 text-sm">
+        {{ formUtils.getFieldError(myForm, 'equipDescription') }}
+      </span>
+    }
+  </div>
+
+  <!-- Descripción procedimientos -->
+  <div class="mt-6">
+    <label class="block text-sm font-medium text-gray-700 mb-1">
+      Procedimientos para la disposición de cadáveres y material contaminado:
+    </label>
+    <textarea rows="6" formControlName="procDescription"
+      class="textarea textarea-bordered w-full"></textarea>
+    @if (formUtils.isValidField(myForm, 'procDescription')) {
+      <span class="text-red-600 text-sm">
+        {{ formUtils.getFieldError(myForm, 'procDescription') }}
+      </span>
+    }
+  </div>
+
+  <!-- Botones -->
+  <div class="flex justify-end gap-4 mt-10">
+    <button type="submit" class="btn btn-success">Guardar y avanzar</button>
+    <button type="button" (click)="guardarSinAvanzar()" class="btn btn-light">Guardar</button>
+  </div>
 </form>

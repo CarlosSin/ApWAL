@@ -38,3 +38,18 @@ export const actualizarProtocolo = async (req, res) => {
     res.status(500).json({ message: 'Error al actualizar protocolo', error: err });
   }
 };
+
+
+export const obtenerProtocolosRevision = async (req, res) => {
+  try {
+    const [protocolos] = await pool.query(`
+      SELECT ID_registro_protocolo, estado_protocolo, fecha_elaboracion
+      FROM protocolo
+      WHERE estado_protocolo = 'R'
+    `);
+    res.status(200).json(protocolos); // ✅ debe ser .json()
+  } catch (error) {
+    console.error('Error al obtener protocolos en revisión:', error);
+    res.status(500).json({ error: 'Error al obtener protocolos en revisión' });
+  }
+};

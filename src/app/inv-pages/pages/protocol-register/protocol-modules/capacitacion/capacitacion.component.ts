@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './capacitacion.component.html',
 })
-export class CapacitacionComponent { }
+export class CapacitacionComponent {
+
+ }

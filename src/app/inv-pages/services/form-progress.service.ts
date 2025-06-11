@@ -41,7 +41,7 @@ export class FormProgressService {
     'agentes-ATA',
     'eutanasia',
     'clasificacion',
-    'capacitacion',
+    //'capacitacion',
     'salud-ocupacional',
     'confirmacion'
   ];

@@ -1,94 +1,46 @@
-<h5 class="text-center text-xl font-bold text-gray-800 mb-8">Agentes ATA</h5>
-<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-<label class="block text-sm font-medium text-gray-700 mb-1">Indique los agentes que utilizará para minimizar el dolor o evitar el sufrimiento innecesario en los animales, así comoi los anestésicos utilizados en cirugía:</label>
-<div>
-  <h2 class=" text-lg font-medium text-gray-800 mb-1">Cepa:</h2>
-</div>
+<h5 class="text-center text-xl font-bold text-gray-800 mb-8">Agentes ATA por Animal</h5>
 
-<div class="flex flex-row">
-  <label class="block text-sm font-medium text-gray-700 mb-1 mr-4 ">
-        Agente a utilizar:
-      </label>
-  <div class="flex flex-col">
-      <input
-        type="text"
-        class="w-full md:w-64 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder=""
-        formControlName="agente"
-        />
-        @if ( formUtils.isValidField(myForm, 'agente')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "agente")}}
-          </span>
-        }
+<form [formGroup]="agentesForm" autocomplete="off">
+  <div class="space-y-6">
+    <div *ngFor="let grupo of agentesControls; let i = index" [formGroup]="grupo" class="p-4 border rounded-lg bg-gray-50">
+      <p class="font-semibold mb-2">Animal (línea): {{ animales[i]?.linea }}</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Agente</label>
+          <input formControlName="agente" type="text" class="input input-bordered w-full" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Vía de administración</label>
+          <input formControlName="via_administracion" type="text" class="input input-bordered w-full" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Dosis</label>
+          <input formControlName="dosis" type="text" class="input input-bordered w-full" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Dosis complementaria</label>
+          <input formControlName="dosis_complementaria" type="text" class="input input-bordered w-full" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Frecuencia de administración</label>
+          <input formControlName="frecuencia_administracion" type="text" class="input input-bordered w-full" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Medios</label>
+          <textarea formControlName="medios" rows="2" class="textarea textarea-bordered w-full"></textarea>
+        </div>
+      </div>
+    </div>
   </div>
-  <label class="block text-sm font-medium text-gray-700 mb-1 mr-4 ml-4">
-        Vía de administración:
-      </label>
-      <div class="flex flex-col">
-      <input
-        type="text"
-        class="w-full md:w-64 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder=""
-        formControlName="via"
-      />
-        @if ( formUtils.isValidField(myForm, 'via')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "via")}}
-          </span>
-        }
-      </div>
-  <label class="block text-sm font-medium text-gray-700 mb-1 mr-4 ml-4">
-        Dosis:
-      </label>
-      <div class="flex flex-col">
-      <input
-        type="text"
-        class="w-full md:w-64 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder=""
-        formControlName="dosis"
-      />
-        @if ( formUtils.isValidField(myForm, 'dosis')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "dosis")}}
-          </span>
-        }
-      </div>
-  <label class="block text-sm font-medium text-gray-700 mb-1 mr-4 ">
-        Dosis complementaria:
-      </label>
-      <div class="flex flex-col">
-      <input
-        type="text"
-        class="w-full md:w-64 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder=""
-        formControlName="dosisComp"
-        />
-        @if ( formUtils.isValidField(myForm, 'dosisComp')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "dosisComp")}}
-          </span>
-        }
-      </div>
-  <label class="block text-sm font-medium text-gray-700 mb-1 mr-4 ">
-        Frecuencia de administración:
-      </label>
-      <div class="flex flex-col">
-      <input
-        type="text"
-        class="w-full md:w-64 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder=""
-        formControlName="frecuencia"
-      />
-        @if ( formUtils.isValidField(myForm, 'frecuencia')) {
-          <span class="form-text text-danger text-sm mt-1">
-            {{formUtils.getFieldError(myForm, "frecuencia")}}
-          </span>
-        }
-      </div>
-</div>
-<div class="flex justify-end gap-4 mt-10">
-  <button class="btn btn-success">Guardar y avanzar</button>
-  <button class="btn btn-light">Guardar</button>
-</div>
+
+  <div class="flex justify-end gap-4 mt-10">
+    <button type="button" class="btn btn-success" (click)="guardar(true)">Guardar y avanzar</button>
+    <button type="button" class="btn btn-light" (click)="guardar(false)">Guardar</button>
+  </div>
 </form>
