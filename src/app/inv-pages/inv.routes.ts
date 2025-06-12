@@ -1,14 +1,14 @@
 import { Routes } from "@angular/router";
-import { ApprovedProtocolsComponent } from "./pages/approved-protocols/approved-protocols.component";
-import { UnapprovedProtocolsComponent } from "./pages/unapproved-protocols/unapproved-protocols.component";
+import { ApprovedProtocolsComponent } from "./pages/protocolos/approved-protocols/approved-protocols.component";
+import { UnapprovedProtocolsComponent } from "./pages/protocolos/unapproved-protocols/unapproved-protocols.component";
 import { ProtocolRegisterComponent } from "./pages/protocol-register/protocol-register.component";
 import { PilotRegisterComponent } from "./pages/pilot-register/pilot-register.component";
 import { InvLayoutComponent } from "./layouts/inv-layout/inv-layout.component";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
-import { AllProtocolsComponent } from "./pages/all-protocols/all-protocols.component";
-import { RecomendationProtocolsComponent } from "./pages/recomendation-protocols/recomendation-protocols.component";
-import { UnfinishedProtocolsComponent } from "./pages/unfinished-protocols/unfinished-protocols.component";
-import { UnderreviewProtocolsComponent } from "./pages/underreview-protocols/underreview-protocols.component";
+import { AllProtocolsComponent } from "./pages/protocolos/all-protocols/all-protocols.component";
+import { RecomendationProtocolsComponent } from "./pages/protocolos/recomendation-protocols/recomendation-protocols.component";
+import { UnfinishedProtocolsComponent } from "./pages/protocolos/unfinished-protocols/unfinished-protocols.component";
+import { UnderreviewProtocolsComponent } from "./pages/protocolos/underreview-protocols/underreview-protocols.component";
 import { DatosGeneralesComponent } from "./pages/protocol-register/protocol-modules/datos-generales/datos-generales.component";
 import { DatosPersonalesComponent } from "./pages/protocol-register/protocol-modules/datos-personales/datos-personales.component";
 import { DescripcionAnimalComponent } from "./pages/protocol-register/protocol-modules/descripcion-animal/descripcion-animal.component";
@@ -31,6 +31,12 @@ import { ClasificacionPComponent } from "./pages/pilot-register/pilot-modules/cl
 import { CapacitacionPComponent } from "./pages/pilot-register/pilot-modules/capacitacion/capacitacion.component";
 import { SaludOcupacionalPComponent } from "./pages/pilot-register/pilot-modules/salud-ocupacional/salud-ocupacional.component";
 import { ConfirmacionPComponent } from "./pages/pilot-register/pilot-modules/confirmacion/confirmacion.component";
+import { AllPilotComponent } from "./pages/estudios-piloto/all-pilot/all-pilot.component";
+import { ApprovedPilotComponent } from "./pages/estudios-piloto/approved-pilot/approved-pilot.component";
+import { UnapprovedPilotComponent } from "./pages/estudios-piloto/unapproved-pilot/unapproved-pilot.component";
+import { RecomendationPilotComponent } from "./pages/estudios-piloto/recomendation-pilot/recomendation-pilot.component";
+import { UnfinishedPilotComponent } from "./pages/estudios-piloto/unfinished-pilot/unfinished-pilot.component";
+import { UnderreviewPilotComponent } from "./pages/estudios-piloto/underreview-pilot/underreview-pilot.component";
 
 export const invRoutes: Routes = [
   {
@@ -42,28 +48,52 @@ export const invRoutes: Routes = [
         component: HomePageComponent,
       },
       {
-        path: 'my-protocols',
+        path: 'general-protocol',
         component: AllProtocolsComponent
       },
       {
-        path: 'approved',
+        path: 'approved-protocol',
         component: ApprovedProtocolsComponent
       },
       {
-        path: 'unapproved',
+        path: 'unapproved-protocol',
         component:UnapprovedProtocolsComponent
       },
       {
-        path: 'recomendations',
+        path: 'recomendations-protocol',
         component:RecomendationProtocolsComponent
       },
       {
-        path: 'unfinished',
+        path: 'unfinished-protocol',
         component:UnfinishedProtocolsComponent
       },
       {
-        path: 'underreview',
+        path: 'underreview-protocol',
         component:UnderreviewProtocolsComponent
+      },
+      {
+        path: 'general-pilot',
+        component: AllPilotComponent
+      },
+      {
+        path: 'approved-pilot',
+        component: ApprovedPilotComponent
+      },
+      {
+        path: 'unapproved-pilot',
+        component:UnapprovedPilotComponent
+      },
+      {
+        path: 'recomendations-pilot',
+        component:RecomendationPilotComponent
+      },
+      {
+        path: 'unfinished-pilot',
+        component:UnfinishedPilotComponent
+      },
+      {
+        path: 'underreview-pilot',
+        component:UnderreviewPilotComponent
       },
       {
         path: 'protocol-register',

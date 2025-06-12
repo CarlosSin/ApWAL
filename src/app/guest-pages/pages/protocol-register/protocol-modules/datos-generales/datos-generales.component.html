@@ -1,0 +1,109 @@
+<h5 class="text-center text-xl font-bold text-gray-800 mb-8">
+  Registro de datos generales
+</h5>
+
+
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<div class="flex flex-col md:flex-row gap-10">
+  <!-- Columna izquierda -->
+  <div class="flex-1 space-y-6">
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        Título del proyecto
+      </label>
+      <div class="flex flex-col">
+      <input
+        type="text"
+        class="w-full md:w-64 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        placeholder="Nombre del protocolo"
+        formControlName="title"
+      />
+        @if ( formUtils.isValidField(myForm, 'title')) {
+          <span class="form-text text-danger text-sm mt-1">
+            {{formUtils.getFieldError(myForm, "title")}}
+          </span>
+        }
+        </div>
+    </div>
+    <div>
+
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        Descripción
+      </label>
+       <div class="flex flex-col">
+      <textarea
+        rows="6"
+        class="w-full md:w-96 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        placeholder="Describe brevemente el protocolo"
+        formControlName="description"
+      ></textarea>
+        @if ( formUtils.isValidField(myForm, 'description')) {
+          <span class="form-text text-danger text-sm mt-1">
+            {{formUtils.getFieldError(myForm, "description")}}
+          </span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Columna derecha -->
+  <div class="flex-1 space-y-6">
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        Fecha de inicio del protocolo
+      </label>
+      <div class="flex flex-col">
+      <input
+        type="date"
+        class="w-full md:w-64 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        formControlName="startProtocol"
+        />
+          @if ( formUtils.isValidField(myForm, 'startProtocol')) {
+          <span class="form-text text-danger text-sm mt-1">
+            {{formUtils.getFieldError(myForm, "startProtocol")}}
+          </span>
+        }
+        </div>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        Fecha de término del protocolo
+      </label>
+      <div class="flex flex-col">
+      <input
+        type="date"
+        class="w-full md:w-64 px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        formControlName="finishProtocol"
+        />
+          @if ( formUtils.isValidField(myForm, 'finishProtocol')) {
+          <span class="form-text text-danger text-sm mt-1">
+            {{formUtils.getFieldError(myForm, "finishProtocol")}}
+          </span>
+        }
+        </div>
+    </div>
+    <div>
+      <p class="text-sm font-medium text-gray-700 mb-2">
+        ¿Existe alguna colaboración con una institución distinta al CINVESTAV para el uso de animales que se solicitan en este proyecto?
+      </p>
+      <div class="flex flex-col gap-2 pl-2">
+        <label class="inline-flex items-center gap-2 text-sm text-gray-700">
+          <input type="radio" name="colaboracion" value="1" class="radio" />
+          Sí
+        </label>
+        <label class="inline-flex items-center gap-2 text-sm text-gray-700">
+          <input type="radio" name="colaboracion" value="2" class="radio" checked />
+          No
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Botones -->
+<div class="flex justify-end gap-4 mt-10">
+  <input class="btn btn-success" type="button" value="Guardar y avanzar" (click)="guardarYAvanzar()">
+  <button class="btn btn-light">Guardar</button>
+</div>
+</form>

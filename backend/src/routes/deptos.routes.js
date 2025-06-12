@@ -5,15 +5,12 @@ import mysql from 'mysql2/promise';
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   port: process.env.DB_PORT
 });
 
-console.log('🧪 Conectando a DB con:');
-console.log('Host:', process.env.DB_HOST);
-console.log('Port:', process.env.DB_PORT);
-console.log('User:', process.env.DB_USER);
+console.log('Ruta deptos lista');
 
 const router = express.Router();
 router.get('/', async (req, res) => {
@@ -22,7 +19,7 @@ router.get('/', async (req, res) => {
     res.json(rows);
   } catch (err) {
     console.error('❌ ERROR EN QUERY:', err);
-    res.status(500).json({ error: 'Error al obtener usuarios' });
+    res.status(500).json({ error: 'Error al obtener departamentos' });
   }
 });
 
@@ -31,10 +28,10 @@ router.post('/', async (req, res) => {
     const nuevoDepartamento = req.body;
 
     await pool.query('INSERT INTO departamento SET ?', [nuevoDepartamento]);
-    res.status(201).json({ message: 'Usuario creado' });
+    res.status(201).json({ message: 'departamento creado' });
   } catch (error) {
-    console.error('Error al insertar usuario:', error);
-    res.status(500).json({ error: 'Error al insertar usuario' });
+    console.error('Error al insertar departamento:', error);
+    res.status(500).json({ error: 'Error al insertar departamento' });
   }
 });
 

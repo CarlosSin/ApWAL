@@ -16,6 +16,11 @@ import {BienvenidaInvestigadorComponent} from './pages/home-page/bienvenida-inve
 import {UsersManagementComponent} from '../admin-managent/pages/users-management/users-management.component';
 import {RevisiónProtocoloComponent} from '../admin-managent/pages/protocols-management/revisión-protocolo/revisión-protocolo.component';
 import {AdministracionSolicitudesComponent} from '../admin-managent/pages/protocols-management/administracion-solicitudes/administracion-solicitudes.component';
+import {MostrarAtributosComponent} from '../admin-managent/pages/animal-management/mostrar-atributos/mostrar-atributos.component';
+import {MostrarEspecieComponent} from '../admin-managent/pages/animal-management/mostrar-atributos/mostrar-especie/mostrar-especie.component';
+import {MostrarCepaComponent} from '../admin-managent/pages/animal-management/mostrar-atributos/mostrar-cepa/mostrar-cepa.component';
+import {MostrarSexoComponent} from '../admin-managent/pages/animal-management/mostrar-atributos/mostrar-sexo/mostrar-sexo.component';
+import {MostrarEdadopesoComponent} from '../admin-managent/pages/animal-management/mostrar-atributos/mostrar-edadopeso/mostrar-edadopeso.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 
 
@@ -63,6 +68,17 @@ export const adminRoutes: Routes = [
         children:[
           {path: 'revision-protocolos', title: 'revision-protocolos', component: RevisiónProtocoloComponent},
           {path: 'admon-solicitudes', title: 'Administación de solicitudes', component: AdministracionSolicitudesComponent},
+        ]
+        },
+        {
+        path: 'mostrar-atributos',
+        title: 'Gestor de atributos',
+        component: MostrarAtributosComponent,
+        children:[
+          {path: 'mostrar-especie', title: 'revision-protocolos', component: MostrarEspecieComponent},
+          {path: 'mostrar-cepa', title: 'Administación de solicitudes', component: MostrarCepaComponent},
+          {path: 'mostrar-sexo', title: 'Administación de solicitudes', component: MostrarSexoComponent},
+          {path: 'mostrar-edadopeso', title: 'Administación de solicitudes', component: MostrarEdadopesoComponent },
         ]
         },
         {
