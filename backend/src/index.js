@@ -9,6 +9,7 @@ import usuarioRoutes from './routes/usuarios.routes.js';
 import deptosRoutes from './routes/deptos.routes.js';
 import bibliotecaRoutes from './routes/biblioteca.routes.js';
 
+
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -22,6 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/deptos', deptosRoutes);
 app.use('/api/recursos', bibliotecaRoutes);
+
 
 //Ruta  para servir los PDFs
 app.use('/uploads', express.static(path.resolve(__dirname, '../public/uploads')));

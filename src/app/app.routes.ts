@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from './shared/pages/login-page/login-page.component';
 import { LibraryPageComponent } from './shared/pages/library-page/library-page.component';
-import { AuthGuard } from './guards/auth.guard'; // 👈 Asegúrate de importar
+import { AuthGuard } from './guards/auth.guard'; // Protección de rutas
 
 export const routes: Routes = [
   {

@@ -1,4 +1,5 @@
 <div class="grid lg:grid-cols-2 min-h-screen">
+  <!-- Columna izquierda: formulario de login -->
   <div class="flex items-center justify-center p-8 lg:p-10 order-2 lg:order-1 h-full">
     <div class="card max-w-[370px] w-full">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card-body flex flex-col gap-5 p-10">
@@ -15,7 +16,9 @@
 
         <div class="flex flex-col gap-1">
           <label class="form-label font-normal text-gray-900">Usuario</label>
-          <input formControlName="usuario" class="input" placeholder="Ingrese su usuario" type="text" />
+          <input formControlName="usuario" class="input" placeholder="Ingrese su usuario" type="text"
+            autocomplete="username" />
+
         </div>
 
         <div class="flex flex-col gap-1">
@@ -23,24 +26,48 @@
             <label class="form-label font-normal text-gray-900">Contraseña</label>
           </div>
           <div class="input flex items-center">
-            <input formControlName="password" placeholder="Ingrese la contraseña" type="password" class="flex-grow" />
-            <button class="btn btn-icon" type="button">
-              <i class="ki-filled ki-eye text-gray-500"></i>
-              <!-- Puedes implementar lógica para mostrar/ocultar contraseña -->
+            <input [type]="verPassword ? 'text' : 'password'" formControlName="password"
+              placeholder="Ingrese la contraseña" class="flex-grow" autocomplete="current-password" />
+            <button class="btn btn-icon" type="button" (click)="verPassword = !verPassword">
+              <i class="ki-filled ki-eye" [ngClass]="verPassword ? 'text-blue-500' : 'text-gray-500'"></i>
             </button>
           </div>
         </div>
 
         <label class="checkbox-group">
-          <input class="checkbox checkbox-sm" type="checkbox" />
-          <span class="checkbox-label">Recordarme</span>
+          <!-- <input class="checkbox checkbox-sm" type="checkbox" />
+          <span class="checkbox-label">Recordarme</span> -->
         </label>
 
         <button type="submit" class="btn btn-success flex justify-center grow">Iniciar Sesión</button>
+
+        <!-- Enlace para mostrar recuperación -->
+        <div class="text-center mt-2">
+          <a (click)="mostrarRecuperar = !mostrarRecuperar"
+            class="text-blue-600 hover:underline cursor-pointer text-sm">
+            ¿Olvidaste tu contraseña?
+          </a>
+        </div>
+
+        <!-- Formulario de recuperación -->
+        <div *ngIf="mostrarRecuperar" class="mt-4 border-t border-gray-200 pt-4">
+          <label class="form-label font-normal text-gray-900">Nombre de usuario</label>
+          <input [(ngModel)]="usuarioRecuperacion" name="usuarioRecuperacion" [ngModelOptions]="{standalone: true}"
+            class="input w-full mb-2" placeholder="Ingresa tu usuario" required />
+
+          <button (click)="recuperarContrasena()" type="button"
+            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-200">
+            Enviar recuperación al correo
+          </button>
+
+          <p class="text-green-600 mt-2 text-sm" *ngIf="mensajeOk">{{ mensajeOk }}</p>
+          <p class="text-red-600 mt-2 text-sm" *ngIf="mensajeError">{{ mensajeError }}</p>
+        </div>
       </form>
     </div>
   </div>
 
+  <!-- Columna derecha: branding -->
   <div
     class="flex flex-col justify-center items-center lg:rounded-xl lg:border lg:border-gray-200 lg:m-5 order-1 lg:order-2 bg-no-repeat bg-center"
     style="background-image: url('/assets/media/images/login.jpg'); background-size: cover;">

@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { pool } from '../config/db.js';
 import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 dotenv.config(); // Carga las variables del .env
 
 export const login = async (req, res) => {
@@ -60,5 +61,46 @@ export const login = async (req, res) => {
   } catch (error) {
     console.error('Error en login:', error);
     return res.status(500).json({ ok: false, msg: 'Error en el servidor' });
+  }
+};
+
+
+export const recuperarContrasena = async (req, res) => {
+  const { usuario } = req.body;
+
+  try {
+    const [rows] = await pool.execute(
+      'SELECT correo_electronico AS correo, password AS contrasena FROM usuario WHERE nombre_usuario = ?',
+      [usuario]
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    const { correo, contrasena } = rows[0];
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.CORREO_APP,
+        pass: process.env.CORREO_PASS
+      }
+    });
+
+    const mailOptions = {
+      from: process.env.CORREO_APP,
+      to: correo,
+      subject: 'Recuperación de contraseña',
+      text: `Hola, tu contraseña es: ${contrasena}`
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.json({ message: 'Correo enviado exitosamente' });
+
+  } catch (error) {
+    console.error('Error al recuperar contraseña:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
