@@ -1,31 +1,24 @@
+import { Component, OnInit, inject } from '@angular/core';
+import { ProtocoloService } from '../../../services/protocolo.service';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-underreview-protocols',
-  imports: [CommonModule, HttpClientModule, RouterModule],
   templateUrl: './underreview-protocols.component.html',
+  imports: [CommonModule]
 })
-export class UnderreviewProtocolsComponent implements OnInit  {
-
-  private http = inject(HttpClient);
-
+export class UnderreviewProtocolsComponent implements OnInit {
+  private protocoloService = inject(ProtocoloService);
   protocolos: any[] = [];
-  cargando = true;
 
-  ngOnInit(): void {
-    this.http.get<any[]>('/api/protocolo/en-revision').subscribe({
-      next: (data) => {
-        this.protocolos = data;
-        this.cargando = false;
-      },
-      error: (err) => {
-        console.error('Error al obtener protocolos en revisión:', err);
-        this.cargando = false;
-      }
-    });
+  ngOnInit() {
+    this.protocoloService.getProtocolosRevisionDelUsuario().subscribe({
+    next: (data: any[]) => {
+      this.protocolos = data;
+    },
+    error: (err) => {
+      console.error('Error al cargar protocolos en revisión:', err);
+    }
+  });
   }
-
- }
+}

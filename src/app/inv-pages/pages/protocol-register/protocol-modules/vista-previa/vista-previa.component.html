@@ -1,0 +1,68 @@
+<div *ngIf="vistaPrevia">
+  <h2 class="text-2xl font-bold mb-6">Vista previa del protocolo</h2>
+
+  <!-- Datos Personales -->
+  <h3 class="text-xl font-semibold text-gray-800">Datos del Investigador</h3>
+  <p>Nombre: {{ vistaPrevia.datosPersonales.investigador.nombre }}</p>
+  <p>Email: {{ vistaPrevia.datosPersonales.investigador.email }}</p>
+  <p>Departamento: {{ vistaPrevia.datosPersonales.investigador.departamento }}</p>
+
+  <!-- Suplente -->
+  <h3 class="text-xl font-semibold text-gray-800 mt-4">Datos del Suplente</h3>
+  <p>Nombre: {{ vistaPrevia.datosPersonales.suplente.nombre }}</p>
+  <p>Email: {{ vistaPrevia.datosPersonales.suplente.email }}</p>
+  <p>Departamento: {{ vistaPrevia.datosPersonales.suplente.departamento }}</p>
+
+  <!-- Datos Generales -->
+  <h3 class="text-xl font-semibold text-gray-800 mt-4">Datos Generales</h3>
+  <p>Objetivo: {{ vistaPrevia.datosGenerales.objetivo }}</p>
+  <p>Justificación: {{ vistaPrevia.datosGenerales.justificacion }}</p>
+
+  <!-- Animales -->
+  <h3 class="text-xl font-semibold text-gray-800 mt-4">Animales</h3>
+  <ul>
+    <li *ngFor="let animal of vistaPrevia.animales">
+      {{ animal.especie }} - {{ animal.cantidad }} ejemplares - {{ animal.frecuencia_uso }}
+    </li>
+  </ul>
+
+  <!-- Salud Ocupacional -->
+  <h3 class="text-xl font-semibold text-gray-800 mt-4">Salud Ocupacional</h3>
+  <p>Nivel de Bioseguridad: {{ vistaPrevia.saludOcupacional.nivel_bioseguridad }}</p>
+  <p>Equipo: {{ vistaPrevia.saludOcupacional.equipos }}</p>
+  <p>Procedimientos: {{ vistaPrevia.saludOcupacional.procedimientos }}</p>
+
+  <div *ngIf="vistaPrevia.saludOcupacional.detallesAnimales?.length">
+    <h4 class="text-lg font-semibold mt-2">Agentes peligrosos por animal</h4>
+    <ul>
+      <li *ngFor="let d of vistaPrevia.saludOcupacional.detallesAnimales">
+        Animal {{ d.ID_registro_animales_protocolo }}:
+        Inf: {{ d.agentes_infecciosos }},
+        Rad: {{ d.radioisotopos }},
+        Car: {{ d.carcinogenos }},
+        Tox: {{ d.toxicos }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Capacitaciones -->
+  <h3 class="text-xl font-semibold text-gray-800 mt-4">Capacitación</h3>
+  <p>
+    Investigador:
+    <a *ngIf="vistaPrevia.capacitacion.archivo_investigador"
+       class="text-blue-600 underline"
+       [href]="'http://localhost:3000/uploads/capacitacion/' + vistaPrevia.capacitacion.archivo_investigador"
+       target="_blank">
+      Ver PDF
+    </a>
+  </p>
+  <p>
+    Suplente:
+    <a *ngIf="vistaPrevia.capacitacion.archivo_suplente"
+       class="text-blue-600 underline"
+       [href]="'http://localhost:3000/uploads/capacitacion/' + vistaPrevia.capacitacion.archivo_suplente"
+       target="_blank">
+      Ver PDF
+    </a>
+  </p>
+</div>

@@ -1,40 +1,38 @@
 <!--tablas-->
 <div class="bg-teal-500 justify-items-center rounded-2xl p-4">
-    <h2 class="card-title text-2xl text-white">Tabla de protocolos en revisión</h2>                
+    <h2 class="card-title text-2xl text-white">Tabla de protocolos en revisión</h2>
 </div>
 <div class="p-4">
     <div class="overflow-x-auto rounded-lg shadow-lg">
         <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
             <thead class="bg-teal-500 text-white">
                 <tr>
-                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID protocolo</th>                    
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID protocolo</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre protocolo</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Estado protocolo</th>
-                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">fecha elaboracion</th>                    
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">fecha elaboracion</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Acciones</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-teal-100">
-                <tr class="hover:bg-teal-50" *ngFor="let revicion of lista_protocolo_revicion">
-                    <td class="text-center px-6 py-4">{{ revicion.ID_protocolo }}</td>
-                    <td class="text-center px-6 py-4">{{ revicion.nombre_protocolo }}</td>
+                <tr class="hover:bg-teal-50" *ngFor="let revisados of lista_resto_protocolos">
+
+                                        <td class="text-center px-6 py-4">{{ revisados.ID_protocolo }}</td>
+                    <td class="text-center px-6 py-4">{{ revisados.nombre_protocolo }}</td>
+                    <td class="text-center px-6 py-4">{{revisados.edo_protocolo}}</td>
+                    <td class="text-center px-6 py-4">{{ revisados.fecha}}</td>
                     <td class="text-center px-6 py-4">
-                        {{ revicion.edo_protocolo }} 
-                        <i class="ki-solid ki-dots-square text-yellow-300 text-4xl"></i>
-                    </td>
-                    <td class="text-center px-6 py-4">{{ revicion.fecha}}</td>
-                    <td class="text-center px-6 py-4">
-                        <button class="bg bg-green-400 pt-3 pb-3 pl-6 pr-6 rounded-2xl ">
+                        <button (click)="cambiarEstado(revisados.ID_protocolo, 'A')" class="bg bg-green-400 pt-3 pb-3 pl-6 pr-6 rounded-2xl ">
                             <i class="ki-filled ki-folder-added text-2xl"></i>
-                            Aceptar protocolo   
+                            Aceptar protocolo
                         </button>
                         <br>
-                        <button class="bg bg-yellow-400 pt-3 pb-3 pl-6 pr-6 rounded-2xl mt-3 ">
+                        <button  (click)="cambiarEstado(revisados.ID_protocolo, 'AR')" class="bg bg-yellow-400 pt-3 pb-3 pl-6 pr-6 rounded-2xl mt-3 ">
                             <i class="ki-filled ki-book text-2xl"></i>
-                            Aceptar protocolo con observaciones   
+                            Aceptar protocolo con observaciones
                         </button>
                         <br>
-                        <button class="bg bg-red-400 pt-3 pb-3 pl-6 pr-6 rounded-2xl mt-3">
+                        <button (click)="cambiarEstado(revisados.ID_protocolo, 'NA')" class="bg bg-red-400 pt-3 pb-3 pl-6 pr-6 rounded-2xl mt-3">
                             <i class="ki-filled ki-delete-folder text-2xl"></i>
                             Rechazar protocolo
                         </button>
@@ -47,25 +45,27 @@
 
 <!--tablas-->
 <div class="bg-teal-500 justify-items-center rounded-2xl p-4 mt-16">
-    <h2 class="card-title text-2xl text-white">Tabla de protocolos ya revisados</h2>                
+    <h2 class="card-title text-2xl text-white">Tabla de protocolos ya revisados</h2>
 </div>
 <div class="p-4">
     <div class="overflow-x-auto rounded-lg shadow-lg">
         <table class="min-w-full divide-y divide-teal-300 bg-white text-base text-gray-700">
             <thead class="bg-teal-500 text-white">
                 <tr>
-                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID protocolo</th>                    
+                    <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">ID protocolo</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Nombre protocolo</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">Estado protocolo</th>
                     <th class="px-6 py-3 text-center font-semibold uppercase tracking-wider">fecha elaboracion</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-teal-100">
-                <tr class="hover:bg-teal-50" *ngFor="let revisados of lista_resto_protocolos">
-                    <td class="text-center px-6 py-4">{{ revisados.ID_protocolo }}</td>
-                    <td class="text-center px-6 py-4">{{ revisados.nombre_protocolo }}</td>
-                    <td class="text-center px-6 py-4">{{revisados.edo_protocolo}}</td>
-                    <td class="text-center px-6 py-4">{{ revisados.fecha}}</td>
+                <tr class="hover:bg-teal-50" *ngFor="let revicion of lista_protocolo_revicion">
+           <td class="text-center px-6 py-4">{{ revicion.ID_registro_protocolo }}</td>
+<td class="text-center px-6 py-4">{{ revicion.nombre_tipo }}</td>
+<td class="text-center px-6 py-4">{{ revicion.estado_protocolo }}</td>
+<td class="text-center px-6 py-4">{{ revicion.fecha_elaboracion }}</td>
+
+
                 </tr>
             </tbody>
         </table>

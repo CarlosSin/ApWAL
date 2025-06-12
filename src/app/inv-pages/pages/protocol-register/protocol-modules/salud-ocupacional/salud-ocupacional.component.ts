@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-salud-ocupacional',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './salud-ocupacional.component.html',
 })
 export class SaludOcupacionalComponent {
@@ -42,6 +42,7 @@ export class SaludOcupacionalComponent {
     this.animalesService.obtenerPorProtocolo(this.protocoloId).subscribe({
       next: (animales) => {
         this.animales = animales;
+
         animales.forEach((a: any) => {
           this.datosAnimales.push(this.fb.group({
             ID_registro_animales_protocolo: [a.ID_registro_animales_protocolo],
@@ -60,7 +61,7 @@ export class SaludOcupacionalComponent {
               procDescription: data.procedimientos
             });
 
-            data.datos.forEach((registro: any, i: number) => {
+            data.datosAnimales.forEach((registro: any, i: number) => {
               if (this.datosAnimales.at(i)) {
                 this.datosAnimales.at(i).patchValue(registro);
               }
@@ -78,30 +79,30 @@ export class SaludOcupacionalComponent {
   }
 
   onSubmit(callback?: () => void) {
-  this.myForm.markAllAsTouched();
-  if (this.myForm.valid && this.protocoloId) {
-    const datosConProtocolo = this.myForm.value.datosAnimales.map((dato: any) => ({
-      ...dato,
-      ID_registro_protocolo: this.protocoloId
-    }));
+    this.myForm.markAllAsTouched();
+    if (this.myForm.valid && this.protocoloId) {
+      const datosConProtocolo = this.myForm.value.datosAnimales.map((dato: any) => ({
+        ...dato,
+        ID_registro_protocolo: this.protocoloId
+      }));
 
-    const payload = {
-      ID_registro_protocolo: this.protocoloId,
-      nivel_bioseguridad: this.myForm.value.nivel_bioseguridad,
-      equipos: this.myForm.value.equipDescription,
-      procedimientos: this.myForm.value.procDescription,
-      datos: datosConProtocolo
-    };
+      const payload = {
+        ID_registro_protocolo: this.protocoloId,
+        nivel_bioseguridad: this.myForm.value.nivel_bioseguridad,
+        equipos: this.myForm.value.equipDescription,
+        procedimientos: this.myForm.value.procDescription,
+        datosAnimales: datosConProtocolo
+      };
 
-    this.saludService.guardar(payload).subscribe({
-      next: () => {
-        this.formProgress.markComplete('salud-ocupacional');
-        if (callback) callback();
-      },
-      error: (err) => console.error('Error al guardar:', err)
-    });
+      this.saludService.guardarTodo(payload).subscribe({
+        next: () => {
+          this.formProgress.markComplete('salud-ocupacional');
+          if (callback) callback();
+        },
+        error: (err) => console.error('Error al guardar:', err)
+      });
+    }
   }
-}
 
   guardarSinAvanzar() {
     this.onSubmit();

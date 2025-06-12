@@ -37,6 +37,7 @@ import { UnapprovedPilotComponent } from "./pages/estudios-piloto/unapproved-pil
 import { RecomendationPilotComponent } from "./pages/estudios-piloto/recomendation-pilot/recomendation-pilot.component";
 import { UnfinishedPilotComponent } from "./pages/estudios-piloto/unfinished-pilot/unfinished-pilot.component";
 import { UnderreviewPilotComponent } from "./pages/estudios-piloto/underreview-pilot/underreview-pilot.component";
+import { VistaPreviaComponent } from "./pages/protocol-register/protocol-modules/vista-previa/vista-previa.component";
 
 export const invRoutes: Routes = [
   {
@@ -110,6 +111,8 @@ export const invRoutes: Routes = [
           {path: 'capacitacion', component: CapacitacionComponent},
           {path: 'salud-ocupacional', component: SaludOcupacionalComponent},
           {path: 'confirmacion', component: ConfirmacionComponent},
+          {path: 'vista-previa',component: VistaPreviaComponent},
+
           {
             path: '**',
             redirectTo: 'datos-personales',

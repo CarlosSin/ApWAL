@@ -29,6 +29,10 @@ export class ConfirmacionComponent {
       error: (err) => console.error('Error al obtener datos de confirmación:', err)
     });
   }
+  irAVistaPrevia() {
+    this.router.navigate(['/inv/protocol-register/vista-previa']);
+  }
+
 
   enviarAlCICUAL() {
   if (!this.protocoloId) return;

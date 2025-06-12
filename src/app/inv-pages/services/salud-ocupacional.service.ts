@@ -9,15 +9,23 @@ export class SaludOcupacionalService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Obtener los datos generales y por animal asociados a un protocolo
+   */
   obtenerPorProtocolo(protocoloId: number) {
     return this.http.get(`${this.apiUrl}/protocolo/${protocoloId}`);
   }
 
-  guardar(data: any) {
-    return this.http.post(this.apiUrl, data);
-  }
-
-  actualizar(data: any) {
-    return this.http.put(this.apiUrl, data);
+  /**
+   * Guardar o actualizar datos generales y por animal
+   */
+  guardarTodo(payload: {
+    ID_registro_protocolo: number,
+    nivel_bioseguridad: string,
+    equipos: string,
+    procedimientos: string,
+    datosAnimales: any[]
+  }) {
+    return this.http.post(this.apiUrl, payload);
   }
 }

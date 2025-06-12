@@ -67,7 +67,7 @@ private fb = inject(FormBuilder);
 
   guardarYAvanzar() {
     this.onSubmit(() => {
-      this.router.navigate(['/inv/protocol-register/salud-ocupacional']);
+      this.router.navigate(['/inv/protocol-register/capacitacion']);
     });
   }
 

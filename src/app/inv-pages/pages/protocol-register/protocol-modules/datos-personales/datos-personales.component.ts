@@ -5,6 +5,19 @@ import { Router } from '@angular/router';
 import { FormProgressService } from '../../../../services/form-progress.service';
 import { DatosPersonalesService } from '../../../../services/datos-personales.service';
 import { ProtocoloService } from '../../../../services/protocolo.service';
+import { UsuarioProtocoloService } from '../../../../services/usuario-protocolo.service';
+
+
+interface Investigador {
+  no_decontrol_usuario: number;
+  nombre_pila: string;
+  correo_electronico: string;
+  departamento: string;
+  telefono: string;
+  extension: string;
+}
+
+
 
 @Component({
   selector: 'app-datos-personales',
@@ -17,6 +30,8 @@ export class DatosPersonalesComponent {
   private formProgressService = inject(FormProgressService);
   private investigadorService = inject(DatosPersonalesService);
   private protocoloService = inject(ProtocoloService);
+  private usuarioProtocoloService = inject(UsuarioProtocoloService);
+
 
   investigador: any = null;
   suplente: any = null;
@@ -30,13 +45,23 @@ export class DatosPersonalesComponent {
     numSupl: ['', [Validators.required, Validators.pattern(FormUtils.numberPattern)]]
   });
 
-  buscarInvestigador() {
-    const noControl = this.myForm.get('numInv')?.value;
-    if (!noControl) return;
+  ngOnInit() {
+    this.buscarInvestigador(); // Carga los datos del investigador desde el usuario con sesión activa
+  }
 
-    this.investigadorService.obtenerPorNumeroControl(noControl).subscribe({
-      next: (data) => {
-        this.investigador = data;
+   buscarInvestigador() {
+    this.usuarioProtocoloService.obtenerInvestigadorActivo().subscribe({
+      next: (data: Investigador ) => {
+        this.investigador = {
+          noControl: data.no_decontrol_usuario,
+          nombre: data.nombre_pila,
+          email: data.correo_electronico,
+          departamento: data.departamento,
+          telefono: data.telefono,
+          extension: data.extension
+        };
+
+        this.myForm.get('numInv')?.setValue(data.no_decontrol_usuario);
       },
       error: () => {
         this.investigador = null;
@@ -61,7 +86,7 @@ export class DatosPersonalesComponent {
   onSubmit(callback?: () => void) {
     this.myForm.markAllAsTouched();
     if (this.myForm.valid) {
-      const noInv = this.myForm.value.numInv;
+      const noInv = this.myForm.getRawValue().numInv;
       const noSupl = this.myForm.value.numSupl;
       const protocoloId = this.formProgressService.getProtocoloId();
       if (protocoloId && !isNaN(protocoloId)) {

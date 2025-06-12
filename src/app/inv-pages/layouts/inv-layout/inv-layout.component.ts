@@ -5,7 +5,7 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-inv-layout',
-  imports: [RouterOutlet, SideMenuComponent, NavbarComponent],
+  imports: [RouterOutlet, SideMenuComponent, NavbarComponent, ],
   templateUrl: './inv-layout.component.html',
 })
 export class InvLayoutComponent { }
