@@ -41,6 +41,56 @@
         </div>
       </div>
 
+      <!-- telefono -->
+      <div>
+        <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">telefono</label>
+        <input id="primer_apellido" type="text" formControlName="telefono"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-teal-500 focus:border-teal-500">
+        <div *ngIf="userForm.controls['telefono'].invalid && userForm.controls['telefono'].touched" class="text-red-600 text-xs mt-1">
+          El telefono es requerido.
+        </div>
+      </div>
+
+      <!--extencion-->
+      <div>
+        <label for="extension" class="block text-sm font-medium text-gray-700 mb-1">Extension</label>
+        <input id="extension" type="number" formControlName="extension"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-teal-500 focus:border-teal-500">
+        <div *ngIf="userForm.controls['extension'].invalid && userForm.controls['extension'].touched" class="text-red-600 text-xs mt-1">
+          la extensión es requerida.
+        </div>
+      </div>
+      
+      <!--fecha registro-->
+      <div>
+        <label for="Fecha_de_registro" class="block text-sm font-medium text-gray-700 mb-1">Fecha de registro</label>
+        <input id="Fecha_de_registro" type="text" formControlName="fecha_registro"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-gray-100 cursor-not-allowed" readonly>
+      </div>
+
+      <div>
+        <label for="correo_electronico" class="block text-sm font-medium text-gray-700 mb-1">correo_electronico</label>
+        <input id="correo_electronico" type="text" formControlName="correo_electronico"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-teal-500 focus:border-teal-500">
+        <div *ngIf="userForm.controls['correo_electronico'].invalid && userForm.controls['correo_electronico'].touched" class="text-red-600 text-xs mt-1">
+             El correo electronico es requerido.
+        </div>
+      </div>
+      <!--nombre usuario-->
+      <div>
+        <label for="nombre_usuario" class="block text-sm font-medium text-gray-700 mb-1">Nombre de usuario</label>
+        <input id="nombre_usuario" type="text" formControlName="nombre_usuario"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-gray-100 cursor-not-allowed" readonly>
+      </div>
+
+      <div>
+        <label for="contrasena" class="block text-sm font-medium text-gray-700 mb-1">correo_electronico</label>
+        <input id="contrasena" type="text" formControlName="password"
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-teal-500 focus:border-teal-500">
+        <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="text-red-600 text-xs mt-1">
+             El correo electronico es requerido.
+        </div>
+      </div>
       <!-- Grado de Estudios -->
       <div>
         <label for="grado_estudio" class="block text-sm font-medium text-gray-700 mb-1">Grado de Estudios</label>

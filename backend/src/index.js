@@ -35,6 +35,10 @@ app.use('/api/A-sexo', sexoRoutes);
 import edadopesoRoutes from './routes/Aedadopeso.routes.js';
 app.use('/api/A-edadopeso', edadopesoRoutes);
 //----------------------------------------------------------------------------------
+//ruta prtotocolo
+import protocolo from './routes/protocolos.routes.js';
+app.use('/api/protocolo', protocolo);
+
 
 //ruta catalogo animal
 import animalcatalogoRoutes from './routes/catalogoanimal.routes.js';

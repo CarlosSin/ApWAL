@@ -21,6 +21,12 @@ export interface usuarioRules {
   puede_iniciarsecion:boolean;
 }
 
+export interface rol{
+  no_decontrol_usuario: number,
+  id_rol: number,
+	puede_iniciar_sesion: boolean,
+}
+
 @Injectable({
   providedIn: 'root'  // ✅ Esto registra el servicio automáticamente
 })
@@ -34,5 +40,10 @@ export class UsuariosService {
 
   crearUsuarioback(usuario: usuarioRules): Observable<any> {
     return this.http.post(this.apiUrl, usuario);
+  }
+
+  crearRolUsuarioback(rolData: rol): Observable<any> {
+    // Construye la URL completa para el endpoint de roles
+    return this.http.post(`${this.apiUrl}/rool`, rolData);
   }
 }

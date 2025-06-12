@@ -5,7 +5,7 @@
     <!--<div class="bg-white  overscroll-contain border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl " *ngIf="mostrarFormulario">-->
 <div class="bg-white border p-10 z-50 fixed top-0 left-0 right-0 mx-auto max-w-7xl shadow-xl max-h-[90vh] overflow-y-auto rounded-xl" *ngIf="mostrarFormulario">
     <div class="">
-        <h1 class="card-header justify-center text-4xl">Ingrese los datos del nuevo usuario:</h1>
+        <h1 class="text-3xl font-bold text-teal-600 mb-6 text-center">Ingrese los datos del nuevo usuario:</h1>
 
         <form class="p-20 bg-gray-100" [formGroup]="myForm" (ngSubmit)="onSave()">
 
@@ -214,12 +214,23 @@
             name="depto_usuario"
             class="select w-full"
             >
+            <option [ngValue]="null" disabled>Seleccione un departamento</option> <!-- Opción por defecto -->
+            @for (departamento of departamentosdb; track departamento.ID_departamento) {
+                <option [ngValue]="departamento.ID_departamento">{{ departamento.nombre_departamento }}</option>
+            }
+        </select>
+        @if(isValidFiel('ID_departamento_usuario')){
+            <span class="text-red-600 text-sm">
+                El departamento es necesario
+            </span>
+        }
+            <!--
             <option [ngValue]="1" class="text-base">departamento 0</option>
             <option [ngValue]="2" class="text-base">departamento 1</option>
             <option [ngValue]="3" class="text-base">departamento 2</option>
             <option [ngValue]="4" class="text-base">departamento 3</option>
-            <option [ngValue]="5" class="text-base">....</option>
-        </select>
+            <option [ngValue]="5" class="text-base">....</option>-->
+        
         @if(isValidFiel('ID_departamento_usuario')){
             <span class="text-red-600">
                 la fecha de registro es necesaria

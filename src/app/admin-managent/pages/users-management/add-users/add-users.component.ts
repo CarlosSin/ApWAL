@@ -1,8 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, FormsModule, Validators, FormGroup } from '@angular/forms';
-import { UsuariosService, usuarioRules } from '../../users-management/get-info-users/usuarios.service';
-
+import { UsuariosService, usuarioRules, rol } from '../../users-management/get-info-users/usuarios.service';
+import {DepartamentService,departamentorules} from '../../department-management/department.service';
+import { Observable } from 'rxjs'; // Importa Observable si aún no lo tienes
 
 @Component({
   selector: 'app-add-users',
@@ -11,9 +12,10 @@ import { UsuariosService, usuarioRules } from '../../users-management/get-info-u
 })
 
 // la clase principal
-export class AddUsersComponent { 
+export class AddUsersComponent implements OnInit{ 
   mostrarFormulario = false; //variable que controla la apretura de formulario
-
+  departamentosdb: departamentorules[] = [];
+  
   abrirFormulario() { //funcion para abrir el formulario
     console.log('¡Botón presionado!');
     this.mostrarFormulario = true;
@@ -21,8 +23,15 @@ export class AddUsersComponent {
 
   //constructor(private fb: FormBuilder){}
   private fb =inject(FormBuilder);
-private usuariosService =inject(UsuariosService);
-
+  private usuariosService =inject(UsuariosService);
+  private departamentService = inject(DepartamentService);
+  
+   ngOnInit(): void {
+      this.departamentService.getUsuarios().subscribe(data => {
+      console.log('Usuarios recibidos:', data);
+      this.departamentosdb = data;
+    }); // Llama a la función para cargar los departamentos
+  }
   //para controlar el formulario
   myForm: FormGroup = this.fb.group({
     no_decontrol_usuario: [0, [Validators.required]],
@@ -37,7 +46,7 @@ private usuariosService =inject(UsuariosService);
     nombre_usuario: ['', [Validators.required]],
     password: ['', [Validators.required]],
     estado_usuario: [false, [Validators.required]],
-    ID_departamento_usuario: [0, [Validators.required]],
+    ID_departamento_usuario: [null, [Validators.required]],
     rol: [0, [Validators.required]],
     puede_iniciarsecion: [false, [Validators.required]],
   })
@@ -61,7 +70,7 @@ private usuariosService =inject(UsuariosService);
       nombre_usuario:'',
       password: '',
       estado_usuario: false,
-      ID_departamento_usuario: 0,
+      ID_departamento_usuario: null,
       rol: 0,
       puede_iniciarsecion: false
     });
@@ -80,6 +89,24 @@ private usuariosService =inject(UsuariosService);
           console.log('✅ Usuario guardado correctamente:', res);
           this.listaUsuarios.push(nuevoUsuario);
           
+          const rolDataToSend: rol = {
+            no_decontrol_usuario: nuevoUsuario.no_decontrol_usuario, // no_decontrol_usuario del formulario
+            id_rol: nuevoUsuario.rol, // 'rol' del formulario mapeado a 'id_rol' para el backend
+            puede_iniciar_sesion: nuevoUsuario.puede_iniciarsecion // 'puede_iniciarsecion' del formulario
+          };
+          this.usuariosService.crearRolUsuarioback(rolDataToSend).subscribe({
+            next: (resRol) => {
+              console.log('✅ Rol guardado correctamente:', resRol);
+              this.cerrarFormulario(); // Cierra el formulario solo después de que ambos se guarden correctamente
+            },
+            error: (errRol) => {
+              console.error('❌ Error al guardar el rol:', errRol);
+              // Considera si quieres revertir la creación del usuario aquí o mostrar un mensaje de error específico
+              // Por ahora, el usuario se creó pero el rol no.
+            }
+          });
+
+          console.log('Datos del rol a enviar:', rolDataToSend);
           this.cerrarFormulario();
         },
         error: (err) => {
